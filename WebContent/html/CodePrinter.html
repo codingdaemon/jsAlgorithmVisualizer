@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>CodeAnimatorExample</title>
+<script type="text/javascript" src="../js/libs/uglifyjs.js"></script>
+<script type="text/javascript" src="../js/libs/kinetic-v5.0.1.min.js"></script>
+<script type="text/javascript">
+function Logger(){
+	this.log = function(message){
+		console.log(message);
+	}
+}
+
+var logger = new Logger();
+
+function printCodeOnCanvas(code) {
+		logger.log("code : " + code);
+		
+		var lines = code.split("\n");
+		
+		logger.log("lines : " + lines);
+		
+		var stage = new Kinetic.Stage({
+			container : "kineticContainer",
+			width : "500",
+			height : "500"
+		});
+
+		var layer = new Kinetic.Layer();
+		var font_size = 20;
+		for( var i = 0 ; i < lines.length ; i++ ){
+			logger.log("printing line : " + lines[i]);
+			var codeLine = new Kinetic.Text({
+				x:0,
+				y:i*font_size,
+				text:lines[i],
+				fontSize:font_size,
+				fill:'black'
+			}) ;
+			layer.add(codeLine);
+		}
+
+		stage.add(layer);
+	}
+
+	function generateAnimation(){
+		var code = document.getElementById("codeTextAreaId").value;
+		printCodeOnCanvas(code);
+	}
+/* 	function printNode(code, node){
+		var startPos = node.start.pos;
+		var endPos = node.end.pos;
+		var nodeCode = code.substr(startPos,endPos-startPos+1);
+		console.log(nodeCode);
+	}
+	
+	function testUglify() {
+		var code = testKinetic.toString();
+		var ast = UglifyJS.parse(code);
+		ast.walk( new UglifyJS.TreeWalker(function (node){
+			if( node instanceof UglifyJS.AST_SimpleStatement || node instanceof UglifyJS.AST_Definitions){
+				printNode(code,node);
+			}
+		}));
+	}
+ 
+	function test() {
+		testUglify();
+		testKinetic();
+	}
+	 */
+</script>
+</head>
+<body>
+	<div id="kineticContainer"></div>
+	<textarea name="codeTextArea" id="codeTextAreaId" rows="20" cols="20" ></textarea>
+	<input type="button" value="Generate Animation" onclick="generateAnimation()" />
+</body>
+</html>

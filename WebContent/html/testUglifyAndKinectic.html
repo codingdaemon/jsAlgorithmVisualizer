@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Test uglify and kinetic</title>
+<script type="text/javascript" src="../js/libs/uglifyjs.js"></script>
+<script type="text/javascript" src="../js/libs/kinetic-v5.0.1.min.js"></script>
+<script type="text/javascript">
+	function testKinetic() {
+		var stage = new Kinetic.Stage({
+			container : "kineticContainer",
+			width : "500",
+			height : "500"
+		});
+
+		var layer = new Kinetic.Layer();
+
+		var rect = new Kinetic.Rect({
+			x : 0,
+			y : 0,
+			width : 200,
+			height : 200,
+			fill : "red"
+		});
+
+		layer.add(rect);
+		stage.add(layer);
+	}
+
+	function printNode(code, node){
+		var startPos = node.start.pos;
+		var endPos = node.end.pos;
+		var nodeCode = code.substr(startPos,endPos-startPos+1);
+		console.log(nodeCode);
+	}
+	
+	function testUglify() {
+		var code = testKinetic.toString();
+		var ast = UglifyJS.parse(code);
+		ast.walk( new UglifyJS.TreeWalker(function (node){
+			if( node instanceof UglifyJS.AST_SimpleStatement || node instanceof UglifyJS.AST_Definitions){
+				printNode(code,node);
+			}
+		}));
+	}
+
+	function test() {
+		testUglify();
+		testKinetic();
+	}
+</script>
+</head>
+<body onload="test()">
+	<div id="kineticContainer"></div>
+</body>
+</html>
