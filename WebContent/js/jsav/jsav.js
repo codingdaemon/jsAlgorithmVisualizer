@@ -2,6 +2,12 @@ var stage = null;
 var layer = null;
 var initialized = false;
 var codeTexts = [];
+var executionCodeLines = [];
+var oldAnimatedLine = null;
+
+const CODE_STATEMENT = "codeStatement";
+const CODE_NON_STATEMENT = "nonCodeStatement";
+
 function Logger() {
 	this.log = function(message) {
 		console.log(message);
@@ -10,10 +16,42 @@ function Logger() {
 
 var logger = new Logger();
 
+function animateLineExecution(lineIndex){
+	if( null != oldAnimatedLine ){
+		codeTexts[oldAnimatedLine].fill("black");
+	}
+	codeTexts[lineIndex].fill("green");
+	layer.draw();
+	oldAnimatedLine = lineIndex;
+}
+
+function showAnimation(){
+	var jsCode = executionCodeLines.join('\n');
+//	var executionIFrame = document.createElement("iframe");
+//	executionIFrame.id="executionIFrameId";
+//	executionIFrame.srcdoc = "<html><head><script type='text/javascript'>" + jsCode + "<\/script></head></html>";
+	
+	var head = document.head;
+    var script = document.createElement("script");
+    script.type = 'text/javascript';
+    script.innerHTML = jsCode;
+    head.appendChild(script);
+}
+
 function initialize() {
+	var animateButton = document.createElement('input');
+	animateButton.type = "button";
+	animateButton.id = "animateButtonId";
+	animateButton.value = "Show Animation";
+	animateButton.addEventListener("click", showAnimation, false);
+	
+	document.body.appendChild(animateButton);
+	
 	var element = document.createElement('div');
 	element.id = "kineticContainer";
 	document.body.appendChild(element);
+
+	
 	
 	stage = new Kinetic.Stage({
 		container : "kineticContainer",
@@ -42,25 +80,38 @@ function printCodeOnCanvas(lines) {
 		layer.destroyChildren();
 	}
 
+	codeTexts.length = 0 ;
+	oldAnimatedLine = null;
+	
 	var font_size = 20;
+	var nextY = 0 ;
 	for ( var i = 0; i < lines.length; i++) {
-//		logger.log("printing line : " + lines[i]);
-		printAscii(lines[i]);
+		logger.log("printing line : " + lines[i]);
+//		printAscii(lines[i]);
 		
 		var codeLine = new Kinetic.Text({
 			x : 0,
-			y : i * font_size,
-			text : lines[i],
+			y : nextY,
+			text : lines[i].code.trim(),
 			fontSize : font_size,
-			fill : 'black',
-			draggable :true
+			fill : 'black'
+				
+//			,draggable :true
 		});
-		codeTexts.push(codeLine);
+		
+		console.log("x = " + codeLine.x() + " y = " + codeLine.y() + " height = " + codeLine.height() + " width = " + codeLine.width());
+		nextY = nextY + codeLine.height();
+		if( lines[i].type === CODE_STATEMENT ){
+			codeTexts[i] = codeLine;
+		}
+		
 		layer.add(codeLine);
 	}
-	
-	stage.draw();
+
+//	stage.draw();
 	layer.draw();
+	
+	console.log("executionCodeLines = " + executionCodeLines.join('\n'));
 }
 
 function generateAnimation(code) {
@@ -78,14 +129,16 @@ function getCodeStatements(code, node) {
 }
 
 function getCodeLines(code) {
+	executionCodeLines.length = 0;
 	var codeStatementPositions = [];
 	var ast = UglifyJS.parse(code);
 	ast.walk(new UglifyJS.TreeWalker(function(node) {
 		if (node instanceof UglifyJS.AST_SimpleStatement
 				|| node instanceof UglifyJS.AST_Definitions) {
 			codeStatementPositions.push({
-				startIndex : node.start.pos,
-				endIndex : node.end.pos
+				startIndex : node.start.pos
+				,endIndex : node.end.pos
+				,type : CODE_STATEMENT
 			});
 			
 			return true; // so complex statement are not resolved further
@@ -103,12 +156,16 @@ function getCodeLines(code) {
 		return node1.startIndex - node2.startIndex;
 	});
 
-	var codeLines = [];
+	var codeLines = []; // objects of type {code : xxx type : Statement/Non_Statement}
+	var isFirstStatement = true;
 	if (codeStatementPositions[0].startIndex != 0) {
 		codeStatementPositions.unshift({
 			startIndex : 0,
-			endIndex : codeStatementPositions[0].startIndex - 1
+			endIndex : codeStatementPositions[0].startIndex - 1,
+			type : CODE_NON_STATEMENT
 		});
+		
+		isFirstStatement = false;
 	}
 
 	for ( var i = 0; i < codeStatementPositions.length; i++) {
@@ -119,16 +176,25 @@ function getCodeLines(code) {
 				var codeSnippet = code.substr(prevStatementPos.endIndex + 1,
 						(currentStatementPos.startIndex - 1)
 								- (prevStatementPos.endIndex + 1) + 1);
-				// if( codeSnippet.trim() != ''){
-				codeLines.push(codeSnippet);
-				// }
+				 if( codeSnippet.trim() != ''){
+					 codeLines.push({code : codeSnippet ,type : CODE_NON_STATEMENT});
+//					 executionCodeLines.push(codeSnippet);
+				 }
 			}
 		}
 
 		var currCodeSnippet = code.substr(currentStatementPos.startIndex,
 				currentStatementPos.endIndex - currentStatementPos.startIndex
 						+ 1);
-		codeLines.push(currCodeSnippet);
+		codeLines.push({code : currCodeSnippet , type : CODE_STATEMENT});
+		executionCodeLines.push(currCodeSnippet);
+		if (currentStatementPos.type == CODE_STATEMENT ){
+			var x = i;
+			if( !isFirstStatement ){
+				x = i-1 ;
+			}
+			executionCodeLines.push("\nanimateLineExecution(" + x + ");");
+		}
 	}
 
 	// adjust the last
@@ -142,7 +208,8 @@ function getCodeLines(code) {
 		var lastStatementPos = codeStatementPositions[codeStatementPositions.length - 1];
 		var lastCodeSnippet = code.substr(lastStatementPos.endIndex + 1,
 				code.length - lastStatementPos.endIndex);
-		codeLines.push(lastCodeSnippet);
+		codeLines.push({code : lastCodeSnippet, type : CODE_NON_STATEMENT});
+		executionCodeLines.push(lastCodeSnippet);
 	}
 
 	return codeLines;
