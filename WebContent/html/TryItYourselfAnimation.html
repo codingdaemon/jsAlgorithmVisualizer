@@ -1,0 +1,74 @@
+
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<title>Tryit Editor v1.9</title>
+<link rel="stylesheet" type="text/css" href="../css/tryit.css" />
+<script type="text/javascript">
+	function generateAnimationInAnimFrame() {
+		var code = document.getElementById("codeTextAreaId").value;
+		var animFrame = document.getElementById("animationIframe");
+		animFrame.contentWindow.generateAnimation(code);
+	}
+	/* function submitTryit()
+	 {
+	 var t=document.getElementById("textareaCode").value;
+	 t=t.replace(/=/gi,"w3equalsign");
+	 var pos=t.search(/script/i)
+	 while (pos>0)
+	 {
+	 t=t.substring(0,pos) + "w3" + t.substr(pos,3) + "w3" + t.substr(pos+3,3) + "tag" + t.substr(pos+6);
+	 pos=t.search(/script/i);
+	 }
+
+	 t=escape(t);document.getElementById("bt").value="1";
+	
+	 document.getElementById("code").value=t;
+	 document.getElementById("tryitform").action="tryit_view.asp?x=" + Math.random();
+	 validateForm();
+	 document.getElementById("tryitform").submit();
+	 }
+	 function validateForm()
+	 {
+	 var code=document.getElementById("code").value;
+	 if (code.length>5000)
+	 {
+	 document.getElementById("code").value="<h1>Error</h1>";
+	 }
+	 } */
+</script>
+<!--[if lt IE 7]>
+<style>
+#content {height:500px;}
+#sourcecode, #textareaCode, #result, #iframeResult {height:450px;}
+</style>
+<![endif]-->
+</head>
+<body style="background-color: #e5eecc;">
+
+	<div id="content">
+		<div id="sourcecode">
+			<div class="headerText">Source Code:</div>
+			<input id="submitBTN" type="button" value="Animate Code &raquo;"
+				onclick="generateAnimationInAnimFrame()">
+			<div>
+				<textarea class="code_input" id="codeTextAreaId" wrap="logical"
+					rows="10" cols="50"></textarea>
+			</div>
+		</div>
+		<div id="result">
+			<div class="headerText">Result:</div>
+			<div class="headerText" style="right: 10px;">Try it
+				yourself&nbsp;</div>
+			<div>
+				<iframe id="animationIframe" class="result_output" frameborder="0"
+					name="view" src="AnimationFrame.html" width="400"></iframe>
+			</div>
+		</div>
+		<div style="clear: both;"></div>
+		<div id="footer">Edit the code above and click "Animate Code" to
+			see the result.</div>
+	</div>
+</body>
+</html>
