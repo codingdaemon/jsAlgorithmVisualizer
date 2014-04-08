@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="../api/AnimationCodeGenerator.js       " ></script>
+<script type="text/javascript" src="../api/AnimationInput.js               " ></script>
+<script type="text/javascript" src="../api/AnimationObject.js              " ></script>
+<script type="text/javascript" src="../api/AnimatorEngine.js               " ></script>
+<script type="text/javascript" src="../api/Logger.js                       " ></script>
+<script type="text/javascript" src="../api/jsav.js                         " ></script>
+<script type="text/javascript" src="../api/Stack.js                        " ></script>
+<script type="text/javascript" src="../api/StackAnimationCodeGenerator.js  " ></script>
+<script type="text/javascript" src="../api/StackAnimationObject.js         " ></script>
+</head>
+<body>
+<script type="text/javascript">
+function animate(){
+	var stack = new Stack();
+	stack.push(10);
+	stack.push(11);
+	Logger.log("poped : " + stack.pop() );
+	Logger.log("poped : " + stack.pop());
+	
+	jsav.animationEngine.start();
+}
+</script>
+<input type="button" onclick="animate()" value="Test Animate" /> 
+</body>
+</html>

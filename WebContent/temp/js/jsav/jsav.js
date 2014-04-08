@@ -4,6 +4,7 @@ var initialized = false;
 var codeTexts = [];
 var executionCodeLines = [];
 var oldAnimatedLine = null;
+var jsCodeScript = null;
 
 const CODE_STATEMENT = "codeStatement";
 const CODE_NON_STATEMENT = "nonCodeStatement";
@@ -23,19 +24,30 @@ function animateLineExecution(lineIndex){
 	codeTexts[lineIndex].fill("green");
 	layer.draw();
 	oldAnimatedLine = lineIndex;
+	
+//	var amplitude = 150;
+//    var period = 2000;
+//    // in ms
+//    var centerX = stage.width()/2;
+//
+//    var anim = new Kinetic.Animation(function(frame) {
+//    	codeTexts[lineIndex].setX(amplitude * Math.sin(frame.time * 2 * Math.PI / period) + centerX);
+//    }, layer);
+//
+//    anim.start();
 }
 
 function showAnimation(){
 	var jsCode = executionCodeLines.join('\n');
-//	var executionIFrame = document.createElement("iframe");
-//	executionIFrame.id="executionIFrameId";
-//	executionIFrame.srcdoc = "<html><head><script type='text/javascript'>" + jsCode + "<\/script></head></html>";
-	
+
 	var head = document.head;
-    var script = document.createElement("script");
-    script.type = 'text/javascript';
-    script.innerHTML = jsCode;
-    head.appendChild(script);
+	if (jsCodeScript != null ){
+		head.removeChild(jsCodeScript);
+	}
+	jsCodeScript = document.createElement("script");
+	jsCodeScript.type = 'text/javascript';
+	jsCodeScript.innerHTML = jsCode;
+    head.appendChild(jsCodeScript);
 }
 
 function initialize() {
