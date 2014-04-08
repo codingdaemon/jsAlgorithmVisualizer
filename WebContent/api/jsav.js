@@ -1,5 +1,5 @@
 jsav = {};
-jsav.animationEngine = new AnimatorEngine();
+jsav.animationEngine = new AnimationEngine();
 var Logger = new LoggerClass();
 
 

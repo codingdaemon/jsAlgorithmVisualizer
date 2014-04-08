@@ -1,4 +1,4 @@
-function AnimatorEngine(){
+function AnimationEngine(){
 	/**
 	 *  Type AnimationInput Array
 	 */
@@ -13,14 +13,14 @@ function AnimatorEngine(){
 /**
  * push AnimationInput to be executed.
  */
-AnimatorEngine.prototype.push = function(animationInput){
+AnimationEngine.prototype.push = function(animationInput){
 	this.animationInputArray.push(animationInput);
 };
 
 /**
  * Starts the animation if not already started and animationInputArray is not empty.
  */
-AnimatorEngine.prototype.start = function(){
+AnimationEngine.prototype.start = function(){
 	if( this.animationInputArray.length != 0 && this.currentIndex == null ){
 		this.currentIndex = 0;
 		var animObj = this.animationInputArray[this.currentIndex];
@@ -33,7 +33,7 @@ AnimatorEngine.prototype.start = function(){
 /**
  * Executes the next animation
  */
-AnimatorEngine.prototype.next = function(){
+AnimationEngine.prototype.next = function(){
 	if( this.currentIndex < this.animationInputArray.length - 1 ){
 		this.currentIndex++;
 		var animObj = this.animationInputArray[this.currentIndex];
