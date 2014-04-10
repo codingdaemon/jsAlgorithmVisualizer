@@ -23,6 +23,9 @@ AnimationEngine.prototype.push = function(animationInput){
 AnimationEngine.prototype.start = function(){
 	if( this.animationInputArray.length != 0 && this.currentIndex == null ){
 		this.currentIndex = 0;
+		
+		Logger.log("AnimationEngine : start : Complete List of Executions : " + this.animationInputArray);
+		
 		var animObj = this.animationInputArray[this.currentIndex];
 		animObj.func.apply(animObj.object, animObj.params);
 	}else{
@@ -37,6 +40,8 @@ AnimationEngine.prototype.next = function(){
 	if( this.currentIndex < this.animationInputArray.length - 1 ){
 		this.currentIndex++;
 		var animObj = this.animationInputArray[this.currentIndex];
+		Logger.log("AnimationEngine.next : executing : " + animObj);
+		
 		animObj.func.apply(animObj.object, animObj.params);
 		return true;
 	}else{

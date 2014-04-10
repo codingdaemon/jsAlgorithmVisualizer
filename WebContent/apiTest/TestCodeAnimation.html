@@ -4,8 +4,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <script type="text/javascript" src="../ext/libs/kinetic-v5.0.1.min.js       " ></script>
-<script type="text/javascript" src="../ext/libs/screenfull.min.js       " ></script>
-<script type="text/javascript" src="../ext/libs/uglifyjs.js       " ></script>
 <script type="text/javascript" src="../api/AnimationGenerator.js       " ></script>
 <script type="text/javascript" src="../api/AnimationInput.js               " ></script>
 <script type="text/javascript" src="../api/AnimationObject.js              " ></script>
@@ -18,11 +16,48 @@
 <script type="text/javascript" src="../api/Stack.js                        " ></script>
 <script type="text/javascript" src="../api/StackAnimationGenerator.js  " ></script>
 <script type="text/javascript" src="../api/StackAnimationObject.js         " ></script>
-<script type="text/javascript" src="../api/CodeAnimationObject.js         " ></script>
-<script type="text/javascript" src="../api/CodeAnimationGenerator.js         " ></script>
-</head>
-<body>
-<div id="jsavContainer"></div>
+<style type="text/css">
+html, body {
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    position: relative; /* needed for the overlay to extend when you scroll */
+    /* general styles */
+    padding: 30px;
+    font-family: 'Open Sans', sans-serif;
+    background: #f1c40f;
+    color: #fff;
+}
+
+/* overlay styles, all needed */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10;
+}
+
+/* just some content with arbitrary styles for explanation purposes */
+.modal {
+    width: 300px;
+    height: 200px;
+    line-height: 200px;
+    position: fixed;
+    top: 50%; 
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -150px;
+    background-color: #f1c40f;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 11; /* 1px higher than the overlay layer */
+}
+</style>
 <script type="text/javascript">
 function animate(){
 	var stack = new Stack();
@@ -34,6 +69,13 @@ function animate(){
 	jsav.animationEngine.start();
 }
 </script>
-<input type="button" onclick="animate()" value="Test Animate" /> 
+ 
+</head>
+<body>
+<div class="overlay"></div>
+<dialog class="modal">
+	<div id="jsavContainer"></div>
+	<input type="button" onclick="animate()" value="Test Animate" />
+</dialog>
 </body>
 </html>

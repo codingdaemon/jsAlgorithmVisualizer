@@ -20,20 +20,28 @@
 <script type="text/javascript" src="../api/StackAnimationObject.js         " ></script>
 <script type="text/javascript" src="../api/CodeAnimationObject.js         " ></script>
 <script type="text/javascript" src="../api/CodeAnimationGenerator.js         " ></script>
-</head>
-<body>
-<div id="jsavContainer"></div>
 <script type="text/javascript">
 function animate(){
-	var stack = new Stack();
-	stack.push(10);
-	stack.push(11);
-	Logger.log("poped : " + stack.pop() );
-	Logger.log("poped : " + stack.pop());
+	var code = document.getElementById("codeAreaId").value;
+	
 	jsav.createStage("jsavContainer",500,500);
-	jsav.animationEngine.start();
+	jsav.generateCodeAnimation(code);
+/* 	
+	var elem = document.getElementById('jsavContainer');
+    if (screenfull.enabled) {
+        screenfull.request(elem);
+    }else {
+    	Logger.log("Fullscreen not enabled.");
+    }
+ */    
+    jsav.playCodeAnimation();
 }
 </script>
-<input type="button" onclick="animate()" value="Test Animate" /> 
+ 
+</head>
+<body>
+	<div id="jsavContainer"></div>
+	<textarea rows="25" cols="50" id="codeAreaId"></textarea>
+	<input type="button" onclick="animate()" value="Test Animate" />
 </body>
 </html>

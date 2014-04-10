@@ -5,7 +5,7 @@ function CodeAnimationGenerator(codeString){
 	var parsedCode = this.parseCode(codeString);
 	this.executionCodeLines = parsedCode.executionCodeLines;
 	this.codeStatementLines = parsedCode.codeStatementLines;
-	this.modifiedCodeString = executionCodeLines.join('\n');
+	this.modifiedCodeString = this.executionCodeLines.join('\n');
 	
 	this.codeAnimObject = new CodeAnimationObject("JavaScript Code", this.codeStatementLines);
 
@@ -68,6 +68,7 @@ CodeAnimationGenerator.prototype.parseCode = function(code) {
 								- (prevStatementPos.endIndex + 1) + 1);
 				 if( codeSnippet.trim() != ''){
 					 codeLines.push({code : codeSnippet ,isCodeStatement : false});
+					 executionCodeLines.push(codeSnippet);
 				 }
 			}
 		}
@@ -76,13 +77,17 @@ CodeAnimationGenerator.prototype.parseCode = function(code) {
 				currentStatementPos.endIndex - currentStatementPos.startIndex
 						+ 1);
 		codeLines.push({code : currCodeSnippet , isCodeStatement : currentStatementPos.isCodeStatement});
-		executionCodeLines.push(currCodeSnippet);
+		
 		if (currentStatementPos.isCodeStatement == true ){
 			var x = i;
 			if( !isFirstStatement ){
 				x = i-1 ;
 			}
-			executionCodeLines.push("\njsav.animateLineExecution(" + x + ");\n");
+			executionCodeLines.push("\njsav.startAnimateLineExecution(" + x + ");\n");
+			executionCodeLines.push(currCodeSnippet);
+			executionCodeLines.push("\njsav.endAnimateLineExecution(" + x + ");\n");
+		}else{
+			executionCodeLines.push(currCodeSnippet);
 		}
 	}
 
@@ -99,6 +104,10 @@ CodeAnimationGenerator.prototype.parseCode = function(code) {
 };
 
 
-CodeAnimationGenerator.prototype.generateLineAnimation = function(statementNumber){
-	jsav.animationEngine.push(new AnimationInput(this.codeAnimObject, CodeAnimationObject.prototype.animateCodeStatement, [statementNumber, jsav.animationEngine]));
+CodeAnimationGenerator.prototype.generateStartCodeStatementAnimation = function(statementNumber){
+	jsav.animationEngine.push(new AnimationInput(this.codeAnimObject, CodeAnimationObject.prototype.startCodeStatementAnimation, [statementNumber, jsav.animationEngine]));
+};
+
+CodeAnimationGenerator.prototype.generateEndCodeStatementAnimation = function(statementNumber){
+	jsav.animationEngine.push(new AnimationInput(this.codeAnimObject, CodeAnimationObject.prototype.endCodeStatementAnimation, [statementNumber, jsav.animationEngine]));
 };

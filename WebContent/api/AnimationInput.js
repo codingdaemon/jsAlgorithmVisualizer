@@ -16,5 +16,5 @@ function AnimationInput(object, func, params){
 }
 
 AnimationInput.prototype.toString = function(){
-	return "AnimationInput[ object = " + this.object + ", func = " + func + ", parmas = " + params +" ]";
+	return "AnimationInput[ object = " + this.object + ", func = " + this.func.name + ", parmas = " + this.params +" ]";
 };
