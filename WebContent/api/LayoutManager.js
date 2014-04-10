@@ -19,5 +19,5 @@ LayoutManager.prototype.getLayer = function(){
 };
 
 LayoutManager.prototype.getCenter = function(){
-	return new Point(this.stage.width/2, this.stage.height/2);
+	return new Point(this.stage.width()/2, this.stage.height()/2);
 };

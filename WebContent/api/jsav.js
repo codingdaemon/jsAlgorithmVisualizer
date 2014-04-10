@@ -10,7 +10,6 @@ jsav.createStage = function( containerDiv, stageHeight, stageWidth){
 	});
 
 	jsav.layoutManager = new LayoutManager(jsav.stage); 
-
 };
 
 

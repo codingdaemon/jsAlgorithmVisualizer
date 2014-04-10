@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<script type="text/javascript" src="../ext/libs/kinetic-v5.0.1.min.js       " ></script>
 <script type="text/javascript" src="../api/AnimationGenerator.js       " ></script>
 <script type="text/javascript" src="../api/AnimationInput.js               " ></script>
 <script type="text/javascript" src="../api/AnimationObject.js              " ></script>
@@ -17,6 +18,7 @@
 <script type="text/javascript" src="../api/StackAnimationObject.js         " ></script>
 </head>
 <body>
+<div id="jsavContainer"></div>
 <script type="text/javascript">
 function animate(){
 	var stack = new Stack();
@@ -24,7 +26,7 @@ function animate(){
 	stack.push(11);
 	Logger.log("poped : " + stack.pop() );
 	Logger.log("poped : " + stack.pop());
-	
+	jsav.createStage("jsavContainer",500,500);
 	jsav.animationEngine.start();
 }
 </script>

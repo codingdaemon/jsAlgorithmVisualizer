@@ -1,2 +1,2 @@
-const jsav.VAR_BOX_LENGTH = 20;
-const jsav.STACK_BOX_LENGTH = 20;
+jsav.VAR_BOX_LENGTH = 50;
+jsav.STACK_BOX_LENGTH = 50;

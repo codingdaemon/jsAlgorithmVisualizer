@@ -5,7 +5,7 @@ function StackAnimationGenerator(name){
 	jsav.animationEngine.push(new AnimationInput(this.stackAnimObject, StackAnimationObject.prototype.createObject, [jsav.animationEngine]));
 }
 
-StackAnimationGenerator.prototype = new AnimationCodeGenerator();
+StackAnimationGenerator.prototype = new AnimationGenerator();
 
 StackAnimationGenerator.prototype.toString = function(){
 	return "StackAnimationGenerator[ name = " + this.name + ", stackAnimObject = " + this.stackAnimObject + "]";

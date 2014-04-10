@@ -3,7 +3,7 @@
  * @returns
  */
 function Stack(){
-	this.codeGenerator = new StackAnimationCodeGenerator();
+	this.codeGenerator = new StackAnimationGenerator();
 	this.array = [];
 	this.currentIndex = 0;
 }

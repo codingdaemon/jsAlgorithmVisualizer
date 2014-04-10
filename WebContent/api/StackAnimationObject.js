@@ -1,5 +1,53 @@
+function TextRect(textValue,coorX,coorY){
+	this.textValue = textValue;
+	this.x = coorX;
+	this.y = coorY;
+	this.group = new Kinetic.Group();
+    this.text = new Kinetic.Text({
+        x: coorX,
+        y: coorY,
+        text: textValue,
+        fontSize: 11,
+        fontFamily: 'Calibri',
+        fill: '#00000',
+        width: jsav.STACK_BOX_LENGTH,
+        align: 'center'
+      });
+
+     this.rect = new Kinetic.Rect({
+          x: coorX,
+          y: coorY,
+          width: jsav.STACK_BOX_LENGTH,
+          height: jsav.STACK_BOX_LENGTH,
+          fill: 'yellow',
+          stroke: 'black',
+          strokeWidth: 1
+        });
+
+      this.group.add(this.rect);
+      this.group.add(this.text);
+      
+      this.getGroup = function(){
+    	  return this.group;
+      };
+      this.getRect = function(){
+    	  return this.rect;
+      };
+      this.getText = function(){
+    	  return this.text;
+      };
+      this.getTextValue = function(){
+    	  return this.textValue;
+      };
+}
+
+
 function StackAnimationObject(name){
-	AnimationObject.call(name);
+	if(!name){
+		name = "Stack";
+	}
+	
+	AnimationObject.call(this,name);
 	this.group = new Kinetic.Group({
         draggable: true
      });
@@ -9,11 +57,7 @@ function StackAnimationObject(name){
 StackAnimationObject.prototype = new AnimationObject();
 
 StackAnimationObject.prototype.toString = function(){
-	return "Stack[ name = " + this.name + "]";
-};
-
-StackAnimationObject.prototype.getNextRect = function(){
-	
+	return "Stack[ name = " + this.getName() + "]";
 };
 
 StackAnimationObject.prototype.createObject = function(animationEngine){
@@ -21,53 +65,20 @@ StackAnimationObject.prototype.createObject = function(animationEngine){
 	
 	var center = jsav.layoutManager.getCenter();
 	
-	var rect = this.getTextRectangle(this.name, center.getX(), center.getY());
+	var rectGroup = this.getTextRectangle(this.getName(), center.getX(), center.getY());
 	
-	this.rectArray.push(rect);
-	this.group.add(rect);
+	this.rectArray.push(rectGroup);
+	this.group.add(rectGroup.getGroup());
 	
 	var layer = jsav.layoutManager.getLayer();
 	layer.add(this.group);
 	layer.draw();
-	
+
 	setTimeout(function(){
-		rect.setFill("green");
+	    rectGroup.getRect().fill("green");
 		layer.draw();
 		animationEngine.next();
 	},2000 );
-};
-
-StackAnimationObject.prototype.getTextRectangle = function(text,coorX,coorY){
-	// since this text is inside of a defined area, we can center it using
-    // align: 'center'
-    var text = new Kinetic.Text({
-      x: coorX,
-      y: coorY,
-      text: text,
-      fontSize: 11,
-      fontFamily: 'Calibri',
-      fill: '#555',
-      width: jsav.STACK_BOX_LENGTH,
-      align: 'center'
-    });
-
-    var rect = new Kinetic.Rect({
-        x: coorX,
-        y: coorY,
-        width: jsav.STACK_BOX_LENGTH,
-        height: jsav.STACK_BOX_LENGTH,
-        fill: 'yellow',
-        stroke: 'black',
-        strokeWidth: 4
-      });
-    
-    var group = new Kinetic.Group();
-    group.draggable(true);
-
-    group.add(rect);
-    group.add(text);
-    
-    return group;
 };
 
 StackAnimationObject.prototype.push = function(data, animationEngine){
@@ -75,27 +86,20 @@ StackAnimationObject.prototype.push = function(data, animationEngine){
 	Logger.log("Animating to push data = " + data + " on the stack = " + this);
 
 	var topRect = this.rectArray[this.rectArray.length - 1];
-	var nextX = topRect.x;
-	var nextY = topRect.y - jsav.STACK_BOX_LENGTH;
+	var nextX = topRect.getRect().x();
+	var nextY = topRect.getRect().y() - jsav.STACK_BOX_LENGTH;
 	
 	var rectGroup = this.getTextRectangle(data.toString(), nextX, nextY);
 	
 	this.rectArray.push(rectGroup);
-	this.group.add(rectGroup);
+	this.group.add(rectGroup.getGroup());
 	
 	var layer = jsav.layoutManager.getLayer();
 	layer.draw();
 	
 	setTimeout(function(){
-		 // get all children
-	    var children = rectGroup.getChildren();
-
 	    // get only rect
-	    var actualRect = rectGroup.getChildren(function(node){
-	       return node.getClassName() === 'Rect';
-	    });
-
-		actualRect.setFill("green");
+		rectGroup.getRect().fill("green");
 		layer.draw();
 		animationEngine.next();
 	},2000 );
@@ -105,16 +109,27 @@ StackAnimationObject.prototype.pop = function(animationEngine){
 	Logger.log("Animating to pop data from the stack = " + this);
 	
 	var rectGroup = this.rectArray.pop();
+	var group = rectGroup.getGroup();
+	var rect = rectGroup.getRect();
+	
+	var layer = jsav.layoutManager.getLayer();
 	
 	var intervalTimer = setInterval(function(){
-		rectGroup.opacity(rectGroup.opacity - 0.1);
-		layer.draw();
-		
-		if( rectGroup.opacity <= 0 ){
-			rectGroup.destroyAllChildren();
-			rectGroup.destroy();
+		rect.opacity(rect.opacity() - 0.1);
+
+		if( rect.opacity() <= 0 ){
+			group.destroyChildren();
+			group.destroy();
+			layer.draw();
 			clearInterval(intervalTimer);
 			animationEngine.next();
+		}else{
+			layer.draw();
 		}
 	}, 100);
+};
+
+
+StackAnimationObject.prototype.getTextRectangle = function(text,coorX,coorY){
+	return new TextRect(text,coorX,coorY);
 };
