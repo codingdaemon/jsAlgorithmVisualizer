@@ -24,17 +24,6 @@ function animateLineExecution(lineIndex){
 	codeTexts[lineIndex].fill("green");
 	layer.draw();
 	oldAnimatedLine = lineIndex;
-	
-//	var amplitude = 150;
-//    var period = 2000;
-//    // in ms
-//    var centerX = stage.width()/2;
-//
-//    var anim = new Kinetic.Animation(function(frame) {
-//    	codeTexts[lineIndex].setX(amplitude * Math.sin(frame.time * 2 * Math.PI / period) + centerX);
-//    }, layer);
-//
-//    anim.start();
 }
 
 function showAnimation(){

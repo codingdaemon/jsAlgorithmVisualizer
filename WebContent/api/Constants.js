@@ -1,2 +1,1 @@
-jsav.VAR_BOX_LENGTH = 50;
-jsav.STACK_BOX_LENGTH = 50;
+var Logger = new LoggerClass();
