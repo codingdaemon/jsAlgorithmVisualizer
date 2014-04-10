@@ -9,19 +9,19 @@ function TextRect(textValue,coorX,coorY){
         text: textValue,
         fontSize: 11,
         fontFamily: 'Calibri',
-        fill: '#00000',
-        width: jsav.STACK_BOX_LENGTH,
+        fill: jsav.STACK_BOX_TEXT_COLOR,
+        width: jsav.STACK_BOX_WIDTH,
         align: 'center'
       });
 
      this.rect = new Kinetic.Rect({
           x: coorX,
           y: coorY,
-          width: jsav.STACK_BOX_LENGTH,
-          height: jsav.STACK_BOX_LENGTH,
-          fill: 'yellow',
-          stroke: 'black',
-          strokeWidth: 1
+          width: jsav.STACK_BOX_WIDTH,
+          height: jsav.STACK_BOX_HEIGHT,
+          fill: jsav.STACK_BOX_INIT_COLOR,
+          stroke: jsav.STACK_BOX_BORDER_COLOR,
+          strokeWidth: 2
         });
 
       this.group.add(this.rect);
@@ -87,7 +87,7 @@ StackAnimationObject.prototype.push = function(data, animationEngine){
 
 	var topRect = this.rectArray[this.rectArray.length - 1];
 	var nextX = topRect.getRect().x();
-	var nextY = topRect.getRect().y() - jsav.STACK_BOX_LENGTH;
+	var nextY = topRect.getRect().y() - jsav.STACK_BOX_HEIGHT;
 	
 	var rectGroup = this.getTextRectangle(data.toString(), nextX, nextY);
 	
