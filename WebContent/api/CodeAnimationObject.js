@@ -4,6 +4,7 @@ function CodeAnimationObject(name, codeLines){
 	this.allCodeText = [];
 	this.codeStatementText = [];
 	this.group = new Kinetic.Group();
+	this.group.draggable(true);
 }
 
 CodeAnimationObject.prototype = new AnimationObject();
