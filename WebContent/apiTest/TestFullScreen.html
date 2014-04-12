@@ -36,6 +36,9 @@ function animate(){
  */    
     jsav.playCodeAnimation();
 }
+function reset(){
+	jsav.resetAnimation();
+}
 </script>
  
 </head>
@@ -43,5 +46,6 @@ function animate(){
 	<div id="jsavContainer"></div>
 	<textarea rows="25" cols="50" id="codeAreaId"></textarea>
 	<input type="button" onclick="animate()" value="Test Animate" />
+	<input type="button" onclick="reset()" value="Reset Animation" />
 </body>
 </html>

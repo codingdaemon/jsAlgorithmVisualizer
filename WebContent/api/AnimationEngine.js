@@ -7,7 +7,9 @@ function AnimationEngine(){
 	/**
 	 *  Type Integer for currentIndex of execution
 	 */
-	this.currentIndex = null;
+	this.currentIndex = -1;
+	
+	this.isStarted = false;
 }
 
 /**
@@ -21,9 +23,9 @@ AnimationEngine.prototype.push = function(animationInput){
  * Starts the animation if not already started and animationInputArray is not empty.
  */
 AnimationEngine.prototype.start = function(){
-	if( this.animationInputArray.length != 0 && this.currentIndex == null ){
+	if( this.animationInputArray.length != 0 && this.currentIndex == -1 ){
 		this.currentIndex = 0;
-		
+		this.isStarted = true;
 		Logger.log("AnimationEngine : start : Complete List of Executions : " + this.animationInputArray);
 		
 		var animObj = this.animationInputArray[this.currentIndex];
@@ -37,6 +39,7 @@ AnimationEngine.prototype.start = function(){
  * Executes the next animation
  */
 AnimationEngine.prototype.next = function(){
+	if( isStarted ){
 	if( this.currentIndex < this.animationInputArray.length - 1 ){
 		this.currentIndex++;
 		var animObj = this.animationInputArray[this.currentIndex];
@@ -48,4 +51,10 @@ AnimationEngine.prototype.next = function(){
 		Logger.log("Animation completed.");
 		return false;
 	}
+	}
+};
+
+AnimationEngine.prototype.reset = function(){
+	this.currentIndex = -1 ;
+	this.isStarted = false; // stops any old animation
 };

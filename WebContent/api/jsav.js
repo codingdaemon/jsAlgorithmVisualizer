@@ -12,45 +12,4 @@ jsav = {
 	CODE_COLOR : 'black',
 	CODE_HIGHLIGHT_COLOR : 'red',
 	CODE_HIGHLIGHT_FONT_SIZE : 24,
-	
-	animationEngine : new AnimationEngine(),
-	jsCodeScript : null,
-	createStage : function(containerDiv, stageHeight, stageWidth) {
-		jsav.stage = new Kinetic.Stage({
-			container : containerDiv,
-			width : stageHeight,
-			height : stageWidth
-		});
-
-		jsav.layoutManager = new LayoutManager(jsav.stage);
-	},
-	
-	generateCodeAnimation : function( codeString ){
-		this.codeAnimationGenerator =  new CodeAnimationGenerator(codeString );
-		var modifiedCode = this.codeAnimationGenerator.getModifiedCode();
-		this.runCodeAndAnimate(modifiedCode);
-	},
-	
-	playCodeAnimation : function(){
-		this.animationEngine.start();
-	},
-	
-	runCodeAndAnimate : function(modifiedCode){
-		var head = document.head;
-		if (this.jsCodeScript != null ){
-			head.removeChild(this.jsCodeScript);
-		}
-		this.jsCodeScript = document.createElement("script");
-		this.jsCodeScript.type = 'text/javascript';
-		this.jsCodeScript.innerHTML = modifiedCode;
-	    head.appendChild(this.jsCodeScript);
-	},
-	
-	endAnimateLineExecution : function(statementNumber){
-		this.codeAnimationGenerator.generateEndCodeStatementAnimation(statementNumber);
-	},
-	
-	startAnimateLineExecution : function( statementNumber ){
-		this.codeAnimationGenerator.generateStartCodeStatementAnimation(statementNumber);
-	}
 };
