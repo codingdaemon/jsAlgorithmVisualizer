@@ -1,4 +1,6 @@
-function CodeAnimationObject(name, codeLines){
+function CodeAnimationObject(animationId, name, codeLines){
+	this.animationId = animationId;
+	this.animator = jsav.getAnimatorById(animationId);
 	AnimationObject.call(this,name);
 	this.codeLines = codeLines;
 	this.allCodeText = [];
@@ -13,7 +15,7 @@ CodeAnimationObject.prototype.toString = function(){
 	return "CodeAnimationObject[ name = " + name +"]";
 };
 
-CodeAnimationObject.prototype.createObject = function(animationEngine){
+CodeAnimationObject.prototype.createObject = function(){
 	var nextY = 0 ;
 	var nextX = 0 ;
 	for( var i = 0 ; i < this.codeLines.length ; i++ ){
@@ -22,8 +24,8 @@ CodeAnimationObject.prototype.createObject = function(animationEngine){
 			x : nextX,
 			y : nextY,
 			text : dummyCAO.codeLines[i].code.trim(),
-			fontSize : jsav.CODE_FONT_SIZE,
-			fill : jsav.CODE_COLOR
+			fontSize : dummyCAO.animator.getConfigs()[jsav.CODE_FONT_SIZE],
+			fill : dummyCAO.animator.getConfigs()[jsav.CODE_COLOR]
 		});
 		
 		nextY += textLine.height();
@@ -36,11 +38,11 @@ CodeAnimationObject.prototype.createObject = function(animationEngine){
 		}
 	}
 	
-	var layer = jsav.layoutManager.getLayer();
+	var layer = this.animator.layoutManager.getLayer();
 	layer.add(this.group);
 	layer.draw();
 	
-	animationEngine.next();
+	this.animator.getAnimationEngine().next();
 };
 
 /**
@@ -48,14 +50,15 @@ CodeAnimationObject.prototype.createObject = function(animationEngine){
  * @param codeStatementNumber
  * @param animationEngine
  */
-CodeAnimationObject.prototype.startCodeStatementAnimation = function( codeStatementNumber, animationEngine){
+CodeAnimationObject.prototype.startCodeStatementAnimation = function( codeStatementNumber){
 	var textLine = this.codeStatementText[codeStatementNumber];
-	textLine.fill(jsav.CODE_HIGHLIGHT_COLOR);
-	textLine.fontSize(jsav.CODE_HIGHLIGHT_FONT_SIZE);
-	var layer = jsav.layoutManager.getLayer();
+	
+	textLine.fill(this.animator.getConfigs()[jsav.CODE_HIGHLIGHT_COLOR]);
+	textLine.fontSize(this.animator.getConfigs()[jsav.CODE_HIGHLIGHT_FONT_SIZE]);
+	var layer = this.animator.getLayoutManager().getLayer();
 	layer.draw();
 	
-	animationEngine.next();
+	this.animator.getAnimationEngine().next();
 };
 
 /**
@@ -63,17 +66,13 @@ CodeAnimationObject.prototype.startCodeStatementAnimation = function( codeStatem
  * @param codeStatementNumber
  * @param animationEngine
  */
-CodeAnimationObject.prototype.endCodeStatementAnimation = function( codeStatementNumber, animationEngine){
+CodeAnimationObject.prototype.endCodeStatementAnimation = function( codeStatementNumber ){
 	var textLine = this.codeStatementText[codeStatementNumber];
-	textLine.fill(jsav.CODE_COLOR);
-	textLine.fontSize(jsav.CODE_FONT_SIZE);
+	textLine.fill(this.animator.getConfigs()[jsav.CODE_COLOR]);
+	textLine.fontSize(this.animator.getConfigs()[jsav.CODE_FONT_SIZE]);
 	
-	var layer = jsav.layoutManager.getLayer();
+	var layer = this.animator.getLayoutManager().getLayer();
 	layer.draw();
 	
-	animationEngine.next();
+	this.animator.getAnimationEngine().next();
 };
-
-
-
-

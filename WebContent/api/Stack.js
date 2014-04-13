@@ -3,7 +3,11 @@
  * @returns
  */
 function Stack(){
-	this.codeGenerator = new StackAnimationGenerator();
+	/**
+	 * note animationId is the current instance's animationId which is defined
+	 * globally with window object.. this will change after the current execution.
+	 */
+	this.codeGenerator = new StackAnimationGenerator(animationId, "Stack");
 	this.array = [];
 	this.currentIndex = 0;
 }
@@ -26,7 +30,7 @@ Stack.prototype.pop = function(){
 		this.codeGenerator.pop();
 		return data;
 	}else{
-		Logger.log("No more data in the stack.");
+		Logger.info("No more data in the stack.");
 		return null;
 	}
 };

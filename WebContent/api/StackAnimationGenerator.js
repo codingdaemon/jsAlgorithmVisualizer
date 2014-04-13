@@ -1,8 +1,10 @@
-function StackAnimationGenerator(name){
+function StackAnimationGenerator(animationId, name){
 	AnimationGenerator.call(this);
 	this.name = name;
-	this.stackAnimObject = new StackAnimationObject(name);
-	jsav.animationEngine.push(new AnimationInput(this.stackAnimObject, StackAnimationObject.prototype.createObject, [jsav.animationEngine]));
+	this.animationId = animationId;
+	this.stackAnimObject = new StackAnimationObject(animationId, name);
+	var animator = jsav.getAnimatorById(this.animationId);
+	animator.getAnimationEngine().push(new AnimationInput(this.stackAnimObject, StackAnimationObject.prototype.createObject, []));
 }
 
 StackAnimationGenerator.prototype = new AnimationGenerator();
@@ -12,9 +14,11 @@ StackAnimationGenerator.prototype.toString = function(){
 };
 
 StackAnimationGenerator.prototype.push = function(data){
-	jsav.animationEngine.push(new AnimationInput(this.stackAnimObject, StackAnimationObject.prototype.push, [data, jsav.animationEngine]));
+	var animator = jsav.getAnimatorById(this.animationId);
+	animator.getAnimationEngine().push(new AnimationInput(this.stackAnimObject, StackAnimationObject.prototype.push, [data]));
 };
 
 StackAnimationGenerator.prototype.pop = function(){
-	jsav.animationEngine.push(new AnimationInput(this.stackAnimObject, StackAnimationObject.prototype.pop, [jsav.animationEngine]));
+	var animator = jsav.getAnimatorById(this.animationId);
+	animator.getAnimationEngine().push(new AnimationInput(this.stackAnimObject, StackAnimationObject.prototype.pop, []));
 };

@@ -3,7 +3,7 @@ function AnimationObject(name){
 }
 
 AnimationObject.prototype.createObject = function(animationEngine){
-	Logger.log("creating new AnimationObject");
+	Logger.info("creating new AnimationObject");
 	animationEngine.next();
 };
 

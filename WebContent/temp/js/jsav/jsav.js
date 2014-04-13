@@ -87,7 +87,7 @@ function printCodeOnCanvas(lines) {
 	var font_size = 20;
 	var nextY = 0 ;
 	for ( var i = 0; i < lines.length; i++) {
-		logger.log("printing line : " + lines[i]);
+		Logger.info("printing line : " + lines[i]);
 //		printAscii(lines[i]);
 		
 		var codeLine = new Kinetic.Text({
