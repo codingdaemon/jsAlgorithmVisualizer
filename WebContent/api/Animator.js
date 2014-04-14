@@ -13,11 +13,23 @@ Animator.prototype.createStage = function() {
 	this.stage = new Kinetic.Stage({
 		container : animatorRef.configs[jsav.STAGE_CONTAINERDIV],
 		width : animatorRef.configs[jsav.STAGE_HEIGHT],
-		height : animatorRef.configs[jsav.STAGE_WIDTH]
+		height : animatorRef.configs[jsav.STAGE_WIDTH],
+		opacity : animatorRef.configs[jsav.STAGE_OPACITY]
 	});
+//	this.stage.red(animatorRef.configs[jsav.STAGE_COLOR_RED]);
+//	this.stage.blue (animatorRef.configs[jsav.STAGE_COLOR_BLUE]);
+//	this.stage.green (animatorRef.configs[jsav.STAGE_COLOR_GREEN]);
+//
 
 	this.codeAnimationGenerator = new CodeAnimationGenerator(this.animationId, this.codeStatementLines);
+
+	
 	this.layoutManager = new LayoutManager(this.stage);
+	this.layoutManager.getLayer().red(animatorRef.configs[jsav.STAGE_COLOR_RED]);
+	this.layoutManager.getLayer().blue (animatorRef.configs[jsav.STAGE_COLOR_BLUE]);
+	this.layoutManager.getLayer().green (animatorRef.configs[jsav.STAGE_COLOR_GREEN]);
+
+
 },
 	
 Animator.prototype.getAnimationId = function(){

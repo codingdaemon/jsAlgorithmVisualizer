@@ -2,6 +2,11 @@ jsav = {
 	STAGE_CONTAINERDIV :"stage.containerDiv",
 	STAGE_HEIGHT : "stage.height",
 	STAGE_WIDTH : "stage.width",
+	STAGE_COLOR_RED : "stage.color.red",
+	STAGE_COLOR_BLUE : "stage.color.blue",
+	STAGE_COLOR_GREEN : "stage.color.green",
+	STAGE_OPACITY : "stage.opacity",
+	
 	VAR_BOX_LENGTH : "var.box.length",
 	
 	STACK_BOX_WIDTH : "stack.box.width",

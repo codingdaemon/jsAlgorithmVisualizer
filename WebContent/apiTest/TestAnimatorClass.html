@@ -27,14 +27,14 @@ function animate(){
 	var code = document.getElementById("codeAreaId").value;
 	
 	var animationId = jsav.generateCodeAnimation(code);
-/* 	
-	var elem = document.getElementById('jsavContainer');
+ 	
+	/* var elem = document.getElementById('jsavContainer');
     if (screenfull.enabled) {
         screenfull.request(elem);
     }else {
     	Logger.log("Fullscreen not enabled.");
-    }
- */    
+    } */
+     
     jsav.playCodeAnimation(animationId);
 }
 function reset(){
