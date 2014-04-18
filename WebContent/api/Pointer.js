@@ -1,4 +1,4 @@
-function Arrow(configs){
+function Pointer(configs){
     this.x1 = configs[ jsav.ARROW_FROMX];
     this.y1 = configs[ jsav.ARROW_FROMY];
     this.x2 = configs[ jsav.ARROW_TOX];
@@ -61,27 +61,27 @@ function Arrow(configs){
 //	return this.group;
 }
 
-Arrow.prototype.getGroup = function(){
+Pointer.prototype.getGroup = function(){
 	return this.group;
 };
 
-Arrow.prototype.getHeadLine = function(){
+Pointer.prototype.getHeadLine = function(){
 	return this.headLine;
 };
 
-Arrow.prototype.getTailLine = function(){
+Pointer.prototype.getTailLine = function(){
 	return this.tailLine;
 };
 
-Arrow.prototype.getTailText = function(){
+Pointer.prototype.getTailText = function(){
 	return this.tailText;
 };
 
-Arrow.prototype.pointHeadTo = function(obj){
+Pointer.prototype.pointHeadTo = function(obj){
 
 };
 
-Arrow.prototype.pointTailTo = function(obj){
+Pointer.prototype.pointTailTo = function(obj){
 
 };
 
