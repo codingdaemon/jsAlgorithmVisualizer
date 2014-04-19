@@ -45,5 +45,31 @@ Utils = {
         }
 
         return baseCopy;
+    },
+
+    findIntersectionPointOfLines : function( l1x1, l1y1, l1x2, l1y2, l2x1, l2y1, l2x2, l2y2){
+        var y = (  l2x1 * l2y2 - l2x2 * l2y1 - l1x1 * l1y2 + l1x2 * l1y1 ) / (  ( l1x1 -l1x2 ) / ( l1y1 - l1y2 ) - (l2x1 - l2x2) / ( l2y1 - l2y2 )  );
+        var x = ( l1x1 -l1x2 ) / ( l1y1 - l1y2 ) * y + l1x1 * l1y2 - l1x2 * l1y1 ;
+
+        return new Point(x,y);
+    },
+
+    findIntersectionPointOfLineAndSegment : function( lx1, ly1, lx2, ly2, sx1, sy1, sx2, sy2){
+        var point = this.findIntersectionPointOfLines(lx1, ly1, lx2, ly2, sx1, sy1, sx2, sy2);
+
+        if( ( sx1 > sx2 && point.getX() <= sx1 && point.getX() >= sx2)
+            || (sx2 > sx1 && point.getX() <= sx2 && point.getX() >= sx1 )
+            ){
+            return point;
+        }
+
+        return null;
+    },
+    generate4CharUID : function(){
+        return (Math.floor((1+Math.random())*0x10000)).toString(16).substring(1);
+    },
+    generateId : function(){
+      return this.generate4CharUID();
     }
 };
+

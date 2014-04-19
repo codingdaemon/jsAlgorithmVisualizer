@@ -22,3 +22,8 @@ Point.prototype.getY = function(){
 Point.prototype.setY = function(y){
 	this.y = y;
 };
+
+Point.prototype.toString = function(){
+    return "Point[ x = " + this.x + ", y = " + this.y + " ]";
+};
+
