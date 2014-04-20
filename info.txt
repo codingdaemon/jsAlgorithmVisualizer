@@ -1,0 +1,3 @@
+versions{
+    kineticjs : KineticJS v5.0.1
+}

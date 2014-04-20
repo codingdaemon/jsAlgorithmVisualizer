@@ -1,32 +1,29 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<script type="text/javascript" src="../ext/libs/kinetic-v5.0.1.min.js       " ></script>
-<script type="text/javascript" src="../api/jsav.js" ></script>
-<script type="text/javascript" src="../api/Defaults.js" ></script>
-<script type="text/javascript" src="../api/Pointer.js" ></script>
-    <script type="text/javascript" src="../api/Utils.js" ></script>
-<script type="text/javascript" >
-function init(){
-var stage = new Kinetic.Stage({
-	container : "container",
-	height : 500,
-	width : 500
-});
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Insert title here</title>
+    <script type="text/javascript"  data-main="../app/api/app.js" src="../app/api/libs/require.js       "></script>
+    <script type="text/javascript">
+        function init() {
+            require(["jsav", "Constants","libs/kinetic","Pointer"], function (jsav,Constants,Kinetic,Pointer) {
+                var stage = new Kinetic.Stage({
+                    container: "container",
+                    height: 500,
+                    width: 500
+                });
 
-var layer = new Kinetic.Layer();
-var arrowConfigs = {};
-arrowConfigs[jsav.ARROW_FROMX] = 0 ;
-arrowConfigs[jsav.ARROW_FROMY] = 0 ;
-arrowConfigs[jsav.ARROW_TOX] = 20;
-arrowConfigs[jsav.ARROW_TOY] = 20;
-//arrowConfigs[jsav.ARROW_HEAD_HEIGHT] = 25;
-//arrowConfigs[jsav.ARROW_HEAD_LENGTH] = 50;
-var configs = jsav.resolveAnimatorConfigs(arrowConfigs);
-var line = new Pointer(configs);
-layer.add(line.getGroup());
+                var layer = new Kinetic.Layer();
+                var arrowConfigs = {};
+                arrowConfigs[Constants.ARROW_FROMX] = 0;
+                arrowConfigs[Constants.ARROW_FROMY] = 0;
+                arrowConfigs[Constants.ARROW_TOX] = 20;
+                arrowConfigs[Constants.ARROW_TOY] = 20;
+//arrowConfigs[Constants.ARROW_HEAD_HEIGHT] = 25;
+//arrowConfigs[Constants.ARROW_HEAD_LENGTH] = 50;
+                var configs = jsav.resolveAnimatorConfigs(arrowConfigs);
+                var line = new Pointer(configs,layer);
+                layer.add(line.getGroup());
 
 //    var text = new Kinetic.Text({
 //        x: 10,
@@ -51,12 +48,14 @@ layer.add(line.getGroup());
 //    });
 //
 //    layer.add(text);
-stage.add(layer);
-}
-</script>
+
+                stage.add(layer);
+            });
+        }
+    </script>
 </head>
 <body onload="init()">
-<div id="container" ></div>
+<div id="container"></div>
 
 </body>
 </html>

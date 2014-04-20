@@ -1,20 +1,22 @@
+define(["AnimationObject","libs/kinetic","Constants","Point"],function(AnimationObject,Kinetic,Constants,Point){
+
 function Pointer(configs,layer){
     AnimationObject.call(this,"pointer",layer);
-    this.x1 = configs[ jsav.ARROW_FROMX];
-    this.y1 = configs[ jsav.ARROW_FROMY];
-    this.x2 = configs[ jsav.ARROW_TOX];
-    this.y2 = configs[ jsav.ARROW_TOY];
-    this.l = configs[ jsav.ARROW_HEAD_LENGTH] ;
-    this.h = configs[ jsav.ARROW_HEAD_HEIGHT];
-    this.tailColor = configs[ jsav.ARROW_TAIL_COLOR];
-    this.headColor = configs[ jsav.ARROW_HEAD_COLOR];
-    this.tailWidth = configs[ jsav.ARROW_TAIL_WIDTH];
-    this.headWidth = configs[jsav.ARROW_HEAD_WIDTH];
-    this.headSolid = configs[ jsav.ARROW_HEAD_SOLID];
-    this.text = configs[ jsav.ARROW_TAIL_TEXT];
-    this.tailTextFontSize = configs[ jsav.ARROW_TAIL_TEXT_FONT_SIZE];
-    this.tailTextColor = configs[ jsav.ARROW_TAIL_TEXT_COLOR];
-    this.tailTextFont = configs[ jsav.ARROW_TAIL_TEXT_FONT];
+    this.x1 = configs[ Constants.ARROW_FROMX];
+    this.y1 = configs[ Constants.ARROW_FROMY];
+    this.x2 = configs[ Constants.ARROW_TOX];
+    this.y2 = configs[ Constants.ARROW_TOY];
+    this.l = configs[ Constants.ARROW_HEAD_LENGTH] ;
+    this.h = configs[ Constants.ARROW_HEAD_HEIGHT];
+    this.tailColor = configs[ Constants.ARROW_TAIL_COLOR];
+    this.headColor = configs[ Constants.ARROW_HEAD_COLOR];
+    this.tailWidth = configs[ Constants.ARROW_TAIL_WIDTH];
+    this.headWidth = configs[Constants.ARROW_HEAD_WIDTH];
+    this.headSolid = configs[ Constants.ARROW_HEAD_SOLID];
+    this.text = configs[ Constants.ARROW_TAIL_TEXT];
+    this.tailTextFontSize = configs[ Constants.ARROW_TAIL_TEXT_FONT_SIZE];
+    this.tailTextColor = configs[ Constants.ARROW_TAIL_TEXT_COLOR];
+    this.tailTextFont = configs[ Constants.ARROW_TAIL_TEXT_FONT];
 
     this.tailObject = null;
     this.headObject = null;
@@ -138,4 +140,5 @@ Pointer.prototype.pointTailTo = function(obj){
 
     this.onTailPointTo(); // call once to set the pointer initially
 };
-
+    return Pointer;
+});
