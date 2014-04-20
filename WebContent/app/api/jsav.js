@@ -1,5 +1,9 @@
 define(["Utils", "Animator", "CodeParser", "Defaults","Logger"], function (Utils, Animator, CodeParser, Defaults,Logger) {
-
+    /**
+     note jsav is kept as a global variable and is not included as a dependency in any of the modules
+     jsav has to be require'd in the HTML file once for it to be defined globally
+     * @type {{animatorMap: Array, currentCodeAnimationId: number, resolveAnimatorConfigs: resolveAnimatorConfigs, generateCodeAnimation: generateCodeAnimation, getAnimatorById: getAnimatorById, runCodeAndAnimate: runCodeAndAnimate, playCodeAnimation: playCodeAnimation, startAnimateLineExecution: startAnimateLineExecution, endAnimateLineExecution: endAnimateLineExecution}}
+     */
     jsav = {
         animatorMap: [],
         currentCodeAnimationId: 0,
