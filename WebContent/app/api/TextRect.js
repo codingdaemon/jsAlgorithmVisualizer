@@ -1,4 +1,4 @@
-define(["AnimationObject", "libs/kinetic", "Utils"], function (AnimationObject, Kinetic, Utils) {
+define(["AnimationObject", "libs/kinetic", "Utils","Logger"], function (AnimationObject, Kinetic, Utils, Logger) {
 
     function TextRect(configs, layer) {
         AnimationObject.call(this, "TextRect", layer);
@@ -58,6 +58,7 @@ define(["AnimationObject", "libs/kinetic", "Utils"], function (AnimationObject, 
         var width = this.rect.width();
         var height = this.rect.height();
 
+        Logger.info("rect x = " + x1 + " y = " + y1 + " width = " + width + " height = " + height);
         var x2 = x1 + width;
         var y2 = y1;
 
@@ -70,16 +71,16 @@ define(["AnimationObject", "libs/kinetic", "Utils"], function (AnimationObject, 
         var centerX = x1 + width / 2;
         var centerY = y1 + height / 2;
 
-        var p1 = Utils.findIntersectionPointOfLineAndSegment(point.getX(), point.getY(), centerX, centerY, x1, y1, x2, y2);
+        var p1 = Utils.findIntersectionPointOfSegments(point.getX(), point.getY(), centerX, centerY, x1, y1, x2, y2);
         if (null != p1) return p1;
 
-        var p2 = Utils.findIntersectionPointOfLineAndSegment(point.getX(), point.getY(), centerX, centerY, x2, y2, x3, y3);
+        var p2 = Utils.findIntersectionPointOfSegments(point.getX(), point.getY(), centerX, centerY, x2, y2, x3, y3);
         if (null != p2) return p2;
 
-        var p3 = Utils.findIntersectionPointOfLineAndSegment(point.getX(), point.getY(), centerX, centerY, x3, y3, x4, y4);
+        var p3 = Utils.findIntersectionPointOfSegments(point.getX(), point.getY(), centerX, centerY, x3, y3, x4, y4);
         if (null != p3) return p3;
 
-        var p4 = Utils.findIntersectionPointOfLineAndSegment(point.getX(), point.getY(), centerX, centerY, x4, y4, x1, y1);
+        var p4 = Utils.findIntersectionPointOfSegments(point.getX(), point.getY(), centerX, centerY, x4, y4, x1, y1);
         if (null != p4) return p4;
 
         return null;

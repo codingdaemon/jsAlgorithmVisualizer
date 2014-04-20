@@ -1,4 +1,4 @@
-define(["Point"], function (Point) {
+define(["Point","Logger"], function (Point,Logger) {
 
     var Utils = {
         clone: function (obj) {
@@ -57,13 +57,31 @@ define(["Point"], function (Point) {
 //        },
 
         findIntersectionPointOfLines: function (l1x1, l1y1, l1x2, l1y2, l2x1, l2y1, l2x2, l2y2) {
-            var a = ( l1x1 - l1x2 ) /  ( l1y1 - l1y2 );
-            var b = (l2x1 - l2x2) / ( l2y1 - l2y2 );
-            var y = ( l1y1 * a - l2y1 * b + l2x1 -l1x1) / ( a - b );
-            var x = a * ( y - l1y1 ) + l1x1;
+            var y = null;
+            var x = null;
+            if (l1y1 == l1y2) { // theta = 90 degree
+                y = l1y1;
+                x = (l2x1 - l2x2) / (l2y1 - l2y2) * (y - l2y1) + l2x1;
+            } else if (l2y1 == l2y2) { // theta = 90 degree
+                y = l2y1;
+                x = (l1x1 - l1x2) / (l1y1 - l1y2) * (y - l1y1) + l1x1;
+            } else {
+                var a = ( l1x1 - l1x2 ) / ( l1y1 - l1y2 );
+                var b = (l2x1 - l2x2) / ( l2y1 - l2y2 );
+                if (a == b) { // parallel lines
+                    return null;
+                }
 
-            y = Math.ceil(y);
-            x = Math.ceil(x);
+                y = ( l1y1 * a - l2y1 * b + l2x1 - l1x1) / ( a - b );
+                x = a * ( y - l1y1 ) + l1x1;
+            }
+
+            if (isNaN(x) || isNaN(y)) {
+                return null;
+            }
+
+//            y = Math.ceil(y);
+//            x = Math.ceil(x);
 
             return new Point(x, y);
         },
@@ -75,6 +93,22 @@ define(["Point"], function (Point) {
                 || (sx2 > sx1 && point.getX() <= sx2 && point.getX() >= sx1 )
                 ) {
                 return point;
+            }
+
+            return null;
+        },
+        findIntersectionPointOfSegments: function (s1x1, s1y1, s1x2, s1y2, s2x1, s2y1, s2x2, s2y2) {
+            var point = this.findIntersectionPointOfLines(s1x1, s1y1, s1x2, s1y2, s2x1, s2y1, s2x2, s2y2);
+
+            if (( s2x1 >= s2x2 && point.getX() <= s2x1 && point.getX() >= s2x2)
+                || (s2x2 >= s2x1 && point.getX() <= s2x2 && point.getX() >= s2x1 )
+                ) {
+                if (( s1x1 >= s1x2 && point.getX() <= s1x1 && point.getX() >= s1x2)
+                    || (s1x2 >= s1x1 && point.getX() <= s1x2 && point.getX() >= s1x1 )){
+
+                    Logger.info("returning point : " + point);
+                    return point;
+                }
             }
 
             return null;

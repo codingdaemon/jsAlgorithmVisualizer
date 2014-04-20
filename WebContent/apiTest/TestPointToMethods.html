@@ -3,58 +3,75 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Insert title here</title>
-    <script type="text/javascript" src="../app/api/Utils.js"></script>
-    <script type="text/javascript" src="../app/api/libs/kinetic-v5.0.1.min.js       "></script>
-    <script type="text/javascript" src="../app/api/jsav.js"></script>
-    <script type="text/javascript" src="../app/api/Defaults.js"></script>
-
-    <script type="text/javascript" src="../app/api/AnimationObject.js"></script>
-    <script type="text/javascript" src="../app/api/Point.js"></script>
-    <script type="text/javascript" src="../app/api/TextRect.js"></script>
-    <script type="text/javascript" src="../app/api/Pointer.js"></script>
-
+    <script type="text/javascript" data-main="../app/api/app.js" src="../app/api/libs/require.js"></script>
     <script type="text/javascript">
         function init() {
-            var stage = new Kinetic.Stage({
-                container: "container",
-                height: 500,
-                width: 500
+            require(["jsav", "libs/kinetic", "Constants", "Defaults", "TextRect", "Pointer"], function (jsav, Kinetic, Constants, Defaults, TextRect, Pointer) {
+                var stage = new Kinetic.Stage({
+                    container: "container",
+                    height: 500,
+                    width: 500
+                });
+
+                var layer = new Kinetic.Layer();
+                var arrowConfigs = {};
+                arrowConfigs[Constants.ARROW_FROMX] = 0;
+                arrowConfigs[Constants.ARROW_FROMY] = 0;
+                arrowConfigs[Constants.ARROW_TOX] = 20;
+                arrowConfigs[Constants.ARROW_TOY] = 20;
+                var configs = jsav.resolveAnimatorConfigs(arrowConfigs);
+                var line = new Pointer(configs, layer);
+
+                var configs = Defaults;
+                var boxConfigs = {
+                    "x": stage.getWidth() / 2,
+                    "y": stage.getHeight() / 2,
+                    "text.value": "textValue",
+                    "text.font.size": 20,
+                    "text.font.family": "Calibri",
+                    "text.fill.color": 'black',
+                    "text.width": 50,
+                    "text.align": 'center',
+                    "rect.width": configs[Constants.STACK_BOX_WIDTH],
+                    "rect.height": configs[Constants.STACK_BOX_HEIGHT],
+                    "rect.fill.color": configs[Constants.STACK_BOX_INIT_COLOR],
+                    "rect.stroke.color": configs[Constants.STACK_BOX_BORDER_COLOR],
+                    "rect.stroke.width": 2
+                };
+
+                var textRect = new TextRect(boxConfigs, layer);
+//                textRect.getRect().draggable(true);
+                textRect.getGroup().draggable(true);
+
+                var boxConfigs2 = {
+                    "x": stage.getWidth() / 2 + 10,
+                    "y": stage.getHeight() / 2 + 10,
+                    "text.value": "textValue",
+                    "text.font.size": 20,
+                    "text.font.family": "Calibri",
+                    "text.fill.color": 'black',
+                    "text.width": 50,
+                    "text.align": 'center',
+                    "rect.width": configs[Constants.STACK_BOX_WIDTH],
+                    "rect.height": configs[Constants.STACK_BOX_HEIGHT],
+                    "rect.fill.color": "red",
+                    "rect.stroke.color": configs[Constants.STACK_BOX_BORDER_COLOR],
+                    "rect.stroke.width": 2
+                };
+
+                var textRectTail = new TextRect(boxConfigs2, layer);
+                textRectTail.getGroup().draggable(true);
+
+
+                line.pointHeadTo(textRect);
+                line.pointTailTo(textRectTail);
+
+                layer.add(textRectTail.getGroup());
+                layer.add(textRect.getGroup());
+                layer.add(line.getGroup());
+
+                stage.add(layer);
             });
-
-            var layer = new Kinetic.Layer();
-            var arrowConfigs = {};
-            arrowConfigs[jsav.ARROW_FROMX] = 0;
-            arrowConfigs[jsav.ARROW_FROMY] = 0;
-            arrowConfigs[jsav.ARROW_TOX] = 20;
-            arrowConfigs[jsav.ARROW_TOY] = 20;
-            var configs = jsav.resolveAnimatorConfigs(arrowConfigs);
-            var line = new Pointer(configs,layer);
-
-            var configs = jsav.DEFAULT_OPTIONS;
-            var boxConfigs = {
-                "x" : stage.getWidth()/2,
-                "y": stage.getHeight()/2,
-                "text.value" : "textValue",
-                "text.font.size" : 20 ,
-                "text.font.family" : "Calibri",
-                "text.fill.color" : 'black',
-                "text.width" : 50,
-                "text.align" : 'center',
-                "rect.width" : configs[jsav.STACK_BOX_WIDTH],
-                "rect.height" : configs[jsav.STACK_BOX_HEIGHT],
-                "rect.fill.color" : configs[jsav.STACK_BOX_INIT_COLOR],
-                "rect.stroke.color" : configs[jsav.STACK_BOX_BORDER_COLOR],
-                "rect.stroke.width" : 2
-            };
-
-            var textRect = new TextRect(boxConfigs,layer);
-
-            line.pointHeadTo(textRect);
-
-            layer.add(textRect.getGroup());
-            layer.add(line.getGroup());
-
-            stage.add(layer);
         }
     </script>
 </head>
