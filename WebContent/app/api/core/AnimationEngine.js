@@ -1,4 +1,4 @@
-define(["Logger"], function (Logger) {
+define(["core/Logger"], function (Logger) {
 
     function AnimationEngine(animationId) {
         this.animationId = animationId;

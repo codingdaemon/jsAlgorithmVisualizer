@@ -6,7 +6,7 @@
     <script type="text/javascript" data-main="../app/api/app.js" src="../app/api/libs/require.js       "></script>
     <script type="text/javascript">
         function animate() {
-            require(["jsav","Defaults","Constants"], function (jsav,Defaults,Constants) {
+            require(["core/jsav","core/Defaults","core/Constants"], function (jsav,Defaults,Constants) {
                 var code = document.getElementById("codeAreaId").value;
                 var configs = {};
                 configs[Constants.STAGE_CONTAINERDIV] = "jsavContainer";

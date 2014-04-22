@@ -1,4 +1,4 @@
-define(["Utils", "Animator", "CodeParser", "Defaults","Logger"], function (Utils, Animator, CodeParser, Defaults,Logger) {
+define(["core/Utils", "core/Animator", "core/CodeParser", "core/Defaults","core/Logger"], function (Utils, Animator, CodeParser, Defaults,Logger) {
     /**
      note jsav is kept as a global variable and is not included as a dependency in any of the modules
      jsav has to be require'd in the HTML file once for it to be defined globally

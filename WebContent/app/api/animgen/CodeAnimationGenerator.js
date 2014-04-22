@@ -1,4 +1,4 @@
-define(["AnimationGenerator", "AnimationInput", "CodeAnimationObject"], function (AnimationGenerator, AnimationInput, CodeAnimationObject) {
+define(["animgen/AnimationGenerator", "core/AnimationInput", "animds/CodeAnimationObject"], function (AnimationGenerator, AnimationInput, CodeAnimationObject) {
     function CodeAnimationGenerator(animationId, codeStatementLines) {
         this.animationId = animationId;
         AnimationGenerator.call(this);

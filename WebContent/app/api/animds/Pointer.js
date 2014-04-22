@@ -1,4 +1,4 @@
-define(["AnimationObject", "libs/kinetic", "Constants", "Point", "Logger"], function (AnimationObject, Kinetic, Constants, Point, Logger) {
+define(["animds/AnimationObject", "libs/kinetic", "core/Constants", "core/Point", "core/Logger"], function (AnimationObject, Kinetic, Constants, Point, Logger) {
 
     function Pointer(configs, layer) {
         AnimationObject.call(this, "pointer", layer);

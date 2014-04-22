@@ -1,4 +1,4 @@
-define(["Constants", "AnimationEngine", "libs/kinetic","LayoutManager", "CodeAnimationGenerator"], function(Constants,AnimationEngine,Kinetic,LayoutManager, CodeAnimationGenerator) {
+define(["core/Constants", "core/AnimationEngine", "libs/kinetic","core/LayoutManager", "animgen/CodeAnimationGenerator"], function(Constants,AnimationEngine,Kinetic,LayoutManager, CodeAnimationGenerator) {
 
 
     function Animator(animationId, codeStatementLines, configs) {

@@ -1,4 +1,4 @@
-define(["AnimationGenerator", "StackAnimationObject", "AnimationInput"], function (AnimationGenerator, StackAnimationObject, AnimationInput) {
+define(["animgen/AnimationGenerator", "animds/StackAnimationObject", "core/AnimationInput"], function (AnimationGenerator, StackAnimationObject, AnimationInput) {
 
     function StackAnimationGenerator(animationId, name) {
         AnimationGenerator.call(this);

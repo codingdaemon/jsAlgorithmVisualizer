@@ -1,4 +1,4 @@
-define(["Logger", "Utils"], function (logger,utils) {
+define(["core/Logger", "core/Utils"], function (logger,utils) {
     function AnimationObject(name, layer) {
         this.name = name;
         this.id = utils.generateId();

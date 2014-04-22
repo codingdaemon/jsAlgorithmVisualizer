@@ -1,4 +1,4 @@
-define(["Point", "libs/kinetic"], function (Point, Kinetic) {
+define(["core/Point", "libs/kinetic"], function (Point, Kinetic) {
 
     /**
      AIM :

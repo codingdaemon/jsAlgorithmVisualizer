@@ -1,4 +1,4 @@
-define(["AnimationObject", "libs/kinetic", "Constants", "Logger","TextRect"], function (AnimationObject, Kinetic, Constants, Logger,TextRect) {
+define(["animds/AnimationObject", "libs/kinetic", "core/Constants", "core/Logger","animds/TextRect"], function (AnimationObject, Kinetic, Constants, Logger,TextRect) {
 
     function StackAnimationObject(animationId, name) {
         if (!name) {

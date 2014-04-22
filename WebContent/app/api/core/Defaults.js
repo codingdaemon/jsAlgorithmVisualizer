@@ -1,7 +1,7 @@
 /**
  * Created by nitiraj on 18/4/14.
  */
-define(["Constants"], function (Constants) {
+define(["core/Constants"], function (Constants) {
 
     var DEFAULT_OPTIONS = {};
 

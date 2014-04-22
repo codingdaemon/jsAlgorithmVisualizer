@@ -1,4 +1,4 @@
-define(["AnimationObject", "libs/kinetic", "Utils","Logger"], function (AnimationObject, Kinetic, Utils, Logger) {
+define(["animds/AnimationObject", "libs/kinetic", "core/Utils","core/Logger"], function (AnimationObject, Kinetic, Utils, Logger) {
 
     function TextRect(configs, layer) {
         AnimationObject.call(this, "TextRect", layer);

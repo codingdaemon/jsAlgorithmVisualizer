@@ -1,4 +1,4 @@
-define(["StackAnimationGenerator","Logger"], function (StackAnimationGenerator,Logger) {
+define(["animgen/StackAnimationGenerator","core/Logger"], function (StackAnimationGenerator,Logger) {
 
     /**
      * this Stack class can be used directly in code.

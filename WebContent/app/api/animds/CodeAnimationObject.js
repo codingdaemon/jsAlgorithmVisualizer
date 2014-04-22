@@ -1,4 +1,4 @@
-define(["AnimationObject", "libs/kinetic","Constants","Logger"], function (AnimationObject, Kinetic,Constants,Logger) {
+define(["animds/AnimationObject", "libs/kinetic","core/Constants","core/Logger"], function (AnimationObject, Kinetic,Constants,Logger) {
 
     function CodeAnimationObject(animationId, name, codeLines) {
         this.animationId = animationId;

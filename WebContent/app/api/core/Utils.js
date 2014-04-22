@@ -1,4 +1,4 @@
-define(["Point","Logger"], function (Point,Logger) {
+define(["core/Point","core/Logger"], function (Point,Logger) {
 
     var Utils = {
         clone: function (obj) {

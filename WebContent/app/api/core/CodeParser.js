@@ -3,7 +3,7 @@ define(["libs/uglifyjs"], function (UglifyJS) {
     function CodeParser(code, animationId) {
         this.HEADER_CODE = "(function(){" +
             "animationId = " + animationId + ";\n" +
-            "require([\"Stack\"],function(Stack){ \n" ;
+            "require([\"ds/Stack\"],function(Stack){ \n" ;
 
         this.FOOTER_CODE = "\njsav.playCodeAnimation(animationId);\n" +
             "});" +
