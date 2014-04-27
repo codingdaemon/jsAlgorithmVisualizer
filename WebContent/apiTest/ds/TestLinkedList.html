@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script data-main="../../app/api/app.js" type="text/javascript" src="../../app/api/libs/require.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    require(["core/jsav","ds/LinkedList", "core/Logger"], function(jsav,LinkedList,Logger){
+       var linkedList = new LinkedList();
+        linkedList.addFront(1);
+        linkedList.addFront(2);
+        linkedList.addLast(3);
+        Logger.info("-5. " + linkedList);
+        var two = linkedList.removeAt(1);
+        if( 1 == two ){
+            Logger.info("removeAt correct.");
+        } else {
+            Logger.info("wrong removeAt");
+        }
+
+        Logger.info("-4. " + linkedList);
+        try{
+            linkedList.removeAt(2);
+        }catch(e){
+            Logger.info(e);
+        }
+
+        Logger.info("-3. " + linkedList);
+        try{
+            linkedList.removeAt(-1);
+        }catch(e){
+            Logger.info(e);
+        }
+
+        Logger.info("-2. " + linkedList);
+        linkedList.addFront(4);
+        Logger.info("-1. " + linkedList);
+
+        var length = linkedList.getLength();
+
+        if( length == 3){
+            Logger.info("length passed");
+        } else {
+            Logger.info("length failed");
+        }
+
+        linkedList.removeAt(2);
+        Logger.info("1. " + linkedList);
+        linkedList.removeAt(0);
+        Logger.info("2. " + linkedList);
+        linkedList.removeAt(0);
+        Logger.info("3. " + linkedList);
+
+        if( linkedList.getLength() == 0 ){
+            Logger.info("length == 0 -- correct");
+        }else{
+            Logger.info("length = " + linkedList.getLength() + " --- incorrect");
+        }
+
+        linkedList.addLast(10);
+        Logger.info("4. " + linkedList + " : length = " + linkedList.getLength());
+
+        linkedList.addLast(11);
+        Logger.info("5. " + linkedList + " : length = " + linkedList.getLength());
+
+        linkedList.addLast(12);
+        Logger.info("6. " + linkedList + " : length = " + linkedList.getLength());
+
+        linkedList.addLast(13);
+        Logger.info("7. " + linkedList + " : length = " + linkedList.getLength());
+
+        linkedList.addFront(14);
+        Logger.info("8. " + linkedList + " : length = " + linkedList.getLength());
+
+        linkedList.addLast(15);
+        Logger.info("9. " + linkedList + " : length = " + linkedList.getLength());
+    });
+
+</script>
+</body>
+</html>

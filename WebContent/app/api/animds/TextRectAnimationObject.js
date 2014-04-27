@@ -1,56 +1,62 @@
-define(["animds/AnimationObject", "libs/kinetic", "core/Utils","core/Logger"], function (AnimationObject, Kinetic, Utils, Logger) {
+define(["animds/AnimationObject", "libs/kinetic", "core/Utils","core/Logger", "core/Constants"], function (AnimationObject, Kinetic, Utils, Logger, Constants) {
 
-    function TextRect(configs, layer) {
-        AnimationObject.call(this, "TextRect", layer);
+    function TextRectAnimationObject(configs, layer) {
+        AnimationObject.call(this, "TextRectAnimationObject", layer);
         this.configs = configs;
+        this.data = configs["data"];
         this.group = new Kinetic.Group();
         var ref = this;
         this.text = new Kinetic.Text({
             x: ref.configs["x"],
             y: ref.configs["y"],
-            text: ref.configs["text.value"],
-            fontSize: ref.configs["text.font.size"],
-            fontFamily: ref.configs["text.font.family"],
-            fill: ref.configs["text.fill.color"],
-            width: ref.configs["text.width"],
-            align: ref.configs["text.align"]
+            text: ref.data.toString(),
+            fontSize: ref.configs[Constants.TEXT_FONT_SIZE],
+            fontFamily: ref.configs[Constants.TEXT_FONT_FAMILY],
+            fill: ref.configs[Constants.TEXT_FILL_COLOR],
+            width: ref.configs[Constants.TEXT_WIDTH],
+            align: ref.configs[Constants.TEXT_ALIGN]
         });
 
         this.rect = new Kinetic.Rect({
             x: ref.configs["x"],
             y: ref.configs["y"],
-            width: ref.configs["rect.width"],
-            height: ref.configs["rect.height"],
-            fill: ref.configs["rect.fill.color"],
-            stroke: ref.configs["rect.stroke.color"],
-            strokeWidth: ref.configs["rect.stroke.width"]
+            width: ref.configs[Constants.RECT_WIDTH],
+            height: ref.configs[Constants.RECT_HEIGHT],
+            fill: ref.configs[Constants.RECT_FILL_COLOR],
+            stroke: ref.configs[Constants.RECT_STROKE_COLOR],
+            strokeWidth: ref.configs[Constants.RECT_STROKE_WIDTH]
         });
 
         this.group.add(this.rect);
         this.group.add(this.text);
     }
 
-    TextRect.prototype = new AnimationObject();
+    TextRectAnimationObject.prototype = new AnimationObject();
 
     /**
      * return the root object on which the events can be registered.
      */
-    TextRect.prototype.getRoot = function () {
+    TextRectAnimationObject.prototype.getRoot = function () {
         return this.group;
     };
 
-    TextRect.prototype.getGroup = function () {
+    TextRectAnimationObject.prototype.getGroup = function () {
         return this.group;
     };
 
-    TextRect.prototype.getRect = function () {
+    TextRectAnimationObject.prototype.setData = function( data ){
+        this.data = data;
+        this.text.text(data.toString());
+    };
+
+    TextRectAnimationObject.prototype.getRect = function () {
         return this.rect;
     };
-    TextRect.prototype.getText = function () {
+    TextRectAnimationObject.prototype.getText = function () {
         return this.text;
     };
 
-    TextRect.prototype.getPointTo = function (point) {
+    TextRectAnimationObject.prototype.getPointTo = function (point) {
         // draw a line from point to the center of the rect and see where this line cuts the rectangle that would be
         // our pointTo
         var x1 = this.rect.x();
@@ -85,5 +91,6 @@ define(["animds/AnimationObject", "libs/kinetic", "core/Utils","core/Logger"], f
 
         return null;
     };
-    return TextRect;
+
+    return TextRectAnimationObject;
 });

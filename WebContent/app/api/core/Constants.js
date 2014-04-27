@@ -36,7 +36,23 @@ define([],function(){
         ARROW_TAIL_TEXT: "tail.text",
         ARROW_TAIL_TEXT_FONT_SIZE: "tail.text.font.size",
         ARROW_TAIL_TEXT_COLOR: "tail.text.color",
-        ARROW_TAIL_TEXT_FONT: "tail.text.font"
+        ARROW_TAIL_TEXT_FONT: "tail.text.font",
+
+        LINKEDLIST_BOX_WIDTH : "linkedlist.box.width",
+        LINKEDLIST_BOX_HEIGHT : "linkedlist.box.height",
+        LINKEDLIST_POINTER_LENGTH : "linkedlist.pointer.length",
+//        LINKEDLIST_BOX_WIDTH : "linkedlist.box.width",
+//        LINKEDLIST_BOX_WIDTH : "linkedlist.box.width",
+        TEXT_FONT_FAMILY : "text.font.family",
+        TEXT_FILL_COLOR : "text.fill.color",
+        TEXT_FONT_SIZE: "text.font.size",
+        TEXT_ALIGN : "text.align",
+        TEXT_WIDTH : "text.width",
+        RECT_WIDTH : "rect.width",
+        RECT_HEIGHT : "rect.height",
+        RECT_FILL_COLOR : "rect.fill.color",
+        RECT_STROKE_COLOR : "rect.stroke.color",
+        RECT_STROKE_WIDTH : "rect.stroke.width"
     };
 
     return Constants;

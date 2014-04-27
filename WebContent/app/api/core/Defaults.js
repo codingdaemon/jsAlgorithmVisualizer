@@ -43,5 +43,19 @@ define(["core/Constants"], function (Constants) {
     DEFAULT_OPTIONS[Constants.ARROW_HEAD_HEIGHT] = 2;
 
 
+    DEFAULT_OPTIONS[Constants.LINKEDLIST_BOX_WIDTH ] = 50;
+    DEFAULT_OPTIONS[Constants.LINKEDLIST_BOX_HEIGHT ] = 30;
+    DEFAULT_OPTIONS[Constants.LINKEDLIST_POINTER_LENGTH ] = 30;
+    DEFAULT_OPTIONS[Constants.TEXT_FONT_FAMILY ] = "Calibri";
+    DEFAULT_OPTIONS[Constants.TEXT_FILL_COLOR ] = "black";
+    DEFAULT_OPTIONS[Constants.TEXT_FONT_SIZE] = 10;
+    DEFAULT_OPTIONS[Constants.TEXT_ALIGN ] = "center";
+    DEFAULT_OPTIONS[Constants.TEXT_WIDTH ] = 50;
+    DEFAULT_OPTIONS[Constants.RECT_WIDTH ] = 50;
+    DEFAULT_OPTIONS[Constants.RECT_HEIGHT ] = 30;
+    DEFAULT_OPTIONS[Constants.RECT_FILL_COLOR ] = "blue";
+    DEFAULT_OPTIONS[Constants.RECT_STROKE_COLOR ] = "black";
+    DEFAULT_OPTIONS[Constants.RECT_STROKE_WIDTH ] = 2;
+
     return DEFAULT_OPTIONS;
 });

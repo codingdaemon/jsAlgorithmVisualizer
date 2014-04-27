@@ -1,6 +1,6 @@
 define(["animds/AnimationObject", "libs/kinetic", "core/Constants", "core/Point", "core/Logger"], function (AnimationObject, Kinetic, Constants, Point, Logger) {
 
-    function Pointer(configs, layer) {
+    function PointerAnimationObject(configs, layer) {
         AnimationObject.call(this, "pointer", layer);
         this.x1 = configs[ Constants.ARROW_FROMX];
         this.y1 = configs[ Constants.ARROW_FROMY];
@@ -35,9 +35,9 @@ define(["animds/AnimationObject", "libs/kinetic", "core/Constants", "core/Point"
         this.draw();
     }
 
-    Pointer.prototype = new AnimationObject();
+    PointerAnimationObject.prototype = new AnimationObject();
 
-    Pointer.prototype.draw = function () {
+    PointerAnimationObject.prototype.draw = function () {
 
         var theta = Math.atan((this.y2 - this.y1) / (this.x2 - this.x1));
         var beta = Math.asin(this.h / this.l);
@@ -69,38 +69,39 @@ define(["animds/AnimationObject", "libs/kinetic", "core/Constants", "core/Point"
         this.getLayer().draw();
     };
 
-    Pointer.prototype.getGroup = function () {
+    PointerAnimationObject.prototype.getGroup = function () {
         return this.group;
     };
 
-    Pointer.prototype.getHeadLine = function () {
+    PointerAnimationObject.prototype.getHeadLine = function () {
         return this.headLine;
     };
 
-    Pointer.prototype.getTailLine = function () {
+    PointerAnimationObject.prototype.getTailLine = function () {
         return this.tailLine;
     };
 
-    Pointer.prototype.getTailText = function () {
+    PointerAnimationObject.prototype.getTailText = function () {
         return this.tailText;
     };
 
-    Pointer.prototype.onHeadPointTo = function () {
+    PointerAnimationObject.prototype.onHeadPointTo = function () {
         Logger.info("called onHeadPointTo");
         var tailPoint = new Point(this.x1, this.y1);
         var newHeadPoint = this.headObject.getPointTo(tailPoint);
-        if( null == newHeadPoint ){
+        if (null == newHeadPoint) {
             Logger.info("head points to null at ");
             return;
         }
-//        Logger.info("got new head Point : " + newHeadPoint);
-        this.x2 = Math.floor(newHeadPoint.getX());
-        this.y2 = Math.floor(newHeadPoint.getY());
 
-        this.draw();
+        this.setHeadPoint( new Point(
+            Math.floor(newHeadPoint.getX()),
+            Math.floor(newHeadPoint.getY())
+            )
+        );
     };
 
-    Pointer.prototype.pointHeadTo = function (obj) {
+    PointerAnimationObject.prototype.pointHeadTo = function (obj) {
 
         if (this.headObject) {
             var eventName = "dragmove." + this.getId() + this.headObject.getId();
@@ -121,23 +122,20 @@ define(["animds/AnimationObject", "libs/kinetic", "core/Constants", "core/Point"
         this.onHeadPointTo(); // call once to set the pointer initially
     };
 
-    Pointer.prototype.onTailPointTo = function () {
+    PointerAnimationObject.prototype.onTailPointTo = function () {
 
         var headPoint = new Point(this.x2, this.y2);
         var newTailPoint = this.tailObject.getPointTo(headPoint);
 
-        if( null == newTailPoint ){
+        if (null == newTailPoint) {
             Logger.info("tail points to null at ");
             return;
         }
-        this.x1 = Math.floor(newTailPoint.getX());
-        this.y1 = Math.floor(newTailPoint.getY());
 
-
-        this.draw();
+        this.setTailPoint(new Point(Math.floor(newTailPoint.getX()), Math.floor(newTailPoint.getY())));
     };
 
-    Pointer.prototype.pointTailTo = function (obj) {
+    PointerAnimationObject.prototype.pointTailTo = function (obj) {
 
         if (this.tailObject) {
             var eventName = "dragmove." + this.getId() + this.tailObject.getId();
@@ -156,5 +154,36 @@ define(["animds/AnimationObject", "libs/kinetic", "core/Constants", "core/Point"
 
         this.onTailPointTo(); // call once to set the pointer initially
     };
-    return Pointer;
+
+    PointerAnimationObject.prototype.setPoints = function (x1, y1, x2, y2) {
+        this.x1 = x1;
+        this.y1 = y1;
+        this.x2 = x2;
+        this.y2 = y2;
+
+        this.draw();
+    };
+
+    PointerAnimationObject.prototype.setTailPoint = function (point) {
+        this.x1 = point.getX();
+        this.y1 = point.getY();
+
+        this.draw();
+    };
+
+    PointerAnimationObject.prototype.setHeadPoint = function (point) {
+        this.x2 = point.getX();
+        this.y2 = point.getY();
+
+        this.draw();
+    };
+
+    PointerAnimationObject.prototype.getTailPoint = function(){
+        return new Point(x1,y1);
+    }
+
+    PointerAnimationObject.prototype.getHeadPoint = function(){
+        return new Point(x2,y2);
+    }
+    return PointerAnimationObject;
 });
