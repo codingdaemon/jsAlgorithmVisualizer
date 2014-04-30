@@ -89,6 +89,8 @@ define(["core/Point","core/Logger"], function (Point,Logger) {
         findIntersectionPointOfLineAndSegment: function (lx1, ly1, lx2, ly2, sx1, sy1, sx2, sy2) {
             var point = this.findIntersectionPointOfLines(lx1, ly1, lx2, ly2, sx1, sy1, sx2, sy2);
 
+            if( null == point ) return null; 
+            
             if (( sx1 > sx2 && point.getX() <= sx1 && point.getX() >= sx2)
                 || (sx2 > sx1 && point.getX() <= sx2 && point.getX() >= sx1 )
                 ) {
@@ -100,6 +102,8 @@ define(["core/Point","core/Logger"], function (Point,Logger) {
         findIntersectionPointOfSegments: function (s1x1, s1y1, s1x2, s1y2, s2x1, s2y1, s2x2, s2y2) {
             var point = this.findIntersectionPointOfLines(s1x1, s1y1, s1x2, s1y2, s2x1, s2y1, s2x2, s2y2);
 
+            if( null == point ) return null;
+            
             if (( s2x1 >= s2x2 && point.getX() <= s2x1 && point.getX() >= s2x2)
                 || (s2x2 >= s2x1 && point.getX() <= s2x2 && point.getX() >= s2x1 )
                 ) {

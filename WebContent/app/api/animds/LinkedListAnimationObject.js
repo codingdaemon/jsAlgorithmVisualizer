@@ -63,18 +63,94 @@ define(["core/Point", "ds/LinkedNode", "animds/AnimationObject", "animds/LinkedN
         this.group.add(this.tailPointer.getGroup());
 
         this.getLayer().draw();
+        
+        this.animationEngine.next();
     };
 
     LinkedListAnimationObject.prototype.addFront = function (data) {
         Logger.info("addFront called");
         var node = new LinkedNode(data);
         var currHead = this.head;
-        this.head = node;
+        
         if (null == currHead) {
-            this.tail = this.head;
+        	var nodeConfigs = {};
+//        	   x: ref.configs["x"],
+//               y: ref.configs["y"],
+        	
+//        	this.x1 = configs[ Constants.ARROW_FROMX];
+//            this.y1 = configs[ Constants.ARROW_FROMY];
+//            this.x2 = configs[ Constants.ARROW_TOX];
+//            this.y2 = configs[ Constants.ARROW_TOY];
+        	var rectWidth = this.configs[Constants.RECT_WIDTH];
+        	var rectHeight = this.configs[Constants.RECT_HEIGTH];
+        	nodeConfigs["x"] = this.headPointer.x2 - rectWidth/2;
+        	nodeConfigs["y"] = this.headPointer.y2 - rectHeight/2;
+        	nodeConfigs[Constants.RECT_WIDTH] = this.configs[Constants.LINKEDLIST_BOX_WIDTH];
+        	nodeConfigs[Constants.RECT_HEIGHT] = this.configs[Constants.LINKEDLIST_BOX_HEIGHT];
+        	nodeConfigs["data"] = data;
+        	
+        	var nextPointerConfigs = {};
+        	var pointerLength =  this.configs[Constants.LINKEDLIST_POINTER_LENGTH];
+        	nextPointerConfigs[Constants.ARROW_FROMX] = this.headPointer.x2 + rectWidth/2;
+        	nextPointerConfigs[Constants.ARROW_FROMY] = this.headPointer.y2 ;
+        	nextPointerConfigs[Constants.ARROW_TOX] = this.headPointer.x2 + rectWidth/2 + pointerLength;
+        	nextPointerConfigs[Constants.ARROW_TOY] = this.headPointer.y2 ;
+        	
+        	nodeConfigs["nextPointerConfigs"] = nextPointerConfigs ;
+        	
+        	var animNode = new LinkedNodeAnimationObject(nodeConfigs, true, false, this.getLayer());
+        	node.setAnimNode(animNode);
+        	this.group.add(animNode.getGroup());
+        	
+        	this.head = node;
+        	this.headPointer.setTailPoint(new Point(this.headPointer.x1, this.headPointer.y1 - rectHeight/2));
+        	this.headPointer.pointHeadTo(node.getAnimNode());
+
+        	this.tail = node;
+        	this.tailPointer.setTailPoint(new Point(this.headPointer.x1, this.headPointer.y1 + rectHeight/2));
+        	this.tailPointer.pointHeadTo(node.getAnimNode());
+
         } else {
+        	var nodeConfigs = {};
+//     	   x: ref.configs["x"],
+//            y: ref.configs["y"],
+     	
+//     	this.x1 = configs[ Constants.ARROW_FROMX];
+//         this.y1 = configs[ Constants.ARROW_FROMY];
+//         this.x2 = configs[ Constants.ARROW_TOX];
+//         this.y2 = configs[ Constants.ARROW_TOY];
+	     	var rectWidth = this.configs[Constants.RECT_WIDTH];
+	     	var rectHeight = this.configs[Constants.RECT_HEIGTH];
+	     	var pointerLength =  this.configs[Constants.LINKEDLIST_POINTER_LENGTH];
+	     	
+	     	nodeConfigs["x"] = this.headPointer.x2 - rectWidth/2 - rectWidth - pointerLength;
+	     	nodeConfigs["y"] = this.headPointer.y2;
+	     	nodeConfigs[Constants.RECT_WIDTH] = rectWidth;
+	     	nodeConfigs[Constants.RECT_HEIGHT] = rectHeight;
+	     	nodeConfigs["data"] = data;
+	     	var nextPointerConfigs = {};
+	     	
+	     	nextPointerConfigs[Constants.ARROW_FROMX] = this.headPointer.x2 - rectWidth/2 - pointerLength;
+	     	nextPointerConfigs[Constants.ARROW_FROMY] = this.headPointer.y2 + rectHeight/2 ;
+	     	nextPointerConfigs[Constants.ARROW_TOX] = this.headPointer.x2 + rectWidth/2 ;
+	     	nextPointerConfigs[Constants.ARROW_TOY] = this.headPointer.y2 + rectHeight/2 ;
+	     	
+	     	nodeConfigs["nextPointerConfigs"] = nextPointerConfigs ;
+	     	
+	     	var animNode = new LinkedNodeAnimationObject(nodeConfigs, true, false, this.getLayer());
+	     	node.setAnimNode(animNode);
+	     	this.group.add(animNode);
+	
+	     	this.headPointer.setTailPoint(new Point(this.headPointer.x2 - rectWidth - pointerLength, this.headPointer.y2 ));
+	     	this.headPointer.pointHeadTo(animNode);
+	     	animNode.getNextPointer().pointHeadTo(currHead.getAnimNode());
+     	
+        	this.head = node;
             this.head.setNextPointer(currHead);
         }
+        
+        this.getLayer().draw();
+        this.animationEngine.next();
     };
 
     LinkedListAnimationObject.prototype.addLast = function (data) {

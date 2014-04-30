@@ -7,18 +7,20 @@ define(["animds/TextRectAnimationObject", "core/Logger", "animds/AnimationObject
         AnimationObject.call(this,"LinkedNodeAnimationObject",layer);
         this.rect = new TextRectAnimationObject(configs,layer);
         this.group = new Kinetic.Group();
-        this.group.add(this.rect);
+        this.group.add(this.rect.getGroup());
 
         if( hasNextPointer ){
-            this.nextPointer = new PointerAnimationObject(configs,layer);
+        	var nextPointerConfigs = configs["nextPointerConfigs"] ;
+            this.nextPointer = new PointerAnimationObject(nextPointerConfigs,layer);
             this.nextPointer.pointTailTo(this.rect);
-            this.group.add(this.nextPointer);
+            this.group.add(this.nextPointer.getGroup());
         }
 
         if( hasPrevPointer ){
-            this.prevPointer = new PointerAnimationObject(configs,layer);
+        	var prevPointerConfigs = configs["prevPointerConfigs"];
+            this.prevPointer = new PointerAnimationObject(prevPointerConfigs,layer);
             this.prevPointer.pointTailTo(this.rect);
-            this.group.add(this.prevPointer);
+            this.group.add(this.prevPointer.getGroup());
         }
     }
 
@@ -43,4 +45,6 @@ define(["animds/TextRectAnimationObject", "core/Logger", "animds/AnimationObject
     LinkedNodeAnimationObject.prototype.getRoot = function(){
         return this.group;
     };
+    
+    return LinkedNodeAnimationObject;
 });
