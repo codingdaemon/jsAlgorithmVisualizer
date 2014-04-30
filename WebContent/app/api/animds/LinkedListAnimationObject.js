@@ -2,14 +2,30 @@
  * Created by nitiraj on 24/4/14.
  */
 
-define([ "core/Point", "ds/LinkedNode", "animds/AnimationObject", "animds/LinkedNodeAnimationObject", "aminds/PointerAnimationObject", "core/Constants", "core/Utils", "core/Defaults", "libs/kinetic", "core/Factory"], function (Point, LinkedNode, AnimationObject, LinkedNodeAnimationObject, PointerAnimationObject, Constants, Utils, Defaults, Kinetic, Factory) {
-    function LinkedListAnimationObject(config, layer) {
-        AnimationObject.call(this, layer);
+define(["core/Point", "ds/LinkedNode", "animds/AnimationObject", "animds/LinkedNodeAnimationObject", "aminds/PointerAnimationObject", "core/Constants", "core/Utils", "core/Defaults", "libs/kinetic", "core/Factory"], function ( Point, LinkedNode, AnimationObject, LinkedNodeAnimationObject, PointerAnimationObject, Constants, Utils, Defaults, Kinetic, Factory) {
+
+    /**
+     * @returns  LinkedNodeAnimationObject associated with this LinkedNode
+     */
+    LinkedNode.prototype.getAnimNode = function(){
+        return this.animNode;
+    };
+    /**
+     * sets the animation Object for this linked Node
+     * @param linkedNodeAnimationObject
+     */
+    LinkedNode.prototype.setAnimNode = function(linkedNodeAnimationObject){
+        this.animNode = linkedNodeAnimationObject;
+    };
+
+    function LinkedListAnimationObject(config, animationId, layer) {
+        AnimationObject.call(this, "LinkedListAnimationObject", layer);
         this.configs = config;
         this.head = null;
         this.tail = null;
         this.headPointer = null;
         this.tailPointer = null;
+        this.animator = jsav.getAnimatorById(animationId);
 
         this.group = new Kinetic.Group({
             draggable : true
@@ -18,6 +34,148 @@ define([ "core/Point", "ds/LinkedNode", "animds/AnimationObject", "animds/Linked
     }
 
     LinkedListAnimationObject.prototype.createObject = function () {
+        Logger.info("createObject called");
+        // create the head and tail pointer pointing to null
+        var center = this.animator.getLayoutManager().getCenter();
+        var ref = this;
+
+        var headConfigs = Utils.clone(this.configs);
+        headConfigs[Constants.ARROW_FROMX] = center.getX() / 2;
+        headConfigs[Constants.ARROW_FROMY] = center.getY() / 2 - this.configs[Constants.LINKEDLIST_POINTER_LENGTH];
+        headConfigs[Constants.ARROW_TOX] = center.getX() / 2;
+        headConfigs[Constants.ARROW_TOY] = center.getY() / 2;
+        headConfigs[ Constants.ARROW_TAIL_TEXT] = "head";
+        this.headPointer = new PointerAnimationObject(headConfigs, this.getLayer());
+
+        var tailConfigs = Utils.clone(this.configs);
+        tailConfigs[Constants.ARROW_FROMX] = center.getX() / 2;
+        tailConfigs[Constants.ARROW_FROMY] = center.getY() / 2 + this.configs[Constants.LINKEDLIST_POINTER_LENGTH];
+        tailConfigs[Constants.ARROW_TOX] = center.getX() / 2;
+        tailConfigs[Constants.ARROW_TOY] = center.getY() / 2;
+        tailConfigs[Constants.ARROW_TAIL_TEXT] = "tail";
+
+        this.tailPointer = new PointerAnimationObject(tailConfigs,this.getLayer());
+
+        this.group.add(this.headPointer);
+        this.group.add(this.tailPointer);
+
+        this.getLayer().draw();
+    };
+
+    LinkedListAnimationObject.prototype.addFront = function (data) {
+        Logger.info("addFront called");
+        var node = new LinkedNode(data);
+        var currHead = this.head;
+        this.head = node;
+        if (null == currHead) {
+            this.tail = this.head;
+        } else {
+            this.head.setNextPointer(currHead);
+        }
+    };
+
+    LinkedListAnimationObject.prototype.addLast = function (data) {
+        Logger.info("addLast called");
+        var node = new LinkedNode(data);
+        var currTail = this.tail;
+        if (currTail == null) {
+            this.tail = node;
+            this.head = this.tail;
+        } else {
+            this.tail = node;
+            currTail.setNextPointer(this.tail);
+        }
+    };
+
+    LinkedListAnimationObject.prototype.elementAt = function (index) {
+        Logger.info("elementAt called");
+        var p = this.head;
+        var count = 0;
+        while (count != index && p != null) {
+            p = p.getNextPointer();
+            count++;
+        }
+
+        if (null == p) return null;
+        else return p.getData();
+    };
+
+    LinkedListAnimationObject.prototype.removeAt = function (index) {
+        Logger.info("removeAt called");
+        if (index < 0)
+            throw "index cannot be negative : " + index;
+
+        var p = this.head;
+        var q = null;
+        var count = 0;
+        while (count != index && p != null) {
+            q = p;
+            p = p.getNextPointer();
+            count++;
+        }
+
+        if (null == p) throw "no object exists at index " + index;
+        else {
+            if (p == this.tail) {
+                this.tail = q;
+            }
+            if (p == this.head) {
+                if(this.head != null )
+                    this.head = this.head.getNextPointer();
+            }
+            if (q != null) {
+                q.setNextPointer(p.getNextPointer());
+            }
+            p.setNextPointer(null);
+        }
+
+        if (null != p) {
+            return p.getData();
+        } else {
+            return null;
+        }
+    };
+
+    LinkedListAnimationObject.prototype.getLength = function () {
+        Logger.info("getLength called");
+        var p = this.head;
+        var length = 0;
+        while (p != null) {
+            p = p.getNextPointer();
+            length++;
+        }
+
+        return length;
+    };
+
+    LinkedListAnimationObject.prototype.getHead = function(){
+        Logger.info("getHead called");
+        return this.head;
+    };
+
+    LinkedListAnimationObject.prototype.getTail = function(){
+        Logger.info("getTail called");
+        return this.tail;
+    };
+
+    LinkedListAnimationObject.prototype.toString = function(){
+        var p = this.getHead();
+        var str = "[LinkedListAnimationObject values= ";
+        while(p != null ){
+            if(p != this.head)
+                str += "," ;
+
+            str += p.getData();
+            p = p.getNextPointer();
+        }
+        str += " ]";
+
+        return str;
+    };
+
+    return LinkedListAnimationObject;
+
+/*    LinkedListAnimationObject.prototype.createObject = function () {
         // create the head and tail pointer pointing to null
         var center = this.animator.getLayoutManager().getCenter();
         var ref = this;
@@ -141,10 +299,6 @@ define([ "core/Point", "ds/LinkedNode", "animds/AnimationObject", "animds/Linked
         return length;
     };
 
-//    LinkedListAnimationObject.prototype.toString = function () {
-//        return "LinkedListAnimationObject[]";
-//    };
-
     LinkedListAnimationObject.prototype.getHead = function () {
         return this.head;
     };
@@ -166,5 +320,5 @@ define([ "core/Point", "ds/LinkedNode", "animds/AnimationObject", "animds/Linked
         str += " ]";
 
         return str;
-    };
+    };*/
 });

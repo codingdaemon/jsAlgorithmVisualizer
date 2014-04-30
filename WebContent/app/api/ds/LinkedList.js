@@ -88,10 +88,6 @@ define(["ds/LinkedNode"], function (LinkedNode) {
         return length;
     };
 
-//    LinkedList.prototype.toString = function () {
-//        return "LinkedList[]";
-//    };
-
     LinkedList.prototype.getHead = function(){
         return this.head;
     };
