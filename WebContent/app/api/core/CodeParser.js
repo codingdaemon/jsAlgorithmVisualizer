@@ -1,25 +1,12 @@
-define(["libs/uglifyjs"], function (UglifyJS) {
+define(["libs/uglifyjs", "core/Utils"], function (UglifyJS, Utils) {
 
     function CodeParser(code, animationId) {
-        this.HEADER_CODE = "(function(){" +
-            "animationId = " + animationId + ";\n" +
-            "require([\"ds/Stack\"],function(Stack){ \n" ;
-
-        this.FOOTER_CODE = "\njsav.playCodeAnimation(animationId);\n" +
-            "});" +
-            "})();";
-
-//        this.HEADER_CODE = "(function(){" +
-//            "animationId = " + animationId + ";\n" ;
-//
-//        this.FOOTER_CODE = "\n})();";
-
         this.originalCode = code;
         this.animationId = animationId;
         var parsedCode = this.parseCode(this.originalCode, animationId);
         this.executionCodeLines = parsedCode.executionCodeLines;
         this.codeStatementLines = parsedCode.codeStatementLines;
-        this.modifiedCode = this.HEADER_CODE + this.executionCodeLines.join("\n") + this.FOOTER_CODE;
+        this.modifiedCode = Utils.getHeaderCode(animationId) + this.executionCodeLines.join("\n") + Utils.getFooterCode();
     }
 
     CodeParser.prototype.getCodeStatementLines = function () {

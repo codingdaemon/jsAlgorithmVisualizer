@@ -1,9 +1,9 @@
 define(["core/Constants", "core/AnimationEngine", "libs/kinetic","core/LayoutManager", "animgen/CodeAnimationGenerator"], function(Constants,AnimationEngine,Kinetic,LayoutManager, CodeAnimationGenerator) {
 
 
-    function Animator(animationId, codeStatementLines, configs) {
+    function Animator(animationId, /*codeStatementLines,*/ configs) {
         this.animationId = animationId;
-        this.codeStatementLines = codeStatementLines;
+//        this.codeStatementLines = codeStatementLines;
         this.configs = configs;
         this.animationEngine = new AnimationEngine(animationId);
         this.stage = null;
@@ -20,20 +20,15 @@ define(["core/Constants", "core/AnimationEngine", "libs/kinetic","core/LayoutMan
             opacity: animatorRef.configs[Constants.STAGE_OPACITY]
         });
 
-        this.codeAnimationGenerator = new CodeAnimationGenerator(this.animationId, this.codeStatementLines);
-
-
         this.layoutManager = new LayoutManager(this.stage);
         this.layoutManager.getLayer().red(animatorRef.configs[jsav.STAGE_COLOR_RED]);
         this.layoutManager.getLayer().blue(animatorRef.configs[jsav.STAGE_COLOR_BLUE]);
         this.layoutManager.getLayer().green(animatorRef.configs[jsav.STAGE_COLOR_GREEN]);
-
-
     },
 
-        Animator.prototype.getAnimationId = function () {
-            return this.animationId;
-        };
+    Animator.prototype.getAnimationId = function () {
+        return this.animationId;
+    };
 
     Animator.prototype.playCodeAnimation = function () {
         this.animationEngine.start();
@@ -54,6 +49,10 @@ define(["core/Constants", "core/AnimationEngine", "libs/kinetic","core/LayoutMan
         layer.removeChildren();
         layer.clear();
         layer.draw();
+    };
+    
+    Animator.prototype.createCodeAnimationGenerator = function(codeStatementLines){
+        this.codeAnimationGenerator = new CodeAnimationGenerator(this.animationId, codeStatementLines);
     };
 
     Animator.prototype.endAnimateLineExecution = function (statementNumber) {

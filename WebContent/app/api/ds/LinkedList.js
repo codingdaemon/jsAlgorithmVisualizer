@@ -1,10 +1,12 @@
 /**
  * Created by nitiraj on 20/4/14.
  */
-define(["ds/LinkedNode"], function (LinkedNode) {
+define(["ds/LinkedNode", "animgen/LinkedListAnimationGenerator"], function (LinkedNode,LinkedListAnimationGenerator) {
     function LinkedList() {
         this.head = null;
         this.tail = null;
+        this.animationId = animationId; // global var
+        this.linkedListAnimationGenerator = new LinkedListAnimationGenerator(animationId, "LinkedList");
     }
 
     LinkedList.prototype.addFront = function (data) {
@@ -16,6 +18,8 @@ define(["ds/LinkedNode"], function (LinkedNode) {
         } else {
             this.head.setNextPointer(currHead);
         }
+        
+        this.linkedListAnimationGenerator.addFront(data);
     };
 
     LinkedList.prototype.addLast = function (data) {
@@ -28,9 +32,13 @@ define(["ds/LinkedNode"], function (LinkedNode) {
             this.tail = node;
             currTail.setNextPointer(this.tail);
         }
+        
+        this.linkedListAnimationGenerator.addLast(data);
     };
 
     LinkedList.prototype.elementAt = function (index) {
+    	this.linkedListAnimationGenerator.elementAt(index);
+    	
         var p = this.head;
         var count = 0;
         while (count != index && p != null) {
@@ -70,6 +78,8 @@ define(["ds/LinkedNode"], function (LinkedNode) {
             p.setNextPointer(null);
         }
 
+        this.linkedListAnimationGenerator.removeAt(index);
+        
         if (null != p) {
             return p.getData();
         } else {
@@ -85,14 +95,17 @@ define(["ds/LinkedNode"], function (LinkedNode) {
             length++;
         }
 
+        this.linkedListAnimationGenerator.getLength();
         return length;
     };
 
     LinkedList.prototype.getHead = function(){
+    	this.linkedListAnimationGenerator.getHead();
         return this.head;
     };
 
     LinkedList.prototype.getTail = function(){
+    	this.linkedListAnimationGenerator.getTail();
         return this.tail;
     };
 

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Insert title here</title>
+    <script type="text/javascript" data-main="../../app/api/app.js" src="../../app/api/libs/require.js       "></script>
+    <script type="text/javascript">
+        function animate() {
+            require(["core/jsav","core/Defaults","core/Constants", "core/Utils"], function (jsav,Defaults,Constants,Utils) {
+            	var code = document.getElementById("codeAreaId").value;
+                var configs = {};
+                configs[Constants.STAGE_CONTAINERDIV] = "jsavContainer";
+                animationId = jsav.createAnimator(configs);
+                code = Utils.getHeaderCode(animationId) + code + Utils.getFooterCode();
+            	console.log("code = " + code.toString());
+                
+                jsav.runCodeAndAnimate(animationId, code);
+            });
+        }
+    </script>
+
+</head>
+<body>
+<div id="jsavContainer"></div>
+<textarea hidden="true" rows="25" cols="50" id="codeAreaId">
+(function(){
+	var linkedList = new LinkedList();
+        linkedList.addFront(1);
+        linkedList.addFront(2);
+        linkedList.addLast(3);
+        Logger.info("-5. " + linkedList);
+        var two = linkedList.removeAt(1);
+        if( 1 == two ){
+            Logger.info("removeAt correct.");
+        } else {
+            Logger.info("wrong removeAt");
+        }
+
+        Logger.info("-4. " + linkedList);
+        try{
+            linkedList.removeAt(2);
+        }catch(e){
+            Logger.info(e);
+        }
+
+        Logger.info("-3. " + linkedList);
+        try{
+            linkedList.removeAt(-1);
+        }catch(e){
+            Logger.info(e);
+        }
+
+        Logger.info("-2. " + linkedList);
+        linkedList.addFront(4);
+        Logger.info("-1. " + linkedList);
+
+        var length = linkedList.getLength();
+
+        if( length == 3){
+            Logger.info("length passed");
+        } else {
+            Logger.info("length failed");
+        }
+
+        linkedList.removeAt(2);
+        Logger.info("1. " + linkedList);
+        linkedList.removeAt(0);
+        Logger.info("2. " + linkedList);
+        linkedList.removeAt(0);
+        Logger.info("3. " + linkedList);
+
+        if( linkedList.getLength() == 0 ){
+            Logger.info("length == 0 -- correct");
+        }else{
+            Logger.info("length = " + linkedList.getLength() + " --- incorrect");
+        }
+
+        linkedList.addLast(10);
+        Logger.info("4. " + linkedList + " : length = " + linkedList.getLength());
+
+        linkedList.addLast(11);
+        Logger.info("5. " + linkedList + " : length = " + linkedList.getLength());
+
+        linkedList.addLast(12);
+        Logger.info("6. " + linkedList + " : length = " + linkedList.getLength());
+
+        linkedList.addLast(13);
+        Logger.info("7. " + linkedList + " : length = " + linkedList.getLength());
+
+        linkedList.addFront(14);
+        Logger.info("8. " + linkedList + " : length = " + linkedList.getLength());
+
+        linkedList.addLast(15);
+        Logger.info("9. " + linkedList + " : length = " + linkedList.getLength());
+}());
+</textarea>
+<input type="button" onclick="animate()" value="Test Animate"/>
+<!--<input type="button" onclick="reset()" value="Reset Animation"/>-->
+</body>
+</html>

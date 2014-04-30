@@ -1,4 +1,4 @@
-define(["animds/AnimationObject", "libs/kinetic", "core/Constants", "core/Logger","animds/TextRectAnimationObject", "core/Defaults"], function (AnimationObject, Kinetic, Constants, Logger,TextRectAnimationObject, Defaults) {
+define(["core/Utils","animds/AnimationObject", "libs/kinetic", "core/Constants", "core/Logger","animds/TextRectAnimationObject", "core/Defaults"], function (Utils,AnimationObject, Kinetic, Constants, Logger,TextRectAnimationObject, Defaults) {
 
     function StackAnimationObject(animationId, layer) {
         this.animationId = animationId;

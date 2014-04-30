@@ -12,20 +12,27 @@ define(["core/Utils", "core/Animator", "core/CodeParser", "core/Defaults","core/
             return Utils.overrideObject(Defaults, configs);
         },
 
-        generateCodeAnimation: function (codeString, configs) {
-            var animationId = this.currentCodeAnimationId;
+        createAnimator : function(configs){
+        	var animationId = this.currentCodeAnimationId;
+        	var animatorConfigs = this.resolveAnimatorConfigs(configs);
+        	
+        	var animator = new Animator(animationId, animatorConfigs);// codeStatementLines, options
+             this.animatorMap[animationId] = animator;
+             
+             this.currentCodeAnimationId++;
+             
+             return animationId;
+        },
+        
+        generateCodeAnimation: function (animationId, codeString) {
+            
             var codeParser = new CodeParser(codeString, animationId);
             var codeStatementLines = codeParser.getCodeStatementLines();
-            var animatorConfigs = this.resolveAnimatorConfigs(configs);
-            var animator = new Animator(animationId, codeStatementLines, animatorConfigs);// codeStatementLines, options
-            this.animatorMap[animationId] = animator;
-
+            var animator = this.getAnimatorById(animationId);
+            animator.createCodeAnimationGenerator(codeStatementLines);
+            
             var modifiedCode = codeParser.getModifiedCode();
             this.runCodeAndAnimate(animationId, modifiedCode);
-
-            this.currentCodeAnimationId++;
-
-            return animationId;
         },
 
         getAnimatorById: function (animationId) {

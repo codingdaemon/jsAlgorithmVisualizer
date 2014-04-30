@@ -15,10 +15,10 @@ define(["core/Point", "libs/kinetic"], function (Point, Kinetic) {
         this.layer = new Kinetic.Layer();
         this.stage.add(this.layer);
     }
-//
-//    LayoutManager.prototype.getLayer = function () {
-//        return this.layer;
-//    };
+
+    LayoutManager.prototype.getLayer = function () {
+        return this.layer;
+    };
 
     LayoutManager.prototype.getCenter = function () {
         return new Point(this.stage.width() / 2, this.stage.height() / 2);

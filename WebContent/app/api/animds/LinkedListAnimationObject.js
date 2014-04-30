@@ -2,7 +2,7 @@
  * Created by nitiraj on 24/4/14.
  */
 
-define(["core/Point", "ds/LinkedNode", "animds/AnimationObject", "animds/LinkedNodeAnimationObject", "aminds/PointerAnimationObject", "core/Constants", "core/Utils", "core/Defaults", "libs/kinetic", "core/Factory"], function ( Point, LinkedNode, AnimationObject, LinkedNodeAnimationObject, PointerAnimationObject, Constants, Utils, Defaults, Kinetic, Factory) {
+define(["core/Point", "ds/LinkedNode", "animds/AnimationObject", "animds/LinkedNodeAnimationObject", "animds/PointerAnimationObject", "core/Constants", "core/Utils", "core/Defaults", "libs/kinetic", "core/Factory", "core/Logger"], function ( Point, LinkedNode, AnimationObject, LinkedNodeAnimationObject, PointerAnimationObject, Constants, Utils, Defaults, Kinetic, Factory, Logger) {
 
     /**
      * @returns  LinkedNodeAnimationObject associated with this LinkedNode
@@ -18,26 +18,29 @@ define(["core/Point", "ds/LinkedNode", "animds/AnimationObject", "animds/LinkedN
         this.animNode = linkedNodeAnimationObject;
     };
 
-    function LinkedListAnimationObject(config, animationId, layer) {
+    function LinkedListAnimationObject(config, animationId, layoutManager, layer, animationEngine) {
         AnimationObject.call(this, "LinkedListAnimationObject", layer);
         this.configs = config;
+        this.animationId = animationId;
+        this.layoutManager = layoutManager;
+        this.animationEngine = animationEngine;
         this.head = null;
         this.tail = null;
         this.headPointer = null;
         this.tailPointer = null;
-        this.animator = jsav.getAnimatorById(animationId);
-
+//        this.animator = jsav.getAnimatorById(animationId);
         this.group = new Kinetic.Group({
             draggable : true
         });
         this.getLayer().add(this.group);
     }
 
+    LinkedListAnimationObject.prototype = new AnimationObject();
+    
     LinkedListAnimationObject.prototype.createObject = function () {
         Logger.info("createObject called");
         // create the head and tail pointer pointing to null
-        var center = this.animator.getLayoutManager().getCenter();
-        var ref = this;
+        var center = this.layoutManager.getCenter();
 
         var headConfigs = Utils.clone(this.configs);
         headConfigs[Constants.ARROW_FROMX] = center.getX() / 2;
@@ -56,8 +59,8 @@ define(["core/Point", "ds/LinkedNode", "animds/AnimationObject", "animds/LinkedN
 
         this.tailPointer = new PointerAnimationObject(tailConfigs,this.getLayer());
 
-        this.group.add(this.headPointer);
-        this.group.add(this.tailPointer);
+        this.group.add(this.headPointer.getGroup());
+        this.group.add(this.tailPointer.getGroup());
 
         this.getLayer().draw();
     };

@@ -118,6 +118,20 @@ define(["core/Point","core/Logger"], function (Point,Logger) {
         },
         generateId: function () {
             return this.generate4CharUID();
+        },
+        
+        getHeaderCode: function( animationId ){
+            var HEADER_CODE = "(function(){" +
+            "animationId = " + animationId + ";\n" +
+            "require([\"ds/Stack\", \"ds/LinkedList\",\"core/Logger\"],function(Stack,LinkedList,Logger){ \n";
+
+            return HEADER_CODE;
+        },
+        getFooterCode: function(){
+	        var FOOTER_CODE = "\njsav.playCodeAnimation(animationId);\n" +
+	        "});" +
+	        "})();";
+	        return FOOTER_CODE;
         }
     };
 

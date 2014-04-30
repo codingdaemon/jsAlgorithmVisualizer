@@ -10,7 +10,8 @@
                 var code = document.getElementById("codeAreaId").value;
                 var configs = {};
                 configs[Constants.STAGE_CONTAINERDIV] = "jsavContainer";
-                var animationId = jsav.generateCodeAnimation(code,configs);
+                var animationId = jsav.createAnimator(configs);
+                jsav.generateCodeAnimation(animationId, code);
                 /*
                  var elem = document.getElementById('jsavContainer');
                  if (screenfull.enabled) {
