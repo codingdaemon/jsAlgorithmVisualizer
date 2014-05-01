@@ -36,10 +36,15 @@ define(["core/Constants"], function (Constants) {
     DEFAULT_OPTIONS[Constants.ARROW_HEAD_COLOR ] = "blue";
     DEFAULT_OPTIONS[Constants.ARROW_TAIL_WIDTH ] = 1;
     DEFAULT_OPTIONS[Constants.ARROW_HEAD_SOLID ] = true;
-    DEFAULT_OPTIONS[Constants.ARROW_TAIL_TEXT ] = "P";
+    DEFAULT_OPTIONS[Constants.ARROW_TAIL_TEXT ] = "";
     DEFAULT_OPTIONS[Constants.ARROW_TAIL_TEXT_FONT_SIZE ] = 10;
     DEFAULT_OPTIONS[Constants.ARROW_TAIL_TEXT_COLOR ] = "black";
     DEFAULT_OPTIONS[Constants.ARROW_TAIL_TEXT_FONT ] = "Calibri";
+    DEFAULT_OPTIONS[Constants.ARROW_HEAD_TEXT ] = "";
+    DEFAULT_OPTIONS[Constants.ARROW_HEAD_TEXT_FONT_SIZE ] = 10;
+    DEFAULT_OPTIONS[Constants.ARROW_HEAD_TEXT_COLOR ] = "black";
+    DEFAULT_OPTIONS[Constants.ARROW_HEAD_TEXT_FONT ] = "Calibri";
+
     DEFAULT_OPTIONS[Constants.ARROW_HEAD_HEIGHT] = 2;
 
 
@@ -48,14 +53,16 @@ define(["core/Constants"], function (Constants) {
     DEFAULT_OPTIONS[Constants.LINKEDLIST_POINTER_LENGTH ] = 30;
     DEFAULT_OPTIONS[Constants.TEXT_FONT_FAMILY ] = "Calibri";
     DEFAULT_OPTIONS[Constants.TEXT_FILL_COLOR ] = "black";
-    DEFAULT_OPTIONS[Constants.TEXT_FONT_SIZE] = 10;
+    DEFAULT_OPTIONS[Constants.TEXT_FONT_SIZE] = 20;
     DEFAULT_OPTIONS[Constants.TEXT_ALIGN ] = "center";
     DEFAULT_OPTIONS[Constants.TEXT_WIDTH ] = 50;
     DEFAULT_OPTIONS[Constants.RECT_WIDTH ] = 50;
     DEFAULT_OPTIONS[Constants.RECT_HEIGHT ] = 30;
-    DEFAULT_OPTIONS[Constants.RECT_FILL_COLOR ] = "blue";
+    DEFAULT_OPTIONS[Constants.RECT_FILL_COLOR ] = "#E0FFFF";
     DEFAULT_OPTIONS[Constants.RECT_STROKE_COLOR ] = "black";
     DEFAULT_OPTIONS[Constants.RECT_STROKE_WIDTH ] = 2;
+
+    DEFAULT_OPTIONS[Constants.ANIMATION_UNIT_TIME] = 100; // miliseconds
 
     return DEFAULT_OPTIONS;
 });

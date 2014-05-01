@@ -13,11 +13,17 @@ define(["animds/AnimationObject", "libs/kinetic", "core/Constants", "core/Point"
         this.tailWidth = configs[ Constants.ARROW_TAIL_WIDTH];
         this.headWidth = configs[Constants.ARROW_HEAD_WIDTH];
         this.headSolid = configs[ Constants.ARROW_HEAD_SOLID];
-        this.text = configs[ Constants.ARROW_TAIL_TEXT];
+        this.tailString = configs[ Constants.ARROW_TAIL_TEXT];
         this.tailTextFontSize = configs[ Constants.ARROW_TAIL_TEXT_FONT_SIZE];
         this.tailTextColor = configs[ Constants.ARROW_TAIL_TEXT_COLOR];
         this.tailTextFont = configs[ Constants.ARROW_TAIL_TEXT_FONT];
 
+        this.headString = configs[ Constants.ARROW_HEAD_TEXT];
+        this.headTextFontSize = configs[ Constants.ARROW_HEAD_TEXT_FONT_SIZE];
+        this.headTextColor = configs[ Constants.ARROW_HEAD_TEXT_COLOR];
+        this.headTextFont = configs[ Constants.ARROW_HEAD_TEXT_FONT];
+
+//        this.headText
         this.tailObject = null;
         this.headObject = null;
 
@@ -27,10 +33,12 @@ define(["animds/AnimationObject", "libs/kinetic", "core/Constants", "core/Point"
         this.tailLine = new Kinetic.Line({});
         this.headLine = new Kinetic.Line({});
         this.tailText = new Kinetic.Text({});
+        this.headText = new Kinetic.Text({});
 
         this.group.add(this.tailLine);
         this.group.add(this.headLine);
         this.group.add(this.tailText);
+        this.group.add(this.headText);
 
         this.draw();
     }
@@ -57,15 +65,25 @@ define(["animds/AnimationObject", "libs/kinetic", "core/Constants", "core/Point"
         this.headLine.closed(this.headSolid);
         this.headLine.fill(this.headColor);
 
-        if (this.text) {
+        if (this.tailString) {
             this.tailText.x(this.x1);
             this.tailText.y(this.y1);
-            this.tailText.text(this.text);
+            this.tailText.text(this.tailString);
             this.tailText.fontSize(this.tailTextFontSize);
             this.tailText.fontFamily(this.tailTextFont);
             this.tailText.fill(this.tailTextColor);
         }
-        Logger.info("redrawing the line ");
+
+        if (this.headString) {
+            this.headText.x(this.x2);
+            this.headText.y(this.y2);
+            this.headText.text(this.headString);
+            this.headText.fontSize(this.headTextFontSize);
+            this.headText.fontFamily(this.headTextFont);
+            this.headText.fill(this.headTextColor);
+        }
+
+        Logger.info("redrawing the line " + this);
         this.getLayer().draw();
     };
 
@@ -179,11 +197,16 @@ define(["animds/AnimationObject", "libs/kinetic", "core/Constants", "core/Point"
     };
 
     PointerAnimationObject.prototype.getTailPoint = function(){
-        return new Point(x1,y1);
-    }
+        return new Point(this.x1,this.y1);
+    };
 
     PointerAnimationObject.prototype.getHeadPoint = function(){
-        return new Point(x2,y2);
-    }
+        return new Point(this.x2,this.y2);
+    };
+
+    PointerAnimationObject.prototype.toString = function(){
+        return "PointerAnimationObject[" + this.x1 + "," + this.y1 + "," + this.x2 + "," + this.y2 + ",tailText" + this.tailString + ", headText = " + this.headString + "]";
+    };
+
     return PointerAnimationObject;
 });

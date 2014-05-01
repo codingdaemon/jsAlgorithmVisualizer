@@ -1,7 +1,7 @@
 /**
  * Created by nitiraj on 20/4/14.
  */
-define(["animds/TextRectAnimationObject", "core/Logger", "animds/AnimationObject","animds/PointerAnimationObject", "libs/kinetic"], function (TextRectAnimationObject, Logger, AnimationObject, PointerAnimationObject, Kinetic) {
+define(["animds/TextRectAnimationObject", "core/Logger", "animds/AnimationObject","animds/PointerAnimationObject", "libs/kinetic", "animds/LinkedNodeExtension"], function (TextRectAnimationObject, Logger, AnimationObject, PointerAnimationObject, Kinetic, LinkedNodeExtension) {
 
     function LinkedNodeAnimationObject(configs, hasNextPointer, hasPrevPointer, layer) {
         AnimationObject.call(this,"LinkedNodeAnimationObject",layer);
@@ -12,6 +12,7 @@ define(["animds/TextRectAnimationObject", "core/Logger", "animds/AnimationObject
         if( hasNextPointer ){
         	var nextPointerConfigs = configs["nextPointerConfigs"] ;
             this.nextPointer = new PointerAnimationObject(nextPointerConfigs,layer);
+            this.nextPointer.getGroup().draggable(false);
             this.nextPointer.pointTailTo(this.rect);
             this.group.add(this.nextPointer.getGroup());
         }
@@ -19,6 +20,7 @@ define(["animds/TextRectAnimationObject", "core/Logger", "animds/AnimationObject
         if( hasPrevPointer ){
         	var prevPointerConfigs = configs["prevPointerConfigs"];
             this.prevPointer = new PointerAnimationObject(prevPointerConfigs,layer);
+            this.prevPointer.getGroup().draggable(false);
             this.prevPointer.pointTailTo(this.rect);
             this.group.add(this.prevPointer.getGroup());
         }
@@ -45,6 +47,9 @@ define(["animds/TextRectAnimationObject", "core/Logger", "animds/AnimationObject
     LinkedNodeAnimationObject.prototype.getRoot = function(){
         return this.group;
     };
-    
+
+    LinkedNodeAnimationObject.prototype.getPointTo = function(point){
+        return this.getRect().getPointTo(point);
+    };
     return LinkedNodeAnimationObject;
 });

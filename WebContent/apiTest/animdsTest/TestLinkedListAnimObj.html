@@ -25,7 +25,9 @@
 <textarea hidden="true" rows="25" cols="50" id="codeAreaId">
 (function(){
 	var linkedList = new LinkedList();
-        linkedList.addFront(1);
+    for( x = 0 ; x < 10 ; x++ ){
+        linkedList.addFront(x);
+    }
 }());
 </textarea>
 <input type="button" onclick="animate()" value="Test Animate"/>

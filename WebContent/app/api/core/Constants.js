@@ -38,6 +38,11 @@ define([],function(){
         ARROW_TAIL_TEXT_COLOR: "tail.text.color",
         ARROW_TAIL_TEXT_FONT: "tail.text.font",
 
+        ARROW_HEAD_TEXT: "head.text",
+        ARROW_HEAD_TEXT_FONT_SIZE: "head.text.font.size",
+        ARROW_HEAD_TEXT_COLOR: "head.text.color",
+        ARROW_HEAD_TEXT_FONT: "head.text.font",
+
         LINKEDLIST_BOX_WIDTH : "linkedlist.box.width",
         LINKEDLIST_BOX_HEIGHT : "linkedlist.box.height",
         LINKEDLIST_POINTER_LENGTH : "linkedlist.pointer.length",
@@ -52,7 +57,9 @@ define([],function(){
         RECT_HEIGHT : "rect.height",
         RECT_FILL_COLOR : "rect.fill.color",
         RECT_STROKE_COLOR : "rect.stroke.color",
-        RECT_STROKE_WIDTH : "rect.stroke.width"
+        RECT_STROKE_WIDTH : "rect.stroke.width",
+
+        ANIMATION_UNIT_TIME : "animation.unit.time"
     };
 
     return Constants;

@@ -77,17 +77,26 @@ define(["animds/AnimationObject", "libs/kinetic", "core/Utils","core/Logger", "c
         var centerX = x1 + width / 2;
         var centerY = y1 + height / 2;
 
-        var p1 = Utils.findIntersectionPointOfSegments(point.getX(), point.getY(), centerX, centerY, x1, y1, x2, y2);
-        if (null != p1) return p1;
+        // if point and center are on opposite side
+        if( Utils.getPointsPositionWrtLine(x1,y1,x2,y2,point.getX(),point.getY()) != Utils.getPointsPositionWrtLine(x1,y1,x2,y2,centerX,centerY)){
+            var p1 = Utils.findIntersectionPointOfSegments(point.getX(), point.getY(), centerX, centerY, x1, y1, x2, y2);
+            if (null != p1) return p1;
+        }
 
-        var p2 = Utils.findIntersectionPointOfSegments(point.getX(), point.getY(), centerX, centerY, x2, y2, x3, y3);
-        if (null != p2) return p2;
+        if( Utils.getPointsPositionWrtLine(x2,y2,x3,y3,point.getX(),point.getY()) != Utils.getPointsPositionWrtLine(x2,y2,x3,y3,centerX,centerY)) {
+            var p2 = Utils.findIntersectionPointOfSegments(point.getX(), point.getY(), centerX, centerY, x2, y2, x3, y3);
+            if (null != p2) return p2;
+        }
 
-        var p3 = Utils.findIntersectionPointOfSegments(point.getX(), point.getY(), centerX, centerY, x3, y3, x4, y4);
-        if (null != p3) return p3;
+        if( Utils.getPointsPositionWrtLine(x3,y3,x4,y4,point.getX(),point.getY()) != Utils.getPointsPositionWrtLine(x3,y3,x4,y4,centerX,centerY)) {
+            var p3 = Utils.findIntersectionPointOfSegments(point.getX(), point.getY(), centerX, centerY, x3, y3, x4, y4);
+            if (null != p3) return p3;
+        }
 
-        var p4 = Utils.findIntersectionPointOfSegments(point.getX(), point.getY(), centerX, centerY, x4, y4, x1, y1);
-        if (null != p4) return p4;
+        if( Utils.getPointsPositionWrtLine(x4,y4,x1,y1,point.getX(),point.getY()) != Utils.getPointsPositionWrtLine(x4,y4,x1,y1,centerX,centerY)) {
+            var p4 = Utils.findIntersectionPointOfSegments(point.getX(), point.getY(), centerX, centerY, x4, y4, x1, y1);
+            if (null != p4) return p4;
+        }
 
         return null;
     };

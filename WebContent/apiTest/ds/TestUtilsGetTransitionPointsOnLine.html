@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="../../app/api/libs/require.js" data-main="../../app/api/app.js" ></script>
+</head>
+<body>
+<script type="text/javascript">
+   require(["core/Utils"],function(Utils){
+       var x1 = 0, y1 = 0, x2 = 10, y2 =10;
+       var points = Utils.getTransitionPointsOnLine(x1,y1,x2,y2,9);
+       console.log("points : "+ points);
+
+       x1 = 0 , y1 = 0 , x2 = 10 , y2 = 0;
+       points = Utils.getTransitionPointsOnLine(x1,y1,x2,y2,9);
+       console.log("points : "+ points);
+
+       x1 = 0 , y1 = 0 , x2 = 0 , y2 = 10;
+       points = Utils.getTransitionPointsOnLine(x1,y1,x2,y2,9);
+       console.log("points : "+ points);
+
+       x1 = 0 , y1 = 0 , x2 = 0 , y2 = 10;
+       points = Utils.getTransitionPointsOnLine(x1,y1,x2,y2,1);
+       console.log("points : "+ points);
+
+       x1 = 0 , y1 = 0 , x2 = 0 , y2 = 10;
+       points = Utils.getTransitionPointsOnLine(x1,y1,x2,y2,0);
+       console.log("points : "+ points);
+
+   }) ;
+</script>
+</body>
+</html>
