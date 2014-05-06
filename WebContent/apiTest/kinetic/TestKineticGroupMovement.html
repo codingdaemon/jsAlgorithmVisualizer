@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" data-main="../../app/api/app.js" src="../../app/api/libs/require.js" ></script>
+    <script type="text/javascript">
+        function testGroupMovement(){
+            require(["libs/kinetic", "animds/TextRectAnimationObject", "core/Defaults","core/Constants", "core/Utils"],function(Kinetic,TextRectAnimationObject,Defaults,Constants, Utils){
+                var stage = new Kinetic.Stage({
+                    container : "container",
+                    width : 500,
+                    height : 500
+                });
+                var layer = new Kinetic.Layer();
+                stage.add(layer);
+
+                var group1 = new Kinetic.Group({
+                    draggable: true
+                });
+
+                layer.add(group1);
+
+                var rectConfigs1 = Utils.clone(Defaults);
+                rectConfigs1["x"] = 100;
+                rectConfigs1["y"] = 100;
+                rectConfigs1["data"] = 100;
+
+                var rect1 = new TextRectAnimationObject(rectConfigs1,layer);
+                group1.add(rect1.getGroup());
+
+                var rectConfigs2 = Utils.clone(Defaults);
+                rectConfigs2["x"] = 150;
+                rectConfigs2["y"] = 100;
+                rectConfigs2["data"] = 150;
+
+                var rect2 = new TextRectAnimationObject(rectConfigs2,layer);
+                group1.add(rect2.getGroup());
+
+                var rectConfigs3 = Utils.clone(Defaults);
+                rectConfigs3["x"] = 200;
+                rectConfigs3["y"] = 100;
+                rectConfigs3["data"] = 200;
+
+                var rect3 = new TextRectAnimationObject(rectConfigs3,layer);
+                group1.add(rect2.getGroup());
+
+                var rectConfigs4 = Utils.clone(Defaults);
+                rectConfigs4["x"] = 250;
+                rectConfigs4["y"] = 100;
+                rectConfigs4["data"] = 250;
+
+                var rect4 = new TextRectAnimationObject(rectConfigs4,layer);
+                group1.add(rect4.getGroup());
+
+                var group2 = new Kinetic.Group();
+                layer.add(group2);
+                group1.add(group2);
+                group2.add(rect3.getGroup());
+                group2.add(rect4.getGroup());
+
+                layer.draw();
+                var i = 0 ;
+                var timer = setInterval(function(){
+                    group2.x(group2.x() + 10);
+                    layer.draw();
+                    i++ ;
+                    if(i == 5){
+                        clearInterval(timer);
+//                        rect3.getGroup().moveTo(group1);
+//                        rect4.getGroup().moveTo(group1);
+    ;                        var children = group2.getChildren(function(node){
+                            return node.getClassName() == "Group";
+                        });
+
+                        var groupArray = children.toArray()
+                        for( var j = 0 ; j < groupArray.length; j++){
+                            var group = groupArray[j];
+                            group.moveTo(group1);
+                            group.x(group.x() + group2.x());
+                        };
+
+//                        rect3.getGroup().x(rect3.getGroup().x() + group2.x());
+//                        rect4.getGroup().x(rect4.getGroup().x() + group2.x());
+                        group2.destroy();
+                        layer.draw();
+                    }
+                }, 1000);
+            });
+        }
+    </script>
+</head>
+<body onload="testGroupMovement()">
+<div id="container" ></div>
+
+</body>
+</html>

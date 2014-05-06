@@ -12,6 +12,9 @@ requirejs.config({
         },
         'libs/uglifyjs': {
             exports: 'UglifyJS'
+        },
+        'libs/connect': {
+            exports: 'ConnectJs'
         }
     }
 });

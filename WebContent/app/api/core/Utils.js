@@ -191,6 +191,14 @@ define(["core/Point","core/Logger"], function (Point,Logger) {
            }
 
            return array;
+        },
+
+        isNullOrUndefined : function( object ){
+            if( typeof object === 'undefined' || object == null){
+                return true;
+            }
+
+            return false;
         }
     };
 

@@ -19,8 +19,9 @@
                 var configs = Utils.clone(Defaults);
                 configs[Constants.ARROW_FROMX] = 0 ;
                 configs[Constants.ARROW_FROMY] = 0 ;
-                configs[Constants.ARROW_TOX] = 500;
-                configs[Constants.ARROW_TOY] = 0 ;
+                configs[Constants.ARROW_TOX] = 200;
+                configs[Constants.ARROW_TOY] = 10 ;
+                configs[Constants.ARROW_HEAD_TEXT] = "headText";
 
                 var pointer = new PointerAnimationObject(configs,layer);
                 layer.add(pointer.getGroup());
@@ -29,6 +30,7 @@
                 setTimeout(function(){
                     AnimUtils.animatePointerTailShift(pointer,250,250,100,layer,function(){
                         setTimeout(function(){
+                            pointer.setHeadText("");
                             AnimUtils.animatePointerHeadShift(pointer,500,500,100,layer,function(){
                                 alert("Animation Completed...");
                             });

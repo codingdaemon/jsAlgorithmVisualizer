@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script src="http://d3lp1msu2r81bx.cloudfront.net/kjs/js/lib/kinetic-v5.0.2.min.js"></script>
+<script defer="defer">
+    function writeMessage(message) {
+        text.text(message);
+        layer.draw();
+    }
+
+    var stage = new Kinetic.Stage({
+        container: 'container',
+        width: 1000,
+        height: 500
+    });
+
+    var layer = new Kinetic.Layer();
+
+    var text = new Kinetic.Text({
+        x: 10,
+        y: 10,
+        fontFamily: 'Calibri',
+        fontSize: 24,
+        text: '',
+        fill: 'black'
+    });
+
+    var box = new Kinetic.Rect({
+        x: 289,
+        y: 100,
+        offset: [50, 25],
+        width: 100,
+        height: 50,
+        fill: '#00D2FF',
+        stroke: 'black',
+        strokeWidth: 4
+//        draggable: true
+    });
+
+    var group = new Kinetic.Group();
+    group.add(box);
+    group.draggable(true);
+
+    // write out drag and drop events
+    box.on('dragstart', function() {
+        writeMessage('dragStart : box.x() = ' + box.x() + ", box.y() = " + box.y());
+    });
+    box.on('dragend', function() {
+        writeMessage('dragEnd : box.x() = ' + box.x() + ", box.y() = " + box.y());
+    });
+
+    // write out drag and drop events
+    group.on('dragstart', function() {
+        writeMessage('dragStart : box.x() = ' + box.x() + ", box.y() = " + box.y() + ", group.x() = " + group.x() + ", group.y() = " + group.y());
+    });
+    group.on('dragend', function() {
+        writeMessage('dragend : box.x() = ' + box.x() + ", box.y() = " + box.y() + ", group.x() = " + group.x() + ", group.y() = " + group.y());
+    });
+
+    group.on('dragmove', function() {
+        writeMessage('dragmove : box.x() = ' + box.x() + ", box.y() = " + box.y() + ", group.x() = " + group.x() + ", group.y() = " + group.y());
+    });
+
+    var line = new Kinetic.Line({
+        points: [73, 70, 340, 23],
+        stroke: 'red',
+        strokeWidth: 15,
+        lineCap: 'round',
+        lineJoin: 'round'/*,
+        draggable:true*/
+    });
+
+    // write out drag and drop events
+    line.on('dragstart', function() {
+        writeMessage('dragStart : line.points() = ' + line.points() );
+    });
+    line.on('dragend', function() {
+        writeMessage('dragEnd : line.points() = ' + line.points());
+    });
+    line.on('dragmove', function() {
+        writeMessage('dragmove : line.points() = ' + line.points());
+    });
+
+    group.add(line);
+    layer.add(text);
+    layer.add(group);
+    stage.add(layer);
+
+    function removeRectFromGroup(){
+        line.moveTo(layer);
+        box.moveTo(layer);
+        box.x( box.x() + group.x() - layer.x());
+        box.y(box.y() + group.y() - layer.y());
+        box.draggable(true);
+        layer.draw();
+    }
+</script>
+<input type="button" onclick="removeRectFromGroup()" value="Remove" />
+</body>
+</html>

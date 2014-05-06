@@ -7,14 +7,19 @@
     <script type="text/javascript">
         function animate() {
             require(["core/jsav","core/Defaults","core/Constants", "core/Utils"], function (jsav,Defaults,Constants,Utils) {
-            	var code = document.getElementById("codeAreaId").value;
+            	var code = document.getElementById("codeAreaId2").value;
                 var configs = {};
+//                configs[Constants.ANIMATION_UNIT_TIME] = 1000;
                 configs[Constants.STAGE_CONTAINERDIV] = "jsavContainer";
+                configs[Constants.STAGE_WIDTH] = 1000;
+                configs[Constants.STAGE_HEIGHT] = 1000;
+
                 animationId = jsav.createAnimator(configs);
-                code = Utils.getHeaderCode(animationId) + code + Utils.getFooterCode();
+//                code = Utils.getHeaderCode(animationId) + code + Utils.getFooterCode();
             	console.log("code = " + code.toString());
-                
-                jsav.runCodeAndAnimate(animationId, code);
+
+                jsav.generateCodeAnimation(animationId, code);
+//                jsav.runCodeAndAnimate(animationId, code);
             });
         }
     </script>
@@ -28,8 +33,13 @@
     for( x = 0 ; x < 10 ; x++ ){
         linkedList.addFront(x);
     }
+
+    for( x = 3 ; x<= 6 ; x++){
+    linkedList.removeAt(x);
+    }
 }());
 </textarea>
+<textarea rows="25" cols="50" id="codeAreaId2"></textarea>
 <input type="button" onclick="animate()" value="Test Animate"/>
 <!--<input type="button" onclick="reset()" value="Reset Animation"/>-->
 </body>

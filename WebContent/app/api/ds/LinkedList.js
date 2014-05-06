@@ -5,8 +5,10 @@ define(["ds/LinkedNode", "animgen/LinkedListAnimationGenerator"], function (Link
     function LinkedList() {
         this.head = null;
         this.tail = null;
-        this.animationId = animationId; // global var
-        this.linkedListAnimationGenerator = new LinkedListAnimationGenerator(animationId, "LinkedList");
+//        this.animationId = animationId; // global var
+        if( typeof animationId !== 'undefined'){
+            this.linkedListAnimationGenerator = new LinkedListAnimationGenerator(animationId, "LinkedList");
+        }
     }
 
     LinkedList.prototype.addFront = function (data) {
@@ -18,8 +20,10 @@ define(["ds/LinkedNode", "animgen/LinkedListAnimationGenerator"], function (Link
         } else {
             this.head.setNextPointer(currHead);
         }
-        
-        this.linkedListAnimationGenerator.addFront(data);
+
+        if(this.linkedListAnimationGenerator){
+            this.linkedListAnimationGenerator.addFront(data);
+        }
     };
 
     LinkedList.prototype.addLast = function (data) {
@@ -32,13 +36,13 @@ define(["ds/LinkedNode", "animgen/LinkedListAnimationGenerator"], function (Link
             this.tail = node;
             currTail.setNextPointer(this.tail);
         }
-        
-        this.linkedListAnimationGenerator.addLast(data);
+
+        if(this.linkedListAnimationGenerator) {
+            this.linkedListAnimationGenerator.addLast(data);
+        }
     };
 
     LinkedList.prototype.elementAt = function (index) {
-    	this.linkedListAnimationGenerator.elementAt(index);
-    	
         var p = this.head;
         var count = 0;
         while (count != index && p != null) {
@@ -46,8 +50,52 @@ define(["ds/LinkedNode", "animgen/LinkedListAnimationGenerator"], function (Link
             count++;
         }
 
+        if(this.linkedListAnimationGenerator) {
+            this.linkedListAnimationGenerator.elementAt(index);
+        }
+
         if (null == p) return null;
         else return p.getData();
+    };
+
+    LinkedList.prototype.insertAt = function (atIndex, data) {
+        var index = atIndex;
+
+      if(index < 0){
+          throw "index cannot be negative :"  + atIndex;
+      }
+
+      var node = null;
+      var p = this.head;
+      var q = null;
+      while( index != 0 && p != null ){
+          q = p ;
+          p = p.getNextPointer();
+          index--;
+      }
+
+      if(index != 0 ){
+          throw "index out of bounds : index = " + atIndex;
+      }
+
+      node = new LinkedNode(data);
+      node.setNextPointer(p);
+
+      if(q != null){
+          q.setNextPointer(node);
+          if( p == null ){ // q points to tail
+            this.tail = node;
+          }
+      }else{ // q == null
+          this.head = node;
+          if(p == null){ // this was head which is null
+              this.tail = node;
+          }
+      }
+
+        if(this.linkedListAnimationGenerator) {
+            this.linkedListAnimationGenerator.insertAt(atIndex,data);
+        }
     };
 
     LinkedList.prototype.removeAt = function (index) {
@@ -78,10 +126,14 @@ define(["ds/LinkedNode", "animgen/LinkedListAnimationGenerator"], function (Link
             p.setNextPointer(null);
         }
 
-        this.linkedListAnimationGenerator.removeAt(index);
-        
+        if(this.linkedListAnimationGenerator) {
+            this.linkedListAnimationGenerator.removeAt(index);
+        }
+
         if (null != p) {
-            return p.getData();
+            var data = p.getData();
+            delete p;
+            return data;
         } else {
             return null;
         }
@@ -95,17 +147,24 @@ define(["ds/LinkedNode", "animgen/LinkedListAnimationGenerator"], function (Link
             length++;
         }
 
-        this.linkedListAnimationGenerator.getLength();
+        if( this.linkedListAnimationGenerator){
+            this.linkedListAnimationGenerator.getLength();
+        }
+
         return length;
     };
 
     LinkedList.prototype.getHead = function(){
-    	this.linkedListAnimationGenerator.getHead();
+        if(this.linkedListAnimationGenerator){
+    	    this.linkedListAnimationGenerator.getHead();
+        }
         return this.head;
     };
 
     LinkedList.prototype.getTail = function(){
-    	this.linkedListAnimationGenerator.getTail();
+        if(this.linkedListAnimationGenerator){
+    	    this.linkedListAnimationGenerator.getTail();
+        }
         return this.tail;
     };
 
