@@ -80,9 +80,6 @@ define(["core/Point","core/Logger"], function (Point,Logger) {
                 return null;
             }
 
-//            y = Math.ceil(y);
-//            x = Math.ceil(x);
-
             return new Point(x, y);
         },
 
@@ -102,6 +99,8 @@ define(["core/Point","core/Logger"], function (Point,Logger) {
         findIntersectionPointOfSegments: function (s1x1, s1y1, s1x2, s1y2, s2x1, s2y1, s2x2, s2y2) {
             var point = this.findIntersectionPointOfLines(s1x1, s1y1, s1x2, s1y2, s2x1, s2y1, s2x2, s2y2);
 
+            Logger.debug("findIntersectionPointOfSegments : (s1x1, s1y1, s1x2, s1y2, s2x1, s2y1, s2x2, s2y2) = ("+ this.argumentsToString( arguments ) + ") : point = " + point);
+
             if( null == point ) return null;
             
             if (( s2x1 >= s2x2 && point.getX() <= s2x1 && point.getX() >= s2x2)
@@ -110,12 +109,33 @@ define(["core/Point","core/Logger"], function (Point,Logger) {
                 if (( s1x1 >= s1x2 && point.getX() <= s1x1 && point.getX() >= s1x2)
                     || (s1x2 >= s1x1 && point.getX() <= s1x2 && point.getX() >= s1x1 )){
 
-                    Logger.info("returning point : " + point);
+                    Logger.info("findIntersectionPointOfSegments returning point of intersection : " + point);
                     return point;
                 }
             }
 
             return null;
+        },
+
+        getPointsPositionWrtLine : function(lx1,ly1,lx2,ly2,px,py){
+          var p;
+          if( ly1 - ly2 == 0 ){
+              p = py - ly1;
+          }
+          else if( py - ly1 == 0 ){
+              p = px - lx1;
+          } else {
+              p = (px - lx1) / (py - ly1) - (lx1 - lx2 ) / (ly1 - ly2 );
+          }
+          Logger.debug("getPointsPositionWrtLine : (lx1,ly1,lx2,ly2,px,py) = ("+ this.argumentsToString( arguments ) + ") : p = " + p);
+
+          if( p > 0 ){
+              return 1;
+          }else if( p < 0 ){
+              return -1;
+          } else{
+              return 0;
+          }
         },
         generate4CharUID: function () {
             return (Math.floor((1 + Math.random()) * 0x10000)).toString(16).substring(1);
@@ -136,6 +156,49 @@ define(["core/Point","core/Logger"], function (Point,Logger) {
 	        "});" +
 	        "})();";
 	        return FOOTER_CODE;
+        },
+
+        argumentsToArray : function(args){
+            var array = [];
+            for(var i = 0 ; i< args.length ; i++){
+                array.push(args[i]);
+            }
+
+            return array;
+        },
+
+        argumentsToString: function(args){
+            return this.argumentsToArray(args).toString();
+        },
+
+        getTransitionPointsOnLine : function(x1,y1,x2,y2,numberOfPoints){
+            var delta=1;
+            var array = [];
+            var i = 0;
+            if( x1 == x2 ){
+               delta = (y2 - y1)/(numberOfPoints + 1);
+               for( i = 1 ; i <= numberOfPoints ; i++){
+                   array.push(new Point(x1,y1 + delta*i));
+               }
+           } else {
+               delta = (x2-x1)/(numberOfPoints +1);
+                for(i = 1 ; i <= numberOfPoints ; i++ ){
+                    var x = x1 + delta*i;
+                    var y = (x - x1 )/(x1 - x2) * (y1 - y2) + y1;
+
+                    array.push(new Point(x,y));
+                }
+           }
+
+           return array;
+        },
+
+        isNullOrUndefined : function( object ){
+            if( typeof object === 'undefined' || object == null){
+                return true;
+            }
+
+            return false;
         }
     };
 

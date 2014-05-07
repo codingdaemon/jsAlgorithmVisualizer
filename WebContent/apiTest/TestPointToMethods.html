@@ -6,7 +6,7 @@
     <script type="text/javascript" data-main="../app/api/app.js" src="../app/api/libs/require.js"></script>
     <script type="text/javascript">
         function init() {
-            require(["../app/api/core/jsav", "libs/kinetic", "../app/api/core/Constants", "../app/api/core/Defaults", "../app/api/animds/TextRectAnimationObject", "../app/api/animds/PointerAnimationObject"], function (jsav, Kinetic, Constants, Defaults, TextRect, Pointer) {
+            require(["core/jsav", "libs/kinetic", "core/Constants", "core/Defaults", "animds/TextRectAnimationObject", "animds/PointerAnimationObject"], function (jsav, Kinetic, Constants, Defaults, TextRect, Pointer) {
                 var stage = new Kinetic.Stage({
                     container: "container",
                     height: 500,

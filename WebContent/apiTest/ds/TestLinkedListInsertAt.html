@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script data-main="../../app/api/app.js" type="text/javascript" src="../../app/api/libs/require.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    require(["core/jsav","ds/LinkedList", "core/Logger"], function(jsav,LinkedList,Logger){
+       var linkedList = new LinkedList();
+//       linkedList.insertAt(0,1);
+//       linkedList.insertAt(1,1);
+//        linkedList.insertAt(-1,1);
+
+//        linkedList.insertAt(0,1);
+//        linkedList.insertAt(0,2);
+
+//        linkedList.insertAt(0,1);
+//        linkedList.insertAt(1,2);
+
+        linkedList.insertAt(0,1);
+        linkedList.insertAt(1,2);
+        linkedList.insertAt(2,3);
+        Logger.info("linkedList = " + linkedList);
+        linkedList.removeAt(1);
+        linkedList.insertAt(2,4);
+       Logger.info("linkedList = " + linkedList);
+        linkedList.removeAt(0);
+        Logger.info("linkedList = " + linkedList);
+        linkedList.addFront(10);
+        Logger.info("linkedList = " + linkedList);
+        linkedList.addLast(11);
+        Logger.info("linkedList = " + linkedList);
+        linkedList.insertAt(3,12);
+        Logger.info("linkedList = " + linkedList);
+
+        linkedList.insertAt(5,13);
+        Logger.info("linkedList = " + linkedList);
+    });
+
+</script>
+</body>
+</html>

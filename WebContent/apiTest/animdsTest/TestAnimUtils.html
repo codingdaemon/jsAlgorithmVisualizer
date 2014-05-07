@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Test AnimUtils</title>
+    <script type="text/javascript" data-main="../../app/api/app.js" src="../../app/api/libs/require.js       "></script>
+    <script type="text/javascript">
+        function animate() {
+            require(["animds/AnimUtils"], function (AnimUtils) {
+                var i = 0 ;
+                AnimUtils.repeater(function(){
+                    console.log(i++);
+                },100,10,function(){
+                    console.log("final value of i : " + i);
+                });
+            });
+        }
+    </script>
+
+</head>
+<body>
+<div id="jsavContainer"></div>
+<input type="button" onclick="animate()" value="Test"/>
+</body>
+</html>

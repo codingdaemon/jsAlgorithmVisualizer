@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Test ConnectJs</title>
+    <script type="text/javascript" src="../app/api/libs/require.js" data-main="../app/api/app.js" ></script>
+</head>
+<body>
+<script type="text/javascript" >
+    function TestClass(){
+
+    }
+
+    TestClass.prototype.testMethod = function(data){
+        console.log("TestClass.testMethod(" + data + ") called..");
+    };
+
+    function AnotherClass(){
+
+    }
+
+    AnotherClass.prototype.anotherMethod = function(data){
+        console.log("AnotherClass.anotherMethod(" + data + ") called..");
+    };
+
+    require(["libs/connect"], function(ConnectJs){
+        var testObject = new TestClass();
+        var anotherObject = new AnotherClass();
+
+        ConnectJs.connect(testObject,"testMethod",anotherObject,"anotherMethod");
+
+        testObject.testMethod(10);
+    });
+</script>
+</body>
+</html>

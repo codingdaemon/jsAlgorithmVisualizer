@@ -25,6 +25,10 @@ define(["animgen/AnimationGenerator", "animds/LinkedListAnimationObject", "core/
         this.animator.getAnimationEngine().push(new AnimationInput(this.linkedlistAO, LinkedListAnimationObject.prototype.removeAt, [index]));
     };
 
+    LinkedListAnimationGenerator.prototype.insertAt = function (index,data) {
+        this.animator.getAnimationEngine().push(new AnimationInput(this.linkedlistAO, LinkedListAnimationObject.prototype.insertAt, [index,data]));
+    };
+
     LinkedListAnimationGenerator.prototype.elementAt = function (index) {
     	this.animator.getAnimationEngine().push(new AnimationInput(this.linkedlistAO, LinkedListAnimationObject.prototype.elementAt, [index]));
     };

@@ -44,7 +44,7 @@ define([], function () {
             }
         };
 
-        this.logLevel = LOG_LEVEL_INFO;
+        this.logLevel = LOG_LEVEL_DEBUG;
     };
     return new Logger();
 });
