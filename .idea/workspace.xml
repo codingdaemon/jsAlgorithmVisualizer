@@ -4,23 +4,9 @@
     <bookmark url="file://$PROJECT_DIR$/WebContent/app/api/core/jsav.js" line="8" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="108c393e-3b01-404f-b9d4-f4079cbfabdd" name="Default" comment="= a">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/apiTest/animdsTest/TestStackAnimObj.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/animds/AnimationObject.js" afterPath="$PROJECT_DIR$/WebContent/app/api/animds/AnimationObject.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/core/Animator.js" afterPath="$PROJECT_DIR$/WebContent/app/api/core/Animator.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/animgen/CodeAnimationGenerator.js" afterPath="$PROJECT_DIR$/WebContent/app/api/animgen/CodeAnimationGenerator.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/animds/CodeAnimationObject.js" afterPath="$PROJECT_DIR$/WebContent/app/api/animds/CodeAnimationObject.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/core/CodeParser.js" afterPath="$PROJECT_DIR$/WebContent/app/api/core/CodeParser.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/animgen/LinkedListAnimationGenerator.js" afterPath="$PROJECT_DIR$/WebContent/app/api/animgen/LinkedListAnimationGenerator.js" />
+    <list default="true" id="108c393e-3b01-404f-b9d4-f4079cbfabdd" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/app/api/ds/ArrayDS.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/animds/LinkedListAnimationObject.js" afterPath="$PROJECT_DIR$/WebContent/app/api/animds/LinkedListAnimationObject.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/animds/LinkedNodeAnimationObject.js" afterPath="$PROJECT_DIR$/WebContent/app/api/animds/LinkedNodeAnimationObject.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/animds/PointerAnimationObject.js" afterPath="$PROJECT_DIR$/WebContent/app/api/animds/PointerAnimationObject.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/animgen/StackAnimationGenerator.js" afterPath="$PROJECT_DIR$/WebContent/app/api/animgen/StackAnimationGenerator.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/animds/StackAnimationObject.js" afterPath="$PROJECT_DIR$/WebContent/app/api/animds/StackAnimationObject.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/apiTest/animdsTest/TestLinkedListAnimObj.html" afterPath="$PROJECT_DIR$/WebContent/apiTest/animdsTest/TestLinkedListAnimObj.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/animds/TextRectAnimationObject.js" afterPath="$PROJECT_DIR$/WebContent/app/api/animds/TextRectAnimationObject.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/core/jsav.js" afterPath="$PROJECT_DIR$/WebContent/app/api/core/jsav.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="jsAlgorithmVisualizer.iws" />
@@ -44,46 +30,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="jsav.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebContent/app/api/core/jsav.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="1305">
-              <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CodeParser.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebContent/app/api/core/CodeParser.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1260" max-vertical-offset="1680">
-              <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="require.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebContent/app/api/libs/require.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="13565" max-vertical-offset="31050">
-              <caret line="917" column="0" selection-start-line="917" selection-start-column="0" selection-end-line="917" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestStackAnimObj.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebContent/apiTest/animdsTest/TestStackAnimObj.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.375" vertical-offset="624" max-vertical-offset="1035">
-              <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CodeAnimationObject.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/CodeAnimationObject.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -97,8 +43,70 @@
       <file leaf-file-name="LinkedListAnimationObject.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/LinkedListAnimationObject.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33333334" vertical-offset="286" max-vertical-offset="7455">
-              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.4169014" vertical-offset="287" max-vertical-offset="7440">
+              <caret line="29" column="48" selection-start-line="29" selection-start-column="48" selection-end-line="29" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LinkedNodeExtension.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/LinkedNodeExtension.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="7" max-vertical-offset="375">
+              <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ArrayDS.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/app/api/ds/ArrayDS.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
+              <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#41#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Stack.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/app/api/ds/Stack.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="705">
+              <caret line="11" column="61" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="61" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LinkedList.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/app/api/ds/LinkedList.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2880">
+              <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Defaults.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/app/api/core/Defaults.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="1095">
+              <caret line="62" column="53" selection-start-line="62" selection-start-column="53" selection-end-line="62" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LinkedNodeAnimationObject.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/LinkedNodeAnimationObject.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="1605">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -114,31 +122,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CodeAnimationGenerator.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebContent/app/api/animgen/CodeAnimationGenerator.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="465">
-              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Animator.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/app/api/core/Animator.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1260">
               <caret line="19" column="65" selection-start-line="19" selection-start-column="65" selection-end-line="19" selection-end-column="65" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LayoutManager.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebContent/app/api/core/LayoutManager.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="480">
-              <caret line="23" column="74" selection-start-line="23" selection-start-column="74" selection-end-line="23" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -162,7 +150,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/WebContent/app/api/ds/Stack.js" />
         <option value="$PROJECT_DIR$/WebContent/app/api/animds/LinkedNode.js" />
         <option value="$PROJECT_DIR$/WebContent/app/api/animds/Pointer.js" />
         <option value="$PROJECT_DIR$/WebContent/app/api/ds/LinkedNode.js" />
@@ -174,7 +161,6 @@
         <option value="$PROJECT_DIR$/WebContent/app/api/animds/LinkedNodeExtension.js" />
         <option value="$PROJECT_DIR$/WebContent/apiTest/ds/TestUtilsGetTransitionPointsOnLine.html" />
         <option value="$PROJECT_DIR$/WebContent/app/api/core/Constants.js" />
-        <option value="$PROJECT_DIR$/WebContent/app/api/core/Defaults.js" />
         <option value="$PROJECT_DIR$/WebContent/apiTest/TestLine.html" />
         <option value="$PROJECT_DIR$/WebContent/apiTest/generalHtmlText.html" />
         <option value="$PROJECT_DIR$/WebContent/apiTest/ds/TestLinkedList.html" />
@@ -213,6 +199,8 @@
         <option value="$PROJECT_DIR$/WebContent/app/api/core/jsav.js" />
         <option value="$PROJECT_DIR$/WebContent/apiTest/animdsTest/TestLinkedListAnimObj.html" />
         <option value="$PROJECT_DIR$/WebContent/app/api/animds/LinkedListAnimationObject.js" />
+        <option value="$PROJECT_DIR$/WebContent/app/api/ds/ArrayDS.js" />
+        <option value="$PROJECT_DIR$/WebContent/app/api/core/Defaults.js" />
       </list>
     </option>
   </component>
@@ -547,6 +535,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="ds" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jsAlgorithmVisualizer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jsAlgorithmVisualizer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebContent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -680,13 +694,8 @@
       <recent name="$PROJECT_DIR$/WebContent/app/api/animds" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.TestLinkedListAnimObj.html">
+  <component name="RunManager" selected="Node.js.LinkedListAnimationObject.js">
     <configuration default="false" name="TestLinkedListAnimObj.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" uri="http://localhost:63342/jsAlgorithmVisualizer/WebContent/apiTest/animdsTest/TestLinkedListAnimObj.html">
-      <RunnerSettings RunnerId="JavascriptDebugRunner" />
-      <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="testDragEventWithGroup.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" uri="http://localhost:63342/jsAlgorithmVisualizer/WebContent/apiTest/kinetic/testDragEventWithGroup.html">
       <RunnerSettings RunnerId="JavascriptDebugRunner" />
       <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
       <method />
@@ -704,6 +713,11 @@
     <configuration default="false" name="TestStackAnimObj.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" uri="http://localhost:63342/jsAlgorithmVisualizer/WebContent/apiTest/animdsTest/TestStackAnimObj.html">
       <RunnerSettings RunnerId="JavascriptDebugRunner" />
       <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="LinkedListAnimationObject.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="/usr/bin/nodejs" path-to-js-file="LinkedListAnimationObject.js" working-dir="$PROJECT_DIR$/WebContent/app/api/animds">
+      <RunnerSettings RunnerId="NodeJS.debug" />
+      <ConfigurationWrapper RunnerId="NodeJS.debug" />
       <method />
     </configuration>
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
@@ -749,18 +763,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.TestLinkedListAnimObj.html" />
-      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.testDragEventWithGroup.html" />
-      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.TestAnimUtils.html" />
-      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.TestFullScreen.html" />
-      <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.TestStackAnimObj.html" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.TestAnimUtils.html" />
+      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.TestFullScreen.html" />
+      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.TestStackAnimObj.html" />
+      <item index="4" class="java.lang.String" itemvalue="Node.js.LinkedListAnimationObject.js" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.TestLinkedListAnimObj.html" />
-        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.TestStackAnimObj.html" />
-        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.TestFullScreen.html" />
-        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.TestAnimUtils.html" />
-        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.testDragEventWithGroup.html" />
+        <item index="1" class="java.lang.String" itemvalue="Node.js.LinkedListAnimationObject.js" />
+        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.TestStackAnimObj.html" />
+        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.TestFullScreen.html" />
+        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.TestAnimUtils.html" />
       </list>
     </recent_temporary>
   </component>
@@ -826,20 +840,25 @@
       <created>1399435374740</created>
       <updated>1399435374740</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="made changes to make older anim objects work with current changes.">
+      <created>1399708756913</created>
+      <updated>1399708756913</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-4" width="1377" height="905" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32938075" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38370565" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19645494" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.44940868" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24815361" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.45059288" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3096179" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -847,7 +866,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -901,7 +919,8 @@
     <MESSAGE value="completed the addFront method of linked list" />
     <MESSAGE value="adding Working linked list anim object. ConnectJS and other utils" />
     <MESSAGE value="adding some test files" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding some test files" />
+    <MESSAGE value="made changes to make older anim objects work with current changes." />
+    <option name="LAST_COMMIT_MESSAGE" value="made changes to make older anim objects work with current changes." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1008,13 +1027,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/WebContent/app/api/animds/LinkedListAnimationObject.js</url>
-          <line>59</line>
+          <line>58</line>
           <option name="timeStamp" value="155" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/WebContent/app/api/animds/LinkedListAnimationObject.js</url>
-          <line>27</line>
-          <option name="timeStamp" value="156" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -1024,21 +1038,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/WebContent/app/api/core/Point.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="570">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/app/api/core/Logger.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="825">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/app/api/core/Factory.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="415">
@@ -1155,14 +1154,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/app/api/ds/LinkedList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1516" max-vertical-offset="2880">
-          <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/app/api/ds/LinkedNode.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="21" max-vertical-offset="735">
@@ -1245,22 +1236,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/LinkedNodeExtension.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
-          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/LinkedNodeAnimationObject.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1605">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/app/api/animgen/AnimationGenerator.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
@@ -1332,14 +1307,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="960" max-vertical-offset="4590">
           <caret line="78" column="47" selection-start-line="78" selection-start-column="47" selection-end-line="78" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/app/api/core/Defaults.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="1095">
-          <caret line="57" column="48" selection-start-line="57" selection-start-column="48" selection-end-line="57" selection-end-column="48" />
           <folding />
         </state>
       </provider>
@@ -1424,10 +1391,60 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/app/api/ds/LinkedList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1516" max-vertical-offset="2880">
+          <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/app/api/ds/Stack.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="705">
+          <caret line="11" column="61" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/app/api/ds/ArrayDS.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
+          <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/app/api/core/Defaults.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="1095">
+          <caret line="62" column="53" selection-start-line="62" selection-start-column="53" selection-end-line="62" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/LinkedNodeAnimationObject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1605">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/LinkedNodeExtension.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
+          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/LinkedListAnimationObject.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="286" max-vertical-offset="7455">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.4169014" vertical-offset="287" max-vertical-offset="7440">
+          <caret line="29" column="48" selection-start-line="29" selection-start-column="48" selection-end-line="29" selection-end-column="48" />
           <folding />
         </state>
       </provider>

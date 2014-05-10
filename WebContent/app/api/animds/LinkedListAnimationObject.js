@@ -36,7 +36,6 @@ define(["libs/connect", "core/Point", "ds/LinkedNode", "animds/AnimationObject",
         headConfigs[Constants.ARROW_TOY] = center.getY() / 2;
         headConfigs[ Constants.ARROW_TAIL_TEXT] = "head";
         this.headPointer = new PointerAnimationObject(headConfigs, this.getLayer(),this.group);
-//        this.headPointer.setGroup(this.group);
 
         var tailConfigs = Utils.clone(this.getConfigs());
         tailConfigs[Constants.ARROW_FROMX] = center.getX() / 2;
