@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="108c393e-3b01-404f-b9d4-f4079cbfabdd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/app/api/ds/ArrayDS.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/animds/LinkedListAnimationObject.js" afterPath="$PROJECT_DIR$/WebContent/app/api/animds/LinkedListAnimationObject.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="jsAlgorithmVisualizer.iws" />
@@ -844,7 +842,11 @@
       <created>1399708756913</created>
       <updated>1399708756913</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="adding ArrayDS">
+      <created>1399712142019</created>
+      <updated>1399712142019</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -920,7 +922,8 @@
     <MESSAGE value="adding Working linked list anim object. ConnectJS and other utils" />
     <MESSAGE value="adding some test files" />
     <MESSAGE value="made changes to make older anim objects work with current changes." />
-    <option name="LAST_COMMIT_MESSAGE" value="made changes to make older anim objects work with current changes." />
+    <MESSAGE value="adding ArrayDS" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding ArrayDS" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
