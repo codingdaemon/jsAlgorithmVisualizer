@@ -1,29 +1,29 @@
 define(["animds/AnimationObject", "libs/kinetic", "core/Constants", "core/Point", "core/Logger","core/Utils"], function (AnimationObject, Kinetic, Constants, Point, Logger, Utils) {
 
     function PointerAnimationObject(configs, layer, group) {
-        AnimationObject.call(this, "pointer", layer);
-        this.x1 = configs[ Constants.ARROW_FROMX];
-        this.y1 = configs[ Constants.ARROW_FROMY];
-        this.x2 = configs[ Constants.ARROW_TOX];
-        this.y2 = configs[ Constants.ARROW_TOY];
-        this.l = configs[ Constants.ARROW_HEAD_LENGTH];
-        this.h = configs[ Constants.ARROW_HEAD_HEIGHT];
-        this.tailColor = configs[ Constants.ARROW_TAIL_COLOR];
-        this.headColor = configs[ Constants.ARROW_HEAD_COLOR];
-        this.tailWidth = configs[ Constants.ARROW_TAIL_WIDTH];
-        this.headWidth = configs[Constants.ARROW_HEAD_WIDTH];
-        this.headSolid = configs[ Constants.ARROW_HEAD_SOLID];
-        this.tailString = configs[ Constants.ARROW_TAIL_TEXT];
-        this.tailTextFontSize = configs[ Constants.ARROW_TAIL_TEXT_FONT_SIZE];
-        this.tailTextColor = configs[ Constants.ARROW_TAIL_TEXT_COLOR];
-        this.tailTextFont = configs[ Constants.ARROW_TAIL_TEXT_FONT];
+        AnimationObject.call(this, "pointer", configs, layer);
 
-        this.headString = configs[ Constants.ARROW_HEAD_TEXT];
-        this.headTextFontSize = configs[ Constants.ARROW_HEAD_TEXT_FONT_SIZE];
-        this.headTextColor = configs[ Constants.ARROW_HEAD_TEXT_COLOR];
-        this.headTextFont = configs[ Constants.ARROW_HEAD_TEXT_FONT];
+        this.x1 = this.getConfigs()[ Constants.ARROW_FROMX];
+        this.y1 = this.getConfigs()[ Constants.ARROW_FROMY];
+        this.x2 = this.getConfigs()[ Constants.ARROW_TOX];
+        this.y2 = this.getConfigs()[ Constants.ARROW_TOY];
+        this.l = this.getConfigs()[ Constants.ARROW_HEAD_LENGTH];
+        this.h = this.getConfigs()[ Constants.ARROW_HEAD_HEIGHT];
+        this.tailColor = this.getConfigs()[ Constants.ARROW_TAIL_COLOR];
+        this.headColor = this.getConfigs()[ Constants.ARROW_HEAD_COLOR];
+        this.tailWidth = this.getConfigs()[ Constants.ARROW_TAIL_WIDTH];
+        this.headWidth = this.getConfigs()[Constants.ARROW_HEAD_WIDTH];
+        this.headSolid = this.getConfigs()[ Constants.ARROW_HEAD_SOLID];
+        this.tailString = this.getConfigs()[ Constants.ARROW_TAIL_TEXT];
+        this.tailTextFontSize = this.getConfigs()[ Constants.ARROW_TAIL_TEXT_FONT_SIZE];
+        this.tailTextColor = this.getConfigs()[ Constants.ARROW_TAIL_TEXT_COLOR];
+        this.tailTextFont = this.getConfigs()[ Constants.ARROW_TAIL_TEXT_FONT];
 
-//        this.headText
+        this.headString = this.getConfigs()[ Constants.ARROW_HEAD_TEXT];
+        this.headTextFontSize = this.getConfigs()[ Constants.ARROW_HEAD_TEXT_FONT_SIZE];
+        this.headTextColor = this.getConfigs()[ Constants.ARROW_HEAD_TEXT_COLOR];
+        this.headTextFont = this.getConfigs()[ Constants.ARROW_HEAD_TEXT_FONT];
+
         this.tailObject = null;
         this.headObject = null;
 
@@ -71,23 +71,19 @@ define(["animds/AnimationObject", "libs/kinetic", "core/Constants", "core/Point"
         this.headLine.closed(this.headSolid);
         this.headLine.fill(this.headColor);
 
-//        if (this.tailString) {
-            this.tailText.x(this.x1);
-            this.tailText.y(this.y1);
-            this.tailText.text(this.tailString);
-            this.tailText.fontSize(this.tailTextFontSize);
-            this.tailText.fontFamily(this.tailTextFont);
-            this.tailText.fill(this.tailTextColor);
-//        }
+        this.tailText.x(this.x1);
+        this.tailText.y(this.y1);
+        this.tailText.text(this.tailString);
+        this.tailText.fontSize(this.tailTextFontSize);
+        this.tailText.fontFamily(this.tailTextFont);
+        this.tailText.fill(this.tailTextColor);
 
-//        if (this.headString) {
-            this.headText.x(this.x2);
-            this.headText.y(this.y2);
-            this.headText.text(this.headString);
-            this.headText.fontSize(this.headTextFontSize);
-            this.headText.fontFamily(this.headTextFont);
-            this.headText.fill(this.headTextColor);
-//        }
+        this.headText.x(this.x2);
+        this.headText.y(this.y2);
+        this.headText.text(this.headString);
+        this.headText.fontSize(this.headTextFontSize);
+        this.headText.fontFamily(this.headTextFont);
+        this.headText.fill(this.headTextColor);
 
         Logger.info("redrawing the line " + this);
         this.getLayer().draw();

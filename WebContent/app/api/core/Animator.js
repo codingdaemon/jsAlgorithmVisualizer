@@ -21,10 +21,10 @@ define(["core/Constants", "core/AnimationEngine", "libs/kinetic","core/LayoutMan
         });
 
         this.layoutManager = new LayoutManager(this.stage);
-        this.layoutManager.getLayer().red(animatorRef.configs[jsav.STAGE_COLOR_RED]);
-        this.layoutManager.getLayer().blue(animatorRef.configs[jsav.STAGE_COLOR_BLUE]);
-        this.layoutManager.getLayer().green(animatorRef.configs[jsav.STAGE_COLOR_GREEN]);
-    },
+//        this.layoutManager.getLayer().red(animatorRef.configs[jsav.STAGE_COLOR_RED]);
+//        this.layoutManager.getLayer().blue(animatorRef.configs[jsav.STAGE_COLOR_BLUE]);
+//        this.layoutManager.getLayer().green(animatorRef.configs[jsav.STAGE_COLOR_GREEN]);
+    };
 
     Animator.prototype.getAnimationId = function () {
         return this.animationId;

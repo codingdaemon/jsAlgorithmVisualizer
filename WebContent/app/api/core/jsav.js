@@ -17,6 +17,7 @@ define(["core/Utils", "core/Animator", "core/CodeParser", "core/Defaults","core/
         	var animatorConfigs = this.resolveAnimatorConfigs(configs);
         	
         	var animator = new Animator(animationId, animatorConfigs);// codeStatementLines, options
+            animator.createStage();
              this.animatorMap[animationId] = animator;
              
              this.currentCodeAnimationId++;
@@ -29,6 +30,7 @@ define(["core/Utils", "core/Animator", "core/CodeParser", "core/Defaults","core/
             var codeParser = new CodeParser(codeString, animationId);
             var codeStatementLines = codeParser.getCodeStatementLines();
             var animator = this.getAnimatorById(animationId);
+
             animator.createCodeAnimationGenerator(codeStatementLines);
             
             var modifiedCode = codeParser.getModifiedCode();
@@ -42,7 +44,6 @@ define(["core/Utils", "core/Animator", "core/CodeParser", "core/Defaults","core/
         runCodeAndAnimate: function (animationId, modifiedCode) {
             Logger.info("Executing the code : " + modifiedCode);
             var animator = this.getAnimatorById(animationId);
-            animator.createStage();
 
             var head = document.head;
 

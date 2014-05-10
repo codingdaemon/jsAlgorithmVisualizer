@@ -1,4 +1,4 @@
-define(["libs/uglifyjs", "core/Utils"], function (UglifyJS, Utils) {
+define(["libs/uglifyjs", "core/Utils", "core/Logger"], function (UglifyJS, Utils,Logger) {
 
     function CodeParser(code, animationId) {
         this.originalCode = code;

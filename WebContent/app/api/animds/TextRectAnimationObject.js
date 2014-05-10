@@ -1,9 +1,9 @@
 define(["animds/AnimationObject", "libs/kinetic", "core/Utils", "core/Logger", "core/Constants"], function (AnimationObject, Kinetic, Utils, Logger, Constants) {
 
     function TextRectAnimationObject(configs, layer, group) {
-        AnimationObject.call(this, "TextRectAnimationObject", layer);
-        this.configs = configs;
-        this.data = configs["data"];
+        AnimationObject.call(this, "TextRectAnimationObject", configs, layer );
+
+        this.data = this.getConfigs()["data"];
         if (Utils.isNullOrUndefined(group)) {
             this.group = new Kinetic.Group({
                 draggable: true
@@ -12,20 +12,20 @@ define(["animds/AnimationObject", "libs/kinetic", "core/Utils", "core/Logger", "
         } else {
             this.group = group;
         }
-//        var ref = this;
-        this.x = this.configs["x"];
-        this.y = this.configs["y"];
-        this.rectWidth = this.configs[Constants.RECT_WIDTH];
-        this.rectHeight = this.configs[Constants.RECT_HEIGHT];
-        this.rectFill = this.configs[Constants.RECT_FILL_COLOR];
-        this.rectStroke = this.configs[Constants.RECT_STROKE_COLOR];
-        this.rectStrokeWidth = this.configs[Constants.RECT_STROKE_WIDTH];
+
+        this.x = this.getConfigs()["x"];
+        this.y = this.getConfigs()["y"];
+        this.rectWidth = this.getConfigs()[Constants.RECT_WIDTH];
+        this.rectHeight = this.getConfigs()[Constants.RECT_HEIGHT];
+        this.rectFill = this.getConfigs()[Constants.RECT_FILL_COLOR];
+        this.rectStroke = this.getConfigs()[Constants.RECT_STROKE_COLOR];
+        this.rectStrokeWidth = this.getConfigs()[Constants.RECT_STROKE_WIDTH];
         this.textString = this.data.toString();
-        this.fontSize = this.configs[Constants.TEXT_FONT_SIZE];
-        this.fontFamily = this.configs[Constants.TEXT_FONT_FAMILY];
-        this.textFill = this.configs[Constants.TEXT_FILL_COLOR];
-        this.textWidth = this.configs[Constants.TEXT_WIDTH];
-        this.textAlign = this.configs[Constants.TEXT_ALIGN];
+        this.fontSize = this.getConfigs()[Constants.TEXT_FONT_SIZE];
+        this.fontFamily = this.getConfigs()[Constants.TEXT_FONT_FAMILY];
+        this.textFill = this.getConfigs()[Constants.TEXT_FILL_COLOR];
+        this.textWidth = this.getConfigs()[Constants.TEXT_WIDTH];
+        this.textAlign = this.getConfigs()[Constants.TEXT_ALIGN];
 
         this.text = new Kinetic.Text({
         });

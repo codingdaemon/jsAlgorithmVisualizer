@@ -1,12 +1,14 @@
 define(["core/Utils","animds/AnimationObject", "libs/kinetic", "core/Constants", "core/Logger","animds/TextRectAnimationObject", "core/Defaults"], function (Utils,AnimationObject, Kinetic, Constants, Logger,TextRectAnimationObject, Defaults) {
 
-    function StackAnimationObject(animationId, layer) {
-        this.animationId = animationId;
-        this.animator = jsav.getAnimatorById(animationId);
-        AnimationObject.call(this, "Stack", layer);
+    function StackAnimationObject(configs, layer, animationEngine, layoutManager) {
+
+        AnimationObject.call(this, "Stack", configs, layer, animationEngine, layoutManager );
+
         this.group = new Kinetic.Group({
             draggable: true
         });
+
+        this.getLayer().add(this.group);
         this.rectArray = [];
     }
 
@@ -19,38 +21,32 @@ define(["core/Utils","animds/AnimationObject", "libs/kinetic", "core/Constants",
     StackAnimationObject.prototype.createObject = function () {
         Logger.info("Animating to create stack = " + this.toString());
 
-        var center = this.animator.getLayoutManager().getCenter();
+        var center = this.getLayoutManager().getCenter();
         var ref = this;
 
         var boxConfigs = {};
         boxConfigs["x"] =  center.getX();
         boxConfigs["y"] =  center.getY();
         boxConfigs["data"] =  ref.getName();
-//        boxConfigs["text.font.size"] =  20,
-//        boxConfigs["text.font.family"] =  "Calibri",
-//        boxConfigs["text.fill.color"] =  'black',
-        boxConfigs[Constants.TEXT_WIDTH] =  ref.animator.getConfigs()[Constants.STACK_BOX_WIDTH];
-//        boxConfigs["text.align"] =  'center',
-        boxConfigs[Constants.RECT_WIDTH] =  ref.animator.getConfigs()[Constants.STACK_BOX_WIDTH];
-        boxConfigs[Constants.RECT_HEIGHT] =  ref.animator.getConfigs()[Constants.STACK_BOX_HEIGHT];
-        boxConfigs[Constants.RECT_FILL_COLOR] =  ref.animator.getConfigs()[Constants.STACK_BOX_INIT_COLOR];
-        boxConfigs[Constants.RECT_STROKE_COLOR] =  ref.animator.getConfigs()[Constants.STACK_BOX_BORDER_COLOR];
-//        boxConfigs[Constants.RECT_STROKE_WIDTH] =  2
+        boxConfigs[Constants.TEXT_WIDTH] =  ref.getConfigs()[Constants.STACK_BOX_WIDTH];
+        boxConfigs[Constants.RECT_WIDTH] =  ref.getConfigs()[Constants.STACK_BOX_WIDTH];
+        boxConfigs[Constants.RECT_HEIGHT] =  ref.getConfigs()[Constants.STACK_BOX_HEIGHT];
+        boxConfigs[Constants.RECT_FILL_COLOR] =  ref.getConfigs()[Constants.STACK_BOX_INIT_COLOR];
+        boxConfigs[Constants.RECT_STROKE_COLOR] =  ref.getConfigs()[Constants.STACK_BOX_BORDER_COLOR];
 
         boxConfigs = Utils.overrideObject(Defaults,boxConfigs);
-        var rectGroup = this.getTextRectangle(boxConfigs);
+        var textRect = this.getTextRectangle(boxConfigs);
 
-        this.rectArray.push(rectGroup);
-        this.group.add(rectGroup.getGroup());
+        this.rectArray.push(textRect);
+//        this.group.add(textRect.getGroup());
 
-        var layer = this.animator.getLayoutManager().getLayer();
-        layer.add(this.group);
+        var layer = this.getLayer();
         layer.draw();
 
         setTimeout(function () {
-            rectGroup.getRect().fill(ref.animator.getConfigs(Constants.STACK_BOX_FINAL_COLOR));
+            textRect.getRect().fill(ref.getConfigs(Constants.STACK_BOX_FINAL_COLOR));
             layer.draw();
-            ref.animator.getAnimationEngine().next();
+            ref.getAnimationEngine().next();
         }, 2000);
     };
 
@@ -59,60 +55,53 @@ define(["core/Utils","animds/AnimationObject", "libs/kinetic", "core/Constants",
         Logger.info("Animating to push data = " + data + " on the stack = " + this);
         var ref = this;
         var topRect = this.rectArray[this.rectArray.length - 1];
-        var nextX = topRect.getRect().x();
-        var nextY = topRect.getRect().y() - this.animator.getConfigs()[Constants.STACK_BOX_HEIGHT];
+        var nextX = topRect.getX();
+        var nextY = topRect.getY() - this.getConfigs()[Constants.STACK_BOX_HEIGHT];
 
         var boxConfigs = {};
        boxConfigs["x"]= nextX;
        boxConfigs["y"]= nextY;
        boxConfigs["data"]= data;
-//       boxConfigs["text.font.size"]= 20,
-//       boxConfigs["text.font.family"]= "Calibri",
-//       boxConfigs["text.fill.color"]= 'black',
-       boxConfigs[Constants.TEXT_WIDTH]= ref.animator.getConfigs()[Constants.STACK_BOX_WIDTH];
-//       boxConfigs["text.align"]= 'center',
-       boxConfigs[Constants.RECT_WIDTH]= ref.animator.getConfigs()[Constants.STACK_BOX_WIDTH];
-       boxConfigs[Constants.RECT_HEIGHT]= ref.animator.getConfigs()[Constants.STACK_BOX_HEIGHT];
-       boxConfigs[Constants.RECT_FILL_COLOR]= ref.animator.getConfigs()[Constants.STACK_BOX_INIT_COLOR];
-       boxConfigs[Constants.RECT_STROKE_COLOR]= ref.animator.getConfigs()[Constants.STACK_BOX_BORDER_COLOR];
-//       boxConfigs[Constants.RECT_STROKE_WIDTH]= 2;
+       boxConfigs[Constants.TEXT_WIDTH]= ref.getConfigs()[Constants.STACK_BOX_WIDTH];
+       boxConfigs[Constants.RECT_WIDTH]= ref.getConfigs()[Constants.STACK_BOX_WIDTH];
+       boxConfigs[Constants.RECT_HEIGHT]= ref.getConfigs()[Constants.STACK_BOX_HEIGHT];
+       boxConfigs[Constants.RECT_FILL_COLOR]= ref.getConfigs()[Constants.STACK_BOX_INIT_COLOR];
+       boxConfigs[Constants.RECT_STROKE_COLOR]= ref.getConfigs()[Constants.STACK_BOX_BORDER_COLOR];
 
-        boxConfigs = Utils.overrideObject(Defaults,boxConfigs);
-       var rectGroup = this.getTextRectangle(boxConfigs);
+       boxConfigs = Utils.overrideObject(Defaults,boxConfigs);
+       var rect = this.getTextRectangle(boxConfigs);
 
-        this.rectArray.push(rectGroup);
-        this.group.add(rectGroup.getGroup());
+        this.rectArray.push(rect);
 
-        var layer = this.animator.getLayoutManager().getLayer();
+        var layer = this.getLayer();
         layer.draw();
 
         setTimeout(function () {
             // get only rect
-            rectGroup.getRect().fill(ref.animator.getConfigs()[Constants.STACK_BOX_FINAL_COLOR]);
+            rect.getRect().fill(ref.getConfigs()[Constants.STACK_BOX_FINAL_COLOR]);
             layer.draw();
-            ref.animator.getAnimationEngine().next();
+            ref.getAnimationEngine().next();
         }, 2000);
     };
 
     StackAnimationObject.prototype.pop = function () {
         Logger.info("Animating to pop data from the stack = " + this);
 
-        var rectGroup = this.rectArray.pop();
-        var group = rectGroup.getGroup();
-        var rect = rectGroup.getRect();
+        var textRect = this.rectArray.pop();
+//        var group = textRect.getGroup();
+        var rect = textRect.getRect();
 
-        var layer = this.animator.getLayoutManager().getLayer();
+        var layer = this.getLayoutManager().getLayer();
 
         var ref = this;
         var intervalTimer = setInterval(function () {
             rect.opacity(rect.opacity() - 0.1);
 
             if (rect.opacity() <= 0) {
-                group.destroyChildren();
-                group.destroy();
+                textRect.destroy();
                 layer.draw();
                 clearInterval(intervalTimer);
-                ref.animator.getAnimationEngine().next();
+                ref.getAnimationEngine().next();
             } else {
                 layer.draw();
             }
@@ -121,7 +110,7 @@ define(["core/Utils","animds/AnimationObject", "libs/kinetic", "core/Constants",
 
 
     StackAnimationObject.prototype.getTextRectangle = function (boxConfigs) {
-        return new TextRectAnimationObject(boxConfigs,this.getLayer());
+        return new TextRectAnimationObject(boxConfigs,this.getLayer(),this.group);
     };
 
     return StackAnimationObject;

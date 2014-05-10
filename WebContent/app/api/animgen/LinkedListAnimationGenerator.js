@@ -9,7 +9,8 @@ define(["animgen/AnimationGenerator", "animds/LinkedListAnimationObject", "core/
         this.name = name;
         this.animationId = animationId;
         this.animator = jsav.getAnimatorById(animationId);
-        this.linkedlistAO = new LinkedListAnimationObject(this.animator.getConfigs(), animationId, this.animator.getLayoutManager(), this.animator.getLayoutManager().getLayer(), this.animator.getAnimationEngine());
+
+        this.linkedlistAO = new LinkedListAnimationObject(this.animator.getConfigs(), this.animator.getLayoutManager().getLayer(), this.animator.getAnimationEngine(), this.animator.getLayoutManager());
         this.animator.getAnimationEngine().push(new AnimationInput(this.linkedlistAO, LinkedListAnimationObject.prototype.createObject, []));
     }
 

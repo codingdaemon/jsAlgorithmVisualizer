@@ -4,23 +4,18 @@
 
 define(["libs/connect", "core/Point", "ds/LinkedNode", "animds/AnimationObject", "animds/LinkedNodeAnimationObject", "animds/PointerAnimationObject", "core/Constants", "core/Utils", "core/Defaults", "libs/kinetic", "core/Factory", "core/Logger","animds/AnimUtils"], function ( ConnectJs, Point, LinkedNode, AnimationObject, LinkedNodeAnimationObject, PointerAnimationObject, Constants, Utils, Defaults, Kinetic, Factory, Logger, AnimUtils) {
 
-    function LinkedListAnimationObject(config, animationId, layoutManager, layer, animationEngine) {
-        AnimationObject.call(this, "LinkedListAnimationObject", layer, animationEngine);
-        this.configs = config;
-        this.animationId = animationId;
-        this.layoutManager = layoutManager;
-//        this.animationEngine = animationEngine;
+    function LinkedListAnimationObject(configs, layer, animationEngine, layoutManager ) {
+        AnimationObject.call(this, "LinkedList", configs, layer, animationEngine, layoutManager );
         this.head = null;
         this.tail = null;
         this.headPointer = null;
         this.tailPointer = null;
 
-        this.rectWidth = this.configs[Constants.LINKEDLIST_BOX_WIDTH];
-        this.rectHeight = this.configs[Constants.LINKEDLIST_BOX_HEIGHT];
-        this.pointerLength =  this.configs[Constants.LINKEDLIST_POINTER_LENGTH];
-        this.unitTime = this.configs[Constants.ANIMATION_UNIT_TIME];
+        this.rectWidth = this.getConfigs()[Constants.LINKEDLIST_BOX_WIDTH];
+        this.rectHeight = this.getConfigs()[Constants.LINKEDLIST_BOX_HEIGHT];
+        this.pointerLength =  this.getConfigs()[Constants.LINKEDLIST_POINTER_LENGTH];
+        this.unitTime = this.getConfigs()[Constants.ANIMATION_UNIT_TIME];
 
-//        this.animator = jsav.getAnimatorById(animationId);
         this.group = new Kinetic.Group({
             draggable : true
         });
@@ -32,20 +27,20 @@ define(["libs/connect", "core/Point", "ds/LinkedNode", "animds/AnimationObject",
     LinkedListAnimationObject.prototype.createObject = function () {
         Logger.info("createObject called");
         // create the head and tail pointer pointing to null
-        var center = this.layoutManager.getCenter();
+        var center = this.getLayoutManager().getCenter();
 
-        var headConfigs = Utils.clone(this.configs);
+        var headConfigs = Utils.clone(this.getConfigs());
         headConfigs[Constants.ARROW_FROMX] = center.getX() / 2;
-        headConfigs[Constants.ARROW_FROMY] = center.getY() / 2 - this.configs[Constants.LINKEDLIST_POINTER_LENGTH];
+        headConfigs[Constants.ARROW_FROMY] = center.getY() / 2 - this.getConfigs()[Constants.LINKEDLIST_POINTER_LENGTH];
         headConfigs[Constants.ARROW_TOX] = center.getX() / 2;
         headConfigs[Constants.ARROW_TOY] = center.getY() / 2;
         headConfigs[ Constants.ARROW_TAIL_TEXT] = "head";
         this.headPointer = new PointerAnimationObject(headConfigs, this.getLayer(),this.group);
 //        this.headPointer.setGroup(this.group);
 
-        var tailConfigs = Utils.clone(this.configs);
+        var tailConfigs = Utils.clone(this.getConfigs());
         tailConfigs[Constants.ARROW_FROMX] = center.getX() / 2;
-        tailConfigs[Constants.ARROW_FROMY] = center.getY() / 2 + this.configs[Constants.LINKEDLIST_POINTER_LENGTH];
+        tailConfigs[Constants.ARROW_FROMY] = center.getY() / 2 + this.getConfigs()[Constants.LINKEDLIST_POINTER_LENGTH];
         tailConfigs[Constants.ARROW_TOX] = center.getX() / 2;
         tailConfigs[Constants.ARROW_TOY] = center.getY() / 2;
         tailConfigs[Constants.ARROW_TAIL_TEXT] = "tail";
@@ -58,7 +53,7 @@ define(["libs/connect", "core/Point", "ds/LinkedNode", "animds/AnimationObject",
 
         this.getLayer().draw();
         
-        this.animationEngine.next();
+        this.getAnimationEngine().next();
     };
 
     LinkedListAnimationObject.prototype.addFront = function (data) {
@@ -66,8 +61,8 @@ define(["libs/connect", "core/Point", "ds/LinkedNode", "animds/AnimationObject",
         var node = new LinkedNode(data);
         var currHead = this.head;
 
-        var nodeConfigs = Utils.clone( this.configs );
-        var nextPointerConfigs = Utils.clone( this.configs );
+        var nodeConfigs = Utils.clone( this.getConfigs() );
+        var nextPointerConfigs = Utils.clone( this.getConfigs() );
 
         var animNode = null;
 
@@ -100,7 +95,7 @@ define(["libs/connect", "core/Point", "ds/LinkedNode", "animds/AnimationObject",
                 this.tailPointer.pointHeadTo(node.getAnimNode());
 
                 this.getLayer().draw();
-                this.animationEngine.next();
+                this.getAnimationEngine().next();
             }));
         } else {
 	     	nodeConfigs["x"] = this.headPointer.getHeadX() - this.rectWidth/2 - this.rectWidth - this.pointerLength;
@@ -130,7 +125,7 @@ define(["libs/connect", "core/Point", "ds/LinkedNode", "animds/AnimationObject",
                 this.head.setNextPointer(currHead);
 
                 this.getLayer().draw();
-                this.animationEngine.next();
+                this.getAnimationEngine().next();
             }));
         }
     };
@@ -140,8 +135,8 @@ define(["libs/connect", "core/Point", "ds/LinkedNode", "animds/AnimationObject",
 
         var node = new LinkedNode(data);
 
-        var nodeConfigs = Utils.clone( this.configs );
-        var nextPointerConfigs = Utils.clone( this.configs );
+        var nodeConfigs = Utils.clone( this.getConfigs() );
+        var nextPointerConfigs = Utils.clone( this.getConfigs() );
 
         var animNode = null;
 
@@ -175,7 +170,7 @@ define(["libs/connect", "core/Point", "ds/LinkedNode", "animds/AnimationObject",
                 this.tailPointer.pointHeadTo(node.getAnimNode());
 
                 this.getLayer().draw();
-                this.animationEngine.next();
+                this.getAnimationEngine().next();
             }));
 
             this.tail = node;
@@ -211,7 +206,7 @@ define(["libs/connect", "core/Point", "ds/LinkedNode", "animds/AnimationObject",
                 currTail.setNextPointer(this.tail);
 
                 this.getLayer().draw();
-                this.animationEngine.next();
+                this.getAnimationEngine().next();
             }));
         }
     };
@@ -251,8 +246,8 @@ define(["libs/connect", "core/Point", "ds/LinkedNode", "animds/AnimationObject",
 
         node = new LinkedNode(data);
         var animNode = null;
-        var nodeConfigs = Utils.clone( this.configs );
-        var nextPointerConfigs = Utils.clone( this.configs );
+        var nodeConfigs = Utils.clone( this.getConfigs() );
+        var nextPointerConfigs = Utils.clone( this.getConfigs() );
 
         if(q != null){
             if( p != null){
@@ -272,12 +267,12 @@ define(["libs/connect", "core/Point", "ds/LinkedNode", "animds/AnimationObject",
                 animNode = new LinkedNodeAnimationObject(nodeConfigs, true, false, this.getLayer(),this.group);
                 node.setAnimNode(animNode);
 //                animNode.setGroup(this.group);
-                this.layer.draw();
+                this.getLayer().draw();
 
                 q.setNextPointer(node);
-                AnimUtils.animatePointHeadTo(q.getAnimNode().getNextPointer(), animNode,this.unitTime,this.layer,ConnectJs.hitch(this,function(){
+                AnimUtils.animatePointHeadTo(q.getAnimNode().getNextPointer(), animNode,this.unitTime,this.getLayer(),ConnectJs.hitch(this,function(){
                     node.setNextPointer(p);
-                    AnimUtils.animatePointHeadTo(node.getAnimNode().getNextPointer(), p.getAnimNode(),this.unitTime,this.layer,ConnectJs.hitch(this,function(){
+                    AnimUtils.animatePointHeadTo(node.getAnimNode().getNextPointer(), p.getAnimNode(),this.unitTime,this.getLayer(),ConnectJs.hitch(this,function(){
                         // shift p and rest of the group to the right.
 //                        var tempGroup = new Kinetic.Group();
 //                        this.group.add(tempGroup);
@@ -304,7 +299,7 @@ define(["libs/connect", "core/Point", "ds/LinkedNode", "animds/AnimationObject",
                             animNode.getNextPointer().pointHeadTo(p.getAnimNode());
 
                             this.getLayer().draw();
-                            this.animationEngine.next();
+                            this.getAnimationEngine().next();
                         }));
                     }));
                 }));
@@ -326,7 +321,7 @@ define(["libs/connect", "core/Point", "ds/LinkedNode", "animds/AnimationObject",
                 animNode = new LinkedNodeAnimationObject(nodeConfigs, true, false, this.getLayer(),this.group);
                 node.setAnimNode(animNode);
 
-                this.layer.draw();
+                this.getLayer().draw();
 
                 q.getAnimNode().getNextPointer().setHeadText("");
                 AnimUtils.animatePointHeadTo(q.getAnimNode().getNextPointer(),animNode,this.unitTime,this.getLayer(),ConnectJs.hitch(this,function(){
@@ -337,7 +332,7 @@ define(["libs/connect", "core/Point", "ds/LinkedNode", "animds/AnimationObject",
                     AnimUtils.animatePointerTailShift(this.tailPointer,animNode.getRect().getX() + this.rectWidth/2, animNode.getRect().getY() + this.rectHeight + this.pointerLength,this.unitTime,this.getLayer(),ConnectJs.hitch(this,function(){
                         this.tailPointer.pointHeadTo(animNode);
                         this.tail = node;
-                        this.animationEngine.next();
+                        this.getAnimationEngine().next();
                     }));
                 }));
             }

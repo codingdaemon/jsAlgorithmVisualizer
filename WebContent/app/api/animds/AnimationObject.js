@@ -1,14 +1,29 @@
 define(["core/Logger", "core/Utils"], function (logger,utils) {
-    function AnimationObject(name, layer, animationEngine) {
+    function AnimationObject(name, configs, layer, animationEngine, layoutManager) {
         this.name = name;
         this.id = utils.generateId();
         this.layer = layer;
         this.animationEngine = animationEngine;
+        this.layoutManager = layoutManager;
+        this.configs = configs;
     }
 
     AnimationObject.prototype.createObject = function (animationEngine) {
         logger.info("creating new AnimationObject");
         animationEngine.next();
+    };
+
+    AnimationObject.prototype.getLayoutManager = function () {
+        return this.layoutManager;
+    };
+
+
+    AnimationObject.prototype.getConfigs = function () {
+        return this.configs;
+    };
+
+    AnimationObject.prototype.getConfig = function (configKey) {
+        return this.configs[configKey];
     };
 
     AnimationObject.prototype.getName = function () {
