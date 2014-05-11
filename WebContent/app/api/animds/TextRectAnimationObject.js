@@ -109,7 +109,10 @@ define(["animds/AnimationObject", "libs/kinetic", "core/Utils", "core/Logger", "
     };
     TextRectAnimationObject.prototype.setRectFill = function (value) {
         this.rectFill = value;
+        this.getRect().fill(this.rectFill);
+        this.draw();
     };
+
     TextRectAnimationObject.prototype.setRectStroke = function (value) {
         this.rectStroke = value;
     };
@@ -123,6 +126,7 @@ define(["animds/AnimationObject", "libs/kinetic", "core/Utils", "core/Logger", "
         } else {
             this.textString = "";
         }
+        this.draw();
     };
     TextRectAnimationObject.prototype.setFontSize = function (value) {
         this.fontSize = value;
@@ -204,10 +208,10 @@ define(["animds/AnimationObject", "libs/kinetic", "core/Utils", "core/Logger", "
         this.draw();
     };
 
-    TextRectAnimationObject.prototype.setData = function (data) {
-        this.data = data;
-        this.text.text(data.toString());
-    };
+//    TextRectAnimationObject.prototype.setData = function (data) {
+//        this.data = data;
+//        this.text.text(data.toString());
+//    };
 
     TextRectAnimationObject.prototype.getRect = function () {
         return this.rect;

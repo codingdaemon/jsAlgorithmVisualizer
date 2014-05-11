@@ -1,7 +1,8 @@
 define(["core/Logger"], function (Logger) {
 
-    function AnimationEngine(animationId) {
+    function AnimationEngine(animationId, unitTime) {
         this.animationId = animationId;
+        this.unitTime = unitTime;
         /**
          *  Type AnimationInput Array
          */
@@ -60,6 +61,19 @@ define(["core/Logger"], function (Logger) {
     AnimationEngine.prototype.reset = function () {
         this.currentIndex = -1;
         this.isStarted = false; // stops any old animation
+    };
+
+    /**
+     * always get the unit time using this method
+     * as it might keep changing with speed of animation required.
+     * @returns {*}
+     */
+    AnimationEngine.prototype.getUnitTime = function(){
+        return this.unitTime;
+    };
+
+    AnimationEngine.prototype.setUnitTime = function(unitTime){
+        this.unitTime = unitTime;
     };
 
     return AnimationEngine;

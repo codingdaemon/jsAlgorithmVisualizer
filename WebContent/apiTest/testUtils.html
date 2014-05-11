@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" data-main="../app/api/app.js" src="../app/api/libs/require.js       "></script>
+</head>
+<body>
+<script type="text/javascript" >
+//    require(["core/Utils"],function(Utils){
+//
+//       console.log(Utils.isNullOrUndefined(abc));
+//    });
+ function isNullOrUndefined( object ){
+    if( typeof object === 'undefined' || object == null){
+        return true;
+    }
+
+    return false;
+}
+
+function testUndefined( param ){
+    console.log("testUndefined : param " + isNullOrUndefined(param));
+}
+
+console.log(isNullOrUndefined((window.abc)));
+testUndefined();
+
+var pqr = window.abc;
+var pqr = abc;
+console.log(isNullOrUndefined((abc)));
+
+</script>
+</body>
+</html>

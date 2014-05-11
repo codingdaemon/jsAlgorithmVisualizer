@@ -5,7 +5,7 @@ define(["core/Constants", "core/AnimationEngine", "libs/kinetic","core/LayoutMan
         this.animationId = animationId;
 //        this.codeStatementLines = codeStatementLines;
         this.configs = configs;
-        this.animationEngine = new AnimationEngine(animationId);
+        this.animationEngine = new AnimationEngine(animationId,this.configs[Constants.ANIMATION_UNIT_TIME]);
         this.stage = null;
         this.layoutManager = null;
         this.codeAnimationGenerator = null; //new CodeAnimationGenerator(this.animationId, codeStatementLines);

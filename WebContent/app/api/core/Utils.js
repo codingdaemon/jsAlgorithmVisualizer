@@ -147,10 +147,11 @@ define(["core/Point","core/Logger"], function (Point,Logger) {
         getHeaderCode: function( animationId ){
             var HEADER_CODE = "(function(){" +
             "animationId = " + animationId + ";\n" +
-            "require([\"ds/Stack\", \"ds/LinkedList\",\"core/Logger\"],function(Stack,LinkedList,Logger){ \n";
+            "require([\"ds/Stack\", \"ds/LinkedList\",  \"ds/ArrayDS\", \"core/Logger\"],function(Stack,LinkedList, ArrayDS,Logger){ \n";
 
             return HEADER_CODE;
         },
+
         getFooterCode: function(){
 	        var FOOTER_CODE = "\njsav.playCodeAnimation(animationId);\n" +
 	        "});" +
@@ -193,8 +194,13 @@ define(["core/Point","core/Logger"], function (Point,Logger) {
            return array;
         },
 
-        isNullOrUndefined : function( object ){
-            if( typeof object === 'undefined' || object == null){
+        /**
+         * checks if the param property is null or undefined
+         * @param param
+         * @returns {boolean}
+         */
+        isNullOrUndefined : function( param ){
+            if( typeof param === 'undefined' || param == null){
                 return true;
             }
 

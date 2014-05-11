@@ -82,6 +82,17 @@ define(["core/Utils", "core/Point", "libs/connect"], function (Utils,Point,Conne
             setTimeout(timeoutFunction,0);
         },
 
+        animateHighLightTextRect : function( textRect, highLightColor, unitTime, layer, callback ){
+            var originalColor = textRect.getRectFill();
+            this.repeater(function(){
+                if( textRect.getRectFill() == originalColor){
+                    textRect.setRectFill(highLightColor);
+                }else{
+                    textRect.setRectFill(originalColor);
+                }
+            },unitTime,4,callback);
+        },
+
         animateNodeDeletion : function(linkedNode,unitTime,layer,callback){
             var children = linkedNode.getChildren();
             var opacities = [];

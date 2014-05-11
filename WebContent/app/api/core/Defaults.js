@@ -15,12 +15,14 @@ define(["core/Constants"], function (Constants) {
     DEFAULT_OPTIONS[Constants.STAGE_OPACITY] = 1;
 
     DEFAULT_OPTIONS[Constants.VAR_BOX_LENGTH] = 50;
+
     DEFAULT_OPTIONS[Constants.STACK_BOX_WIDTH] = 50;
     DEFAULT_OPTIONS[Constants.STACK_BOX_HEIGHT] = 30;
     DEFAULT_OPTIONS[Constants.STACK_BOX_BORDER_COLOR] = "00000";
     DEFAULT_OPTIONS[Constants.STACK_BOX_INIT_COLOR] = "FFFF33";
     DEFAULT_OPTIONS[Constants.STACK_BOX_FINAL_COLOR] = "0066CC";
     DEFAULT_OPTIONS[Constants.STACK_BOX_TEXT_COLOR] = "00000";
+
     DEFAULT_OPTIONS[Constants.CODE_FONT_SIZE] = 20;
     DEFAULT_OPTIONS[Constants.CODE_COLOR] = 'black';
     DEFAULT_OPTIONS[Constants.CODE_HIGHLIGHT_COLOR] = 'red';
@@ -44,9 +46,7 @@ define(["core/Constants"], function (Constants) {
     DEFAULT_OPTIONS[Constants.ARROW_HEAD_TEXT_FONT_SIZE ] = 10;
     DEFAULT_OPTIONS[Constants.ARROW_HEAD_TEXT_COLOR ] = "black";
     DEFAULT_OPTIONS[Constants.ARROW_HEAD_TEXT_FONT ] = "Calibri";
-
     DEFAULT_OPTIONS[Constants.ARROW_HEAD_HEIGHT] = 2;
-
 
     DEFAULT_OPTIONS[Constants.LINKEDLIST_BOX_WIDTH ] = 50;
     DEFAULT_OPTIONS[Constants.LINKEDLIST_BOX_HEIGHT ] = 30;
@@ -61,6 +61,10 @@ define(["core/Constants"], function (Constants) {
     DEFAULT_OPTIONS[Constants.RECT_FILL_COLOR ] = "#E0FFFF";
     DEFAULT_OPTIONS[Constants.RECT_STROKE_COLOR ] = "black";
     DEFAULT_OPTIONS[Constants.RECT_STROKE_WIDTH ] = 2;
+    DEFAULT_OPTIONS[Constants.RECT_HIGHLIGHT_COLOR] = "yellow";
+
+    DEFAULT_OPTIONS[Constants.ARRAY_BOX_WIDTH] = 30;
+    DEFAULT_OPTIONS[Constants.ARRAY_BOX_HEIGHT] = 30;
 
     DEFAULT_OPTIONS[Constants.ANIMATION_UNIT_TIME] = 100; // miliseconds
 

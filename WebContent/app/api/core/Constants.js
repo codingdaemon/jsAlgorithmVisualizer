@@ -58,6 +58,10 @@ define([],function(){
         RECT_FILL_COLOR : "rect.fill.color",
         RECT_STROKE_COLOR : "rect.stroke.color",
         RECT_STROKE_WIDTH : "rect.stroke.width",
+        RECT_HIGHLIGHT_COLOR : "rect.highlight.color",
+
+        ARRAY_BOX_WIDTH : "array.box.width",
+        ARRAY_BOX_HEIGHT : "array.box.height",
 
         ANIMATION_UNIT_TIME : "animation.unit.time"
     };

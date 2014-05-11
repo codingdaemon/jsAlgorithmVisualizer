@@ -14,7 +14,6 @@ define(["libs/connect", "core/Point", "ds/LinkedNode", "animds/AnimationObject",
         this.rectWidth = this.getConfigs()[Constants.LINKEDLIST_BOX_WIDTH];
         this.rectHeight = this.getConfigs()[Constants.LINKEDLIST_BOX_HEIGHT];
         this.pointerLength =  this.getConfigs()[Constants.LINKEDLIST_POINTER_LENGTH];
-        this.unitTime = this.getConfigs()[Constants.ANIMATION_UNIT_TIME];
 
         this.group = new Kinetic.Group({
             draggable : true
@@ -87,7 +86,7 @@ define(["libs/connect", "core/Point", "ds/LinkedNode", "animds/AnimationObject",
 
         	this.head = node;
 //        	this.headPointer.setTailPoint(new Point(this.headPointer.x1, this.headPointer.y1 - rectHeight/2));
-            AnimUtils.animatePointerTailShift(this.headPointer,this.headPointer.getTailX(), this.headPointer.getTailY() - this.rectHeight/2,this.unitTime,this.getLayer(),ConnectJs.hitch(this,function(){
+            AnimUtils.animatePointerTailShift(this.headPointer,this.headPointer.getTailX(), this.headPointer.getTailY() - this.rectHeight/2,this.getAnimationEngine().getUnitTime(),this.getLayer(),ConnectJs.hitch(this,function(){
                 this.headPointer.pointHeadTo(node.getAnimNode());
                 this.tail = node;
                 this.tailPointer.setTailPoint(new Point(this.headPointer.getTailX(), this.headPointer.getHeadY() + this.rectHeight + this.pointerLength));
@@ -116,7 +115,7 @@ define(["libs/connect", "core/Point", "ds/LinkedNode", "animds/AnimationObject",
 
 //            Logger.info("Pointer headPointer to : " + tailPoint);
 //	     	this.headPointer.setTailPoint(tailPoint);
-            AnimUtils.animatePointerTailShift(this.headPointer,this.headPointer.getTailX() - this.rectWidth - this.pointerLength, this.headPointer.getTailY(),this.unitTime,this.getLayer(),ConnectJs.hitch(this,function() {
+            AnimUtils.animatePointerTailShift(this.headPointer,this.headPointer.getTailX() - this.rectWidth - this.pointerLength, this.headPointer.getTailY(),this.getAnimationEngine().getUnitTime(),this.getLayer(),ConnectJs.hitch(this,function() {
                 this.headPointer.pointHeadTo(animNode);
                 animNode.getNextPointer().pointHeadTo(currHead.getAnimNode());
 
@@ -162,7 +161,7 @@ define(["libs/connect", "core/Point", "ds/LinkedNode", "animds/AnimationObject",
 
             this.head = node;
 //        	this.headPointer.setTailPoint(new Point(this.headPointer.x1, this.headPointer.y1 - rectHeight/2));
-            AnimUtils.animatePointerTailShift(this.headPointer,this.headPointer.getTailX(), this.headPointer.getTailY() - this.rectHeight/2,this.unitTime,this.getLayer(),ConnectJs.hitch(this,function(){
+            AnimUtils.animatePointerTailShift(this.headPointer,this.headPointer.getTailX(), this.headPointer.getTailY() - this.rectHeight/2,this.getAnimationEngine().getUnitTime(),this.getLayer(),ConnectJs.hitch(this,function(){
                 this.headPointer.pointHeadTo(node.getAnimNode());
                 this.tail = node;
                 this.tailPointer.setTailPoint(new Point(this.headPointer.getTailX(), this.headPointer.getHeadY() + this.rectHeight + this.pointerLength));
@@ -197,7 +196,7 @@ define(["libs/connect", "core/Point", "ds/LinkedNode", "animds/AnimationObject",
 
 //          Logger.info("Pointer headPointer to : " + tailPoint);
 //	     	this.headPointer.setTailPoint(tailPoint);
-            AnimUtils.animatePointerTailShift(this.tailPointer,this.tailPointer.getTailX() + this.rectWidth + this.pointerLength, this.tailPointer.getTailY(),this.unitTime,this.getLayer(),ConnectJs.hitch(this,function() {
+            AnimUtils.animatePointerTailShift(this.tailPointer,this.tailPointer.getTailX() + this.rectWidth + this.pointerLength, this.tailPointer.getTailY(),this.getAnimationEngine().getUnitTime(),this.getLayer(),ConnectJs.hitch(this,function() {
                 this.tailPointer.pointHeadTo(animNode);
                 currTail.getAnimNode().getNextPointer().pointHeadTo(animNode);
 
@@ -269,9 +268,9 @@ define(["libs/connect", "core/Point", "ds/LinkedNode", "animds/AnimationObject",
                 this.getLayer().draw();
 
                 q.setNextPointer(node);
-                AnimUtils.animatePointHeadTo(q.getAnimNode().getNextPointer(), animNode,this.unitTime,this.getLayer(),ConnectJs.hitch(this,function(){
+                AnimUtils.animatePointHeadTo(q.getAnimNode().getNextPointer(), animNode,this.getAnimationEngine().getUnitTime(),this.getLayer(),ConnectJs.hitch(this,function(){
                     node.setNextPointer(p);
-                    AnimUtils.animatePointHeadTo(node.getAnimNode().getNextPointer(), p.getAnimNode(),this.unitTime,this.getLayer(),ConnectJs.hitch(this,function(){
+                    AnimUtils.animatePointHeadTo(node.getAnimNode().getNextPointer(), p.getAnimNode(),this.getAnimationEngine().getUnitTime(),this.getLayer(),ConnectJs.hitch(this,function(){
                         // shift p and rest of the group to the right.
 //                        var tempGroup = new Kinetic.Group();
 //                        this.group.add(tempGroup);
@@ -290,7 +289,7 @@ define(["libs/connect", "core/Point", "ds/LinkedNode", "animds/AnimationObject",
                                 allObject[i].moveXY(unitDistance,0);
                             }
                             this.getLayer().draw();
-                        }),this.unitTime,10,ConnectJs.hitch(this,function(){
+                        }),this.getAnimationEngine().getUnitTime(),10,ConnectJs.hitch(this,function(){
                             animNode.moveXY(0, this.rectHeight + this.rectHeight/2);
                             this.getLayer().draw();
 
@@ -323,12 +322,12 @@ define(["libs/connect", "core/Point", "ds/LinkedNode", "animds/AnimationObject",
                 this.getLayer().draw();
 
                 q.getAnimNode().getNextPointer().setHeadText("");
-                AnimUtils.animatePointHeadTo(q.getAnimNode().getNextPointer(),animNode,this.unitTime,this.getLayer(),ConnectJs.hitch(this,function(){
+                AnimUtils.animatePointHeadTo(q.getAnimNode().getNextPointer(),animNode,this.getAnimationEngine().getUnitTime(),this.getLayer(),ConnectJs.hitch(this,function(){
 
                     q.setNextPointer(node);
                     node.setNextPointer(p); // already point the next to null;
 
-                    AnimUtils.animatePointerTailShift(this.tailPointer,animNode.getRect().getX() + this.rectWidth/2, animNode.getRect().getY() + this.rectHeight + this.pointerLength,this.unitTime,this.getLayer(),ConnectJs.hitch(this,function(){
+                    AnimUtils.animatePointerTailShift(this.tailPointer,animNode.getRect().getX() + this.rectWidth/2, animNode.getRect().getY() + this.rectHeight + this.pointerLength,this.getAnimationEngine().getUnitTime(),this.getLayer(),ConnectJs.hitch(this,function(){
                         this.tailPointer.pointHeadTo(animNode);
                         this.tail = node;
                         this.getAnimationEngine().next();
@@ -369,12 +368,12 @@ define(["libs/connect", "core/Point", "ds/LinkedNode", "animds/AnimationObject",
                     var x = q.getAnimNode().getRect().getX() + this.rectWidth/2
                     var y = this.tailPointer.getTailY();
 
-                    AnimUtils.animatePointerTailShift(this.tailPointer,x,y,this.unitTime,this.getLayer(),ConnectJs.hitch(this,function(){
+                    AnimUtils.animatePointerTailShift(this.tailPointer,x,y,this.getAnimationEngine().getUnitTime(),this.getLayer(),ConnectJs.hitch(this,function(){
                         this.tailPointer.pointHeadTo(q.getAnimNode());
                         q.setNextPointer(p.getNextPointer());
                         q.getAnimNode().getNextPointer().setHeadText("null");
                         q.getAnimNode().getNextPointer().pointHeadTo(null);
-                        AnimUtils.animateNodeDeletion(p.getAnimNode(),this.unitTime,this.getLayer(),ConnectJs.hitch(this,function(){
+                        AnimUtils.animateNodeDeletion(p.getAnimNode(),this.getAnimationEngine().getUnitTime(),this.getLayer(),ConnectJs.hitch(this,function(){
                             this.getAnimationEngine().next();
                         }));
                     }));
@@ -385,11 +384,11 @@ define(["libs/connect", "core/Point", "ds/LinkedNode", "animds/AnimationObject",
                     var ytail = p.getAnimNode().getRect().getY() + this.rectHeight / 2 + this.pointerLength;
                     var yhead = p.getAnimNode().getRect().getY() + this.rectHeight / 2 - this.pointerLength;
 
-                    AnimUtils.animateNodeDeletion(p.getAnimNode(), this.unitTime, this.getLayer(), ConnectJs.hitch(this, function () {
-                        AnimUtils.animatePointerTailShift(this.tailPointer, x, ytail, this.unitTime, this.getLayer(), ConnectJs.hitch(this, function () {
-                            AnimUtils.animatePointerHeadShift(this.tailPointer, x, y, this.unitTime, this.getLayer(), ConnectJs.hitch(this, function () {
-                                AnimUtils.animatePointerTailShift(this.headPointer, x, yhead, this.unitTime, this.getLayer(), ConnectJs.hitch(this, function () {
-                                    AnimUtils.animatePointerHeadShift(this.headPointer, x, y, this.unitTime, this.getLayer(), ConnectJs.hitch(this, function () {
+                    AnimUtils.animateNodeDeletion(p.getAnimNode(), this.getAnimationEngine().getUnitTime(), this.getLayer(), ConnectJs.hitch(this, function () {
+                        AnimUtils.animatePointerTailShift(this.tailPointer, x, ytail, this.getAnimationEngine().getUnitTime(), this.getLayer(), ConnectJs.hitch(this, function () {
+                            AnimUtils.animatePointerHeadShift(this.tailPointer, x, y, this.getAnimationEngine().getUnitTime(), this.getLayer(), ConnectJs.hitch(this, function () {
+                                AnimUtils.animatePointerTailShift(this.headPointer, x, yhead, this.getAnimationEngine().getUnitTime(), this.getLayer(), ConnectJs.hitch(this, function () {
+                                    AnimUtils.animatePointerHeadShift(this.headPointer, x, y, this.getAnimationEngine().getUnitTime(), this.getLayer(), ConnectJs.hitch(this, function () {
                                         this.getAnimationEngine().next();
                                     }));
                                 }));
@@ -404,16 +403,16 @@ define(["libs/connect", "core/Point", "ds/LinkedNode", "animds/AnimationObject",
                     var x = this.head.getAnimNode().getRect().getX() + this.rectWidth/2;
                     var ytail = this.headPointer.getTailY();
 
-                    AnimUtils.animatePointerTailShift(this.headPointer,x,ytail,this.unitTime,this.getLayer(),ConnectJs.hitch(this,function(){
+                    AnimUtils.animatePointerTailShift(this.headPointer,x,ytail,this.getAnimationEngine().getUnitTime(),this.getLayer(),ConnectJs.hitch(this,function(){
                         this.headPointer.pointHeadTo(this.head.getAnimNode());
-                        AnimUtils.animateNodeDeletion(p.getAnimNode(),this.unitTime,this.getLayer(),ConnectJs.hitch(this,function(){
+                        AnimUtils.animateNodeDeletion(p.getAnimNode(),this.getAnimationEngine().getUnitTime(),this.getLayer(),ConnectJs.hitch(this,function(){
                             this.getAnimationEngine().next();
                         }));
 
                     }));
                 }else{
                     // q's next points to the next of p and next of p cannot be null as p == tail is covered
-                    AnimUtils.animateNodeDeletion(p.getAnimNode(),this.unitTime,this.getLayer(),ConnectJs.hitch(this,function(){
+                    AnimUtils.animateNodeDeletion(p.getAnimNode(),this.getAnimationEngine().getUnitTime(),this.getLayer(),ConnectJs.hitch(this,function(){
 //                        this.getLayer()
                         // shift rest of the nodes to the left
                         var tempNode = p.getNextPointer();
@@ -430,7 +429,7 @@ define(["libs/connect", "core/Point", "ds/LinkedNode", "animds/AnimationObject",
                                 allNodes[i].moveXY(diffX/10,0);
                             }
                             this.getLayer().draw();
-                        }),this.unitTime,10,ConnectJs.hitch(this,function(){
+                        }),this.getAnimationEngine().getUnitTime(),10,ConnectJs.hitch(this,function(){
                             q.getAnimNode().getNextPointer().pointHeadTo(p.getNextPointer().getAnimNode());
 
                             q.setNextPointer(p.getNextPointer());
