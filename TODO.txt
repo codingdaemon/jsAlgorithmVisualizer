@@ -1,0 +1,15 @@
+1. I have added following methods to AnimationObject which needs to be added to its children objects too.
+Add them to StackAnimationObject, LinkedListAnimationObject, TextRectAnimationObject, PointerAnimationObject,
+LinkedNodeAnimationObject
+    AnimationObject.prototype.setXY = function (x,y) {
+    };
+
+    AnimationObject.prototype.getX = function () {
+    };
+
+    AnimationObject.prototype.getY = function () {
+    };
+
+2. Change the StackAnimationObject to do the animation using unitTime. Also take advantage of AnimUtils
+
+3.

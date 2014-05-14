@@ -2,27 +2,20 @@
 <project version="4">
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/WebContent/app/api/core/jsav.js" line="8" />
-    <bookmark url="file://$PROJECT_DIR$/WebContent/app/api/animds/BinaryTreeAnimationObject.js" line="118" mnemonic="8" />
+    <bookmark url="file://$PROJECT_DIR$/WebContent/app/api/animds/BinaryTreeAnimationObject.js" line="138" mnemonic="8" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="108c393e-3b01-404f-b9d4-f4079cbfabdd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/app/api/ds/BinaryTree.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/apiTest/animdsTest/BinaryTreeAnimObjTest.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/app/api/animgen/BinaryTreeAnimationGenerator.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/app/api/animds/BinaryTreeAnimationObject.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/app/api/animds/BinaryTreeExtension.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/apiTest/ds/BinaryTreeTest.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/app/api/animds/InternalBinaryTree.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebContent/apiTest/jsReferenceComparison.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/animds/ArrayAnimationObject.js" afterPath="$PROJECT_DIR$/WebContent/app/api/animds/ArrayAnimationObject.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/core/Constants.js" afterPath="$PROJECT_DIR$/WebContent/app/api/core/Constants.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/core/Defaults.js" afterPath="$PROJECT_DIR$/WebContent/app/api/core/Defaults.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/animds/LinkedNodeAnimationObject.js" afterPath="$PROJECT_DIR$/WebContent/app/api/animds/LinkedNodeAnimationObject.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/animds/PointerAnimationObject.js" afterPath="$PROJECT_DIR$/WebContent/app/api/animds/PointerAnimationObject.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/apiTest/animdsTest/PointerTransitionTest.html" afterPath="$PROJECT_DIR$/WebContent/apiTest/animdsTest/PointerTransitionTest.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/apiTest/animdsTest/TestArrayAnimObj.html" afterPath="$PROJECT_DIR$/WebContent/apiTest/animdsTest/TestArrayAnimObj.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TODO.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/animds/AnimUtils.js" afterPath="$PROJECT_DIR$/WebContent/app/api/animds/AnimUtils.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/core/AnimationEngine.js" afterPath="$PROJECT_DIR$/WebContent/app/api/core/AnimationEngine.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/animds/AnimationObject.js" afterPath="$PROJECT_DIR$/WebContent/app/api/animds/AnimationObject.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/core/Animator.js" afterPath="$PROJECT_DIR$/WebContent/app/api/core/Animator.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/ds/BinaryTree.js" afterPath="$PROJECT_DIR$/WebContent/app/api/ds/BinaryTree.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/apiTest/animdsTest/BinaryTreeAnimObjTest.html" afterPath="$PROJECT_DIR$/WebContent/apiTest/animdsTest/BinaryTreeAnimObjTest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/animgen/BinaryTreeAnimationGenerator.js" afterPath="$PROJECT_DIR$/WebContent/app/api/animgen/BinaryTreeAnimationGenerator.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/animds/BinaryTreeAnimationObject.js" afterPath="$PROJECT_DIR$/WebContent/app/api/animds/BinaryTreeAnimationObject.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/animds/TextRectAnimationObject.js" afterPath="$PROJECT_DIR$/WebContent/app/api/animds/TextRectAnimationObject.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/core/Utils.js" afterPath="$PROJECT_DIR$/WebContent/app/api/core/Utils.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="jsAlgorithmVisualizer.iws" />
@@ -49,8 +42,8 @@
       <file leaf-file-name="TextRectAnimationObject.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/TextRectAnimationObject.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2719" max-vertical-offset="4125">
-              <caret line="204" column="0" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2521" max-vertical-offset="4200">
+              <caret line="195" column="6" selection-start-line="195" selection-start-column="6" selection-end-line="195" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -59,8 +52,8 @@
       <file leaf-file-name="BinaryTreeAnimationObject.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/BinaryTreeAnimationObject.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.50666666" vertical-offset="1678" max-vertical-offset="3450">
-              <caret line="124" column="75" selection-start-line="124" selection-start-column="75" selection-end-line="124" selection-end-column="75" />
+            <state vertical-scroll-proportion="0.4949785" vertical-offset="1485" max-vertical-offset="4050">
+              <caret line="124" column="51" selection-start-line="124" selection-start-column="51" selection-end-line="124" selection-end-column="51" />
               <folding>
                 <element signature="e#0#41#0" expanded="false" />
               </folding>
@@ -68,73 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Point.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebContent/app/api/core/Point.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="570">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="PointerAnimationObject.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/PointerAnimationObject.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1481" max-vertical-offset="4620">
-              <caret line="101" column="13" selection-start-line="101" selection-start-column="13" selection-end-line="101" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InternalBinaryTree.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/InternalBinaryTree.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1200" max-vertical-offset="1590">
-              <caret line="89" column="29" selection-start-line="89" selection-start-column="29" selection-end-line="89" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BinaryTreeExtension.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/BinaryTreeExtension.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
-              <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LinkedNodeAnimationObject.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/LinkedNodeAnimationObject.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1054" max-vertical-offset="1620">
-              <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CodeAnimationObject.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/CodeAnimationObject.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="1320">
-              <caret line="2" column="32" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BinaryTreeAnimObjTest.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebContent/apiTest/animdsTest/BinaryTreeAnimObjTest.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="778" max-vertical-offset="1245">
-              <caret line="62" column="37" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="878" max-vertical-offset="4620">
+              <caret line="53" column="37" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -143,8 +74,68 @@
       <file leaf-file-name="BinaryTree.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/app/api/ds/BinaryTree.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1003" max-vertical-offset="1425">
-              <caret line="89" column="3" selection-start-line="89" selection-start-column="3" selection-end-line="89" selection-end-column="3" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="630" max-vertical-offset="1650">
+              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BinaryTreeAnimationGenerator.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/app/api/animgen/BinaryTreeAnimationGenerator.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="208" max-vertical-offset="555">
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AnimationInput.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/app/api/core/AnimationInput.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
+              <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InternalBinaryTree.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/InternalBinaryTree.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="994" max-vertical-offset="1590">
+              <caret line="70" column="26" selection-start-line="70" selection-start-column="26" selection-end-line="70" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BinaryTreeAnimObjTest.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/apiTest/animdsTest/BinaryTreeAnimObjTest.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.75" vertical-offset="879" max-vertical-offset="1305">
+              <caret line="63" column="37" selection-start-line="63" selection-start-column="10" selection-end-line="63" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="connect.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/app/api/libs/connect.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="555" max-vertical-offset="4770">
+              <caret line="45" column="23" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LinkedNodeAnimationObject.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/LinkedNodeAnimationObject.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="910" max-vertical-offset="1620">
+              <caret line="78" column="40" selection-start-line="78" selection-start-column="40" selection-end-line="78" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -168,7 +159,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/WebContent/app/api/libs/connect.js" />
         <option value="$PROJECT_DIR$/WebContent/app/api/app.js" />
         <option value="$PROJECT_DIR$/WebContent/apiTest/TestConnectJs.html" />
         <option value="$PROJECT_DIR$/WebContent/apiTest/ds/TestLinkedListInsertAt.html" />
@@ -179,7 +169,6 @@
         <option value="$PROJECT_DIR$/WebContent/apiTest/kinetic/testDragEvent.html" />
         <option value="$PROJECT_DIR$/WebContent/apiTest/kinetic/testDragEventWithGroup.html" />
         <option value="$PROJECT_DIR$/WebContent/apiTest/animdsTest/TestAnimUtils.html" />
-        <option value="$PROJECT_DIR$/WebContent/app/api/animds/AnimationObject.js" />
         <option value="$PROJECT_DIR$/WebContent/app/api/animgen/StackAnimationGenerator.js" />
         <option value="$PROJECT_DIR$/WebContent/app/api/animgen/LinkedListAnimationGenerator.js" />
         <option value="$PROJECT_DIR$/WebContent/app/api/core/CodeParser.js" />
@@ -194,10 +183,7 @@
         <option value="$PROJECT_DIR$/WebContent/apiTest/testUtils.html" />
         <option value="$PROJECT_DIR$/WebContent/apiTest/TestArrayToString.html" />
         <option value="$PROJECT_DIR$/WebContent/apiTest/ds/TestArrayDS.html" />
-        <option value="$PROJECT_DIR$/WebContent/app/api/animds/AnimUtils.js" />
         <option value="$PROJECT_DIR$/WebContent/app/api/animds/LinkedListAnimationObject.js" />
-        <option value="$PROJECT_DIR$/WebContent/app/api/core/AnimationEngine.js" />
-        <option value="$PROJECT_DIR$/WebContent/app/api/core/Animator.js" />
         <option value="$PROJECT_DIR$/WebContent/app/api/animgen/ArrayAnimationGenerator.js" />
         <option value="$PROJECT_DIR$/WebContent/app/api/ds/ArrayDS.js" />
         <option value="$PROJECT_DIR$/WebContent/app/api/core/Constants.js" />
@@ -211,14 +197,19 @@
         <option value="$PROJECT_DIR$/WebContent/apiTest/animdsTest/PointerTransitionTest.html" />
         <option value="$PROJECT_DIR$/WebContent/apiTest/animdsTest/BinaryTreeAnimObjTest.html.html" />
         <option value="$PROJECT_DIR$/WebContent/app/api/core/Utils.js" />
-        <option value="$PROJECT_DIR$/WebContent/app/api/animgen/BinaryTreeAnimationGenerator.js" />
         <option value="$PROJECT_DIR$/WebContent/app/api/animds/InternalBinaryTree.js" />
-        <option value="$PROJECT_DIR$/WebContent/app/api/ds/BinaryTree.js" />
         <option value="$PROJECT_DIR$/WebContent/app/api/animds/BinaryTreeExtension.js" />
-        <option value="$PROJECT_DIR$/WebContent/app/api/animds/BinaryTreeAnimationObject.js" />
-        <option value="$PROJECT_DIR$/WebContent/apiTest/animdsTest/BinaryTreeAnimObjTest.html" />
-        <option value="$PROJECT_DIR$/WebContent/app/api/animds/TextRectAnimationObject.js" />
         <option value="$PROJECT_DIR$/WebContent/app/api/animds/PointerAnimationObject.js" />
+        <option value="$PROJECT_DIR$/WebContent/app/api/animgen/BinaryTreeAnimationGenerator.js" />
+        <option value="$PROJECT_DIR$/WebContent/app/api/core/Animator.js" />
+        <option value="$PROJECT_DIR$/WebContent/app/api/core/AnimationEngine.js" />
+        <option value="$PROJECT_DIR$/WebContent/app/api/animds/AnimationObject.js" />
+        <option value="$PROJECT_DIR$/TODO.txt" />
+        <option value="$PROJECT_DIR$/WebContent/app/api/animds/AnimUtils.js" />
+        <option value="$PROJECT_DIR$/WebContent/apiTest/animdsTest/BinaryTreeAnimObjTest.html" />
+        <option value="$PROJECT_DIR$/WebContent/app/api/ds/BinaryTree.js" />
+        <option value="$PROJECT_DIR$/WebContent/app/api/animds/TextRectAnimationObject.js" />
+        <option value="$PROJECT_DIR$/WebContent/app/api/animds/BinaryTreeAnimationObject.js" />
       </list>
     </option>
   </component>
@@ -451,32 +442,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jsAlgorithmVisualizer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jsAlgorithmVisualizer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebContent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="ds" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -574,28 +539,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="apiTest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jsAlgorithmVisualizer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jsAlgorithmVisualizer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebContent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="apiTest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ds" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -908,20 +851,25 @@
       <created>1399787289334</created>
       <updated>1399787289334</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="adding BinaryTree and its createObject animation">
+      <created>1400063109544</created>
+      <updated>1400063109544</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-4" width="1377" height="905" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32457292" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32938075" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3823916" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41501975" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24963072" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35450518" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.45992115" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21196455" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46113306" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3096179" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -929,11 +877,30 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32457292" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32938075" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41501975" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.46113306" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32938075" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24963072" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21196455" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3096179" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -966,135 +933,18 @@
     <MESSAGE value="made changes to make older anim objects work with current changes." />
     <MESSAGE value="adding ArrayDS" />
     <MESSAGE value="adding ArrayDS and its animation" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding ArrayDS and its animation" />
+    <MESSAGE value="adding BinaryTree and its createObject animation" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding BinaryTree and its createObject animation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint type="javascript">
-          <url>file://$PROJECT_DIR$/WebContent/apiTest/animdsTest/PointerTransitionTest.html</url>
-          <line>30</line>
-          <option name="timeStamp" value="62" />
-        </line-breakpoint>
-        <line-breakpoint type="javascript">
-          <url>file://$PROJECT_DIR$/WebContent/apiTest/kinetic/TestKineticGroupMovement.html</url>
-          <line>71</line>
-          <option name="timeStamp" value="71" />
-        </line-breakpoint>
-        <line-breakpoint type="javascript">
-          <url>file://$PROJECT_DIR$/WebContent/apiTest/kinetic/TestKineticGroupMovement.html</url>
-          <line>78</line>
-          <option name="timeStamp" value="72" />
-        </line-breakpoint>
-        <line-breakpoint type="javascript">
-          <url>file://$PROJECT_DIR$/WebContent/apiTest/kinetic/TestKineticGroupMovement.html</url>
-          <line>76</line>
-          <option name="timeStamp" value="73" />
-        </line-breakpoint>
-        <line-breakpoint type="javascript">
-          <url>file://$PROJECT_DIR$/WebContent/app/api/core/jsav.js</url>
-          <line>29</line>
-          <option name="timeStamp" value="137" />
-        </line-breakpoint>
-        <line-breakpoint type="javascript">
-          <url>file://$PROJECT_DIR$/WebContent/app/api/core/jsav.js</url>
-          <line>44</line>
-          <option name="timeStamp" value="138" />
-        </line-breakpoint>
-        <line-breakpoint type="javascript">
-          <url>file://$PROJECT_DIR$/WebContent/apiTest/animdsTest/TestStackAnimObj.html</url>
-          <line>27</line>
-          <option name="timeStamp" value="143" />
-        </line-breakpoint>
-        <line-breakpoint type="javascript">
-          <url>file://$PROJECT_DIR$/WebContent/app/api/animgen/CodeAnimationGenerator.js</url>
-          <line>2</line>
-          <option name="timeStamp" value="144" />
-        </line-breakpoint>
-        <line-breakpoint type="javascript">
-          <url>file://$PROJECT_DIR$/WebContent/app/api/animgen/CodeAnimationGenerator.js</url>
-          <line>9</line>
-          <option name="timeStamp" value="145" />
-        </line-breakpoint>
-        <line-breakpoint type="javascript">
-          <url>file://$PROJECT_DIR$/WebContent/app/api/animgen/CodeAnimationGenerator.js</url>
-          <line>16</line>
-          <option name="timeStamp" value="146" />
-        </line-breakpoint>
-        <line-breakpoint type="javascript">
-          <url>file://$PROJECT_DIR$/WebContent/app/api/animgen/CodeAnimationGenerator.js</url>
-          <line>21</line>
-          <option name="timeStamp" value="147" />
-        </line-breakpoint>
-        <line-breakpoint type="javascript">
-          <url>file://$PROJECT_DIR$/WebContent/app/api/animds/CodeAnimationObject.js</url>
-          <line>56</line>
-          <option name="timeStamp" value="149" />
-        </line-breakpoint>
-        <line-breakpoint type="javascript">
-          <url>file://$PROJECT_DIR$/WebContent/app/api/animds/CodeAnimationObject.js</url>
-          <line>72</line>
-          <option name="timeStamp" value="150" />
-        </line-breakpoint>
-        <line-breakpoint type="javascript">
-          <url>file://$PROJECT_DIR$/WebContent/app/api/animds/CodeAnimationObject.js</url>
-          <line>45</line>
-          <option name="timeStamp" value="154" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/WebContent/app/api/animds/BinaryTreeExtension.js</url>
-          <line>9</line>
-          <option name="timeStamp" value="169" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/WebContent/app/api/animds/LinkedNodeAnimationObject.js</url>
-          <line>79</line>
-          <option name="timeStamp" value="171" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/WebContent/app/api/animds/BinaryTreeAnimationObject.js</url>
-          <line>32</line>
-          <option name="timeStamp" value="181" />
-        </line-breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="182" />
+      <option name="time" value="198" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.961538" vertical-offset="116" max-vertical-offset="480">
-          <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/app/api/core/CodeParser.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1260" max-vertical-offset="1680">
-          <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/app/api/ds/Stack.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="705">
-          <caret line="11" column="61" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/app/api/animgen/AnimationGenerator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/apiTest/ds/TestLinkedList.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.25" vertical-offset="0" max-vertical-offset="1320">
@@ -1154,21 +1004,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/app/api/core/Animator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1260">
-          <caret line="0" column="105" selection-start-line="0" selection-start-column="105" selection-end-line="0" selection-end-column="105" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/app/api/core/AnimationInput.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="421">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/apiTest/animdsTest/TestStackAnimObj.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="303" max-vertical-offset="1035">
@@ -1185,13 +1020,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/app/api/animgen/ArrayAnimationGenerator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="465">
-          <caret line="11" column="119" selection-start-line="11" selection-start-column="119" selection-end-line="11" selection-end-column="119" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/apiTest/TestLine.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="990">
@@ -1204,6 +1032,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="443" max-vertical-offset="1215">
           <caret line="70" column="56" selection-start-line="70" selection-start-column="56" selection-end-line="70" selection-end-column="56" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1215,26 +1044,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/app/api/core/Constants.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.72479564" vertical-offset="458" max-vertical-offset="1215">
-          <caret line="66" column="55" selection-start-line="66" selection-start-column="55" selection-end-line="66" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/app/api/ds/ArrayDS.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
           <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/ArrayAnimationObject.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1170">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1251,22 +1064,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="3555" max-vertical-offset="7425">
           <caret line="262" column="68" selection-start-line="262" selection-start-column="68" selection-end-line="262" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/AnimUtils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1170" max-vertical-offset="1830">
-          <caret line="76" column="57" selection-start-line="76" selection-start-column="57" selection-end-line="76" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/app/api/animgen/LinkedListAnimationGenerator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="885">
-          <caret line="14" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1295,14 +1092,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/app/api/core/Utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2074" max-vertical-offset="3705">
-          <caret line="149" column="157" selection-start-line="149" selection-start-column="157" selection-end-line="149" selection-end-column="157" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/app/api/core/LayoutManager.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="118" max-vertical-offset="480">
@@ -1323,30 +1112,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.958333" vertical-offset="160" max-vertical-offset="1005">
           <caret line="33" column="57" selection-start-line="33" selection-start-column="57" selection-end-line="33" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/app/api/core/AnimationEngine.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="1275">
-          <caret line="39" column="6" selection-start-line="39" selection-start-column="6" selection-end-line="39" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/app/api/animgen/BinaryTreeAnimationGenerator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="11" max-vertical-offset="360">
-          <caret line="12" column="152" selection-start-line="12" selection-start-column="152" selection-end-line="12" selection-end-column="152" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/AnimationObject.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1155">
-          <caret line="70" column="27" selection-start-line="70" selection-start-column="27" selection-end-line="70" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -1391,29 +1156,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/app/api/ds/BinaryTree.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1003" max-vertical-offset="1425">
-          <caret line="89" column="3" selection-start-line="89" selection-start-column="3" selection-end-line="89" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/BinaryTreeExtension.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
           <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/InternalBinaryTree.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1200" max-vertical-offset="1590">
-          <caret line="89" column="29" selection-start-line="89" selection-start-column="29" selection-end-line="89" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1425,42 +1174,178 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/LinkedNodeAnimationObject.js">
+    <entry file="file://$PROJECT_DIR$/WebContent/app/api/animgen/LinkedListAnimationGenerator.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1054" max-vertical-offset="1620">
-          <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.043227665" vertical-offset="195" max-vertical-offset="885">
+          <caret line="14" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/TextRectAnimationObject.js">
+    <entry file="file://$PROJECT_DIR$/WebContent/app/api/core/Constants.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2719" max-vertical-offset="4125">
-          <caret line="204" column="0" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="773" max-vertical-offset="1215">
+          <caret line="65" column="34" selection-start-line="65" selection-start-column="34" selection-end-line="65" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/apiTest/TestCodeAnimation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.125" vertical-offset="897" max-vertical-offset="1290">
+          <caret line="68" column="9" selection-start-line="68" selection-start-column="9" selection-end-line="68" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/ArrayAnimationObject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1170">
+          <caret line="5" column="50" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/app/api/animgen/ArrayAnimationGenerator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="465">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/app/api/animgen/StackAnimationGenerator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/app/api/core/Animator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1260">
+          <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/app/api/core/Utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1710" max-vertical-offset="3705">
+          <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/AnimationObject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="520" max-vertical-offset="1290">
+          <caret line="77" column="6" selection-start-line="77" selection-start-column="6" selection-end-line="77" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TODO.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="300">
+          <caret line="14" column="2" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/AnimUtils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1755">
+          <caret line="12" column="44" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/app/api/core/AnimationEngine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="1395">
+          <caret line="51" column="67" selection-start-line="51" selection-start-column="67" selection-end-line="51" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/app/api/core/AnimationInput.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
+          <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/app/api/libs/connect.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="555" max-vertical-offset="4770">
+          <caret line="45" column="23" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/LinkedNodeAnimationObject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="910" max-vertical-offset="1620">
+          <caret line="78" column="40" selection-start-line="78" selection-start-column="40" selection-end-line="78" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/app/api/animgen/BinaryTreeAnimationGenerator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="208" max-vertical-offset="555">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/app/api/ds/BinaryTree.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="630" max-vertical-offset="1650">
+          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/InternalBinaryTree.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="814" max-vertical-offset="1590">
+          <caret line="70" column="26" selection-start-line="70" selection-start-column="26" selection-end-line="70" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/PointerAnimationObject.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1481" max-vertical-offset="4620">
-          <caret line="101" column="13" selection-start-line="101" selection-start-column="13" selection-end-line="101" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="878" max-vertical-offset="4620">
+          <caret line="53" column="37" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/TextRectAnimationObject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2521" max-vertical-offset="4200">
+          <caret line="195" column="6" selection-start-line="195" selection-start-column="6" selection-end-line="195" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/apiTest/animdsTest/BinaryTreeAnimObjTest.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="778" max-vertical-offset="1245">
-          <caret line="62" column="37" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="37" />
+        <state vertical-scroll-proportion="-2.75" vertical-offset="879" max-vertical-offset="1305">
+          <caret line="63" column="37" selection-start-line="63" selection-start-column="10" selection-end-line="63" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/BinaryTreeAnimationObject.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.50666666" vertical-offset="1678" max-vertical-offset="3450">
-          <caret line="124" column="75" selection-start-line="124" selection-start-column="75" selection-end-line="124" selection-end-column="75" />
+        <state vertical-scroll-proportion="0.4949785" vertical-offset="1485" max-vertical-offset="4050">
+          <caret line="124" column="51" selection-start-line="124" selection-start-column="51" selection-end-line="124" selection-end-column="51" />
           <folding>
             <element signature="e#0#41#0" expanded="false" />
           </folding>

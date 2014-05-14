@@ -4,8 +4,21 @@
 define(["core/Utils", "core/Point", "libs/connect"], function (Utils,Point,ConnectJs) {
 
     var AnimUtils = {
+        animateObjectShift : function (object, tox, toy, unitTime, layer,callback) {
+            var numberOfPoints = 9;
+            var x1 = object.getX();
+            var y1 = object.getY();
+
+            var points = Utils.getTransitionPointsOnLine(x1,y1,tox,toy,numberOfPoints);
+            points.push(new Point(tox,toy));
+            var i = 0 ;
+            this.repeater(function () {
+                object.setXY(points[i].getX(),points[i].getY());
+                i++;
+                layer.draw();
+            },unitTime,numberOfPoints,callback);
+        },
         animatePointerTailShift : function (pointer, tox, toy, unitTime, layer,callback) {
-//            context = context || window;
             var numberOfPoints = 9;
             var x1 = pointer.x1;
             var y1 = pointer.y1;
@@ -16,16 +29,8 @@ define(["core/Utils", "core/Point", "libs/connect"], function (Utils,Point,Conne
             this.repeater(function () {
                 pointer.setTailPoint(points[i++]);
                 layer.draw()},unitTime,numberOfPoints,callback);
-//            var intervalTimer = setInterval(
-//                i++;
-//                if( i > numberOfPoints ){
-//                    clearInterval(intervalTimer);
-//                    callback.apply(context);
-//                }
-//            }, unitTime);
         },
         animatePointerHeadShift : function (pointer, tox, toy, unitTime, layer,callback) {
-//            context = context || window;
             var numberOfPoints = 9;
             var x1 = pointer.x2;
             var y1 = pointer.y2;
@@ -38,16 +43,6 @@ define(["core/Utils", "core/Point", "libs/connect"], function (Utils,Point,Conne
                     layer.draw();
                 }
                 ,unitTime,numberOfPoints,callback);
-//            var i = 0 ;
-//            var intervalTimer = setInterval(function () {
-//                pointer.setHeadPoint(points[i]);
-//                layer.draw();
-//                i++;
-//                if( i > numberOfPoints ){
-//                    clearInterval(intervalTimer);
-//                    callback.apply(context);
-//                }
-//            }, unitTime);
         },
 
         animatePointHeadTo : function(pointer,object, unitTime,layer,callback){

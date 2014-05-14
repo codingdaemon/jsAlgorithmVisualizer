@@ -15,5 +15,18 @@ define([ "animgen/AnimationGenerator", "core/AnimationInput", "animds/BinaryTree
 
     BinaryTreeAnimationGenerator.prototype = new AnimationGenerator();
 
+
+    BinaryTreeAnimationGenerator.prototype.setRight = function(right){
+        this.animator.getAnimationEngine().push(new AnimationInput(this.binaryTreeAO, BinaryTreeAnimationObject.prototype.setRight, [right]));
+    };
+
+    BinaryTreeAnimationGenerator.prototype.setLeft = function(left){
+        this.animator.getAnimationEngine().push(new AnimationInput(this.binaryTreeAO, BinaryTreeAnimationObject.prototype.setLeft, [left]));
+    };
+
+    BinaryTreeAnimationGenerator.prototype.setData = function(data){
+        this.animator.getAnimationEngine().push(new AnimationInput(this.binaryTreeAO, BinaryTreeAnimationObject.prototype.setData, [data]));
+    };
+
     return BinaryTreeAnimationGenerator;
 });

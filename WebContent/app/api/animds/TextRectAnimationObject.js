@@ -161,12 +161,15 @@ define(["animds/AnimationObject", "libs/kinetic", "core/Utils", "core/Logger", "
     TextRectAnimationObject.prototype.setX = function (x) {
 //        this.x  = x - this.group.x();
         this.x  = x ;
+        this.draw();
     };
 
     TextRectAnimationObject.prototype.setY = function (y) {
 //        this.y = y - this.group.y();
         this.y = y ;
+        this.draw();
     };
+
     /**
      * return the root object on which the events can be registered.
      */
@@ -188,6 +191,8 @@ define(["animds/AnimationObject", "libs/kinetic", "core/Utils", "core/Logger", "
     TextRectAnimationObject.prototype.setXY = function (x,y) {
         this.x = x;
         this.y = y;
+
+        this.draw();
     };
 
     TextRectAnimationObject.prototype.setGroup = function (group) {

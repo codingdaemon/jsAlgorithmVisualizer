@@ -31,6 +31,10 @@ define([ "animgen/BinaryTreeAnimationGenerator", "core/Logger","core/Utils"],fun
        if(!Utils.isNullOrUndefined(this.right)){
            this.right.parent = this;
        }
+
+       if(!Utils.isNullOrUndefined(this.animationGenerator)){
+           this.animationGenerator.setRight(this.right);
+       }
    };
 
    BinaryTree.prototype.setLeft = function(left){
@@ -41,10 +45,19 @@ define([ "animgen/BinaryTreeAnimationGenerator", "core/Logger","core/Utils"],fun
        if( !Utils.isNullOrUndefined( this.left )){
            this.left.parent = this;
        }
+
+
+       if(!Utils.isNullOrUndefined(this.animationGenerator)){
+           this.animationGenerator.setLeft(this.left);
+       }
    };
 
    BinaryTree.prototype.setData = function(data){
         this.data = data;
+
+       if(!Utils.isNullOrUndefined(this.animationGenerator)){
+           this.animationGenerator.setData(this.data);
+       }
    };
 
 //   BinaryTree.prototype.setParent = function( parent ) {
@@ -71,6 +84,7 @@ define([ "animgen/BinaryTreeAnimationGenerator", "core/Logger","core/Utils"],fun
     };
 
     /**
+     * private Method
      * these method had to be added in BinaryTree.js because BinaryTreeExtension was not working as expected
      * @param internalBinaryTree
      */
@@ -79,6 +93,7 @@ define([ "animgen/BinaryTreeAnimationGenerator", "core/Logger","core/Utils"],fun
     };
 
     /**
+     * private Method
      * these method had to be added in BinaryTree.js because BinaryTreeExtension was not working as expected
      * @returns {*|BinaryTree.internalBinaryTree}
      */

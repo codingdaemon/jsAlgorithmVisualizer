@@ -1,7 +1,7 @@
 define(["core/Logger"], function (Logger) {
 
-    function AnimationEngine(animationId, unitTime) {
-        this.animationId = animationId;
+    function AnimationEngine(/*animationId,*/ unitTime) {
+//        this.animationId = animationId;
         this.unitTime = unitTime;
         /**
          *  Type AnimationInput Array
@@ -52,10 +52,18 @@ define(["core/Logger"], function (Logger) {
                 animObj.func.apply(animObj.object, animObj.params);
                 return true;
             } else {
-                Logger.info("Animation completed.");
+                this.animationCompleted();
                 return false;
             }
         }
+    };
+
+    /**
+     * one can connect to this method to be notified when the animation
+     * queue is finished.
+     */
+    AnimationEngine.prototype.animationCompleted = function(){
+        Logger.info("Animation completed.");
     };
 
     AnimationEngine.prototype.reset = function () {

@@ -68,5 +68,14 @@ define(["core/Logger", "core/Utils"], function (logger,utils) {
     AnimationObject.prototype.moveXY = function (xdiff,ydiff) {
     };
 
+    AnimationObject.prototype.setXY = function (x,y) {
+    };
+
+    AnimationObject.prototype.getX = function () {
+    };
+
+    AnimationObject.prototype.getY = function () {
+    };
+
     return AnimationObject;
 });
