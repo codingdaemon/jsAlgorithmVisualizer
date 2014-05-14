@@ -6,16 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="108c393e-3b01-404f-b9d4-f4079cbfabdd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TODO.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/animds/AnimUtils.js" afterPath="$PROJECT_DIR$/WebContent/app/api/animds/AnimUtils.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/core/AnimationEngine.js" afterPath="$PROJECT_DIR$/WebContent/app/api/core/AnimationEngine.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/animds/AnimationObject.js" afterPath="$PROJECT_DIR$/WebContent/app/api/animds/AnimationObject.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/core/Animator.js" afterPath="$PROJECT_DIR$/WebContent/app/api/core/Animator.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/ds/BinaryTree.js" afterPath="$PROJECT_DIR$/WebContent/app/api/ds/BinaryTree.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/apiTest/animdsTest/BinaryTreeAnimObjTest.html" afterPath="$PROJECT_DIR$/WebContent/apiTest/animdsTest/BinaryTreeAnimObjTest.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/animgen/BinaryTreeAnimationGenerator.js" afterPath="$PROJECT_DIR$/WebContent/app/api/animgen/BinaryTreeAnimationGenerator.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/animds/BinaryTreeAnimationObject.js" afterPath="$PROJECT_DIR$/WebContent/app/api/animds/BinaryTreeAnimationObject.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/animds/TextRectAnimationObject.js" afterPath="$PROJECT_DIR$/WebContent/app/api/animds/TextRectAnimationObject.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="jsAlgorithmVisualizer.iws" />
@@ -52,8 +43,8 @@
       <file leaf-file-name="BinaryTreeAnimationObject.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/BinaryTreeAnimationObject.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4949785" vertical-offset="1485" max-vertical-offset="4050">
-              <caret line="124" column="51" selection-start-line="124" selection-start-column="51" selection-end-line="124" selection-end-column="51" />
+            <state vertical-scroll-proportion="-0.8177905" vertical-offset="855" max-vertical-offset="4050">
+              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding>
                 <element signature="e#0#41#0" expanded="false" />
               </folding>
@@ -114,8 +105,8 @@
       <file leaf-file-name="BinaryTreeAnimObjTest.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/apiTest/animdsTest/BinaryTreeAnimObjTest.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.75" vertical-offset="879" max-vertical-offset="1305">
-              <caret line="63" column="37" selection-start-line="63" selection-start-column="10" selection-end-line="63" selection-end-column="37" />
+            <state vertical-scroll-proportion="-35.0" vertical-offset="0" max-vertical-offset="1305">
+              <caret line="56" column="22" selection-start-line="56" selection-start-column="22" selection-end-line="56" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -206,10 +197,10 @@
         <option value="$PROJECT_DIR$/WebContent/app/api/animds/AnimationObject.js" />
         <option value="$PROJECT_DIR$/TODO.txt" />
         <option value="$PROJECT_DIR$/WebContent/app/api/animds/AnimUtils.js" />
-        <option value="$PROJECT_DIR$/WebContent/apiTest/animdsTest/BinaryTreeAnimObjTest.html" />
         <option value="$PROJECT_DIR$/WebContent/app/api/ds/BinaryTree.js" />
         <option value="$PROJECT_DIR$/WebContent/app/api/animds/TextRectAnimationObject.js" />
         <option value="$PROJECT_DIR$/WebContent/app/api/animds/BinaryTreeAnimationObject.js" />
+        <option value="$PROJECT_DIR$/WebContent/apiTest/animdsTest/BinaryTreeAnimObjTest.html" />
       </list>
     </option>
   </component>
@@ -855,7 +846,11 @@
       <created>1400063109544</created>
       <updated>1400063109544</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="adding BinaryTree and its createObject animation ... not correct completely">
+      <created>1400081323670</created>
+      <updated>1400081323670</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -896,7 +891,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24963072" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21196455" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21196455" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3096179" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -934,7 +929,8 @@
     <MESSAGE value="adding ArrayDS" />
     <MESSAGE value="adding ArrayDS and its animation" />
     <MESSAGE value="adding BinaryTree and its createObject animation" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding BinaryTree and its createObject animation" />
+    <MESSAGE value="adding BinaryTree and its createObject animation ... not correct completely" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding BinaryTree and its createObject animation ... not correct completely" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1336,16 +1332,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/apiTest/animdsTest/BinaryTreeAnimObjTest.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.75" vertical-offset="879" max-vertical-offset="1305">
-          <caret line="63" column="37" selection-start-line="63" selection-start-column="10" selection-end-line="63" selection-end-column="37" />
+        <state vertical-scroll-proportion="-35.0" vertical-offset="0" max-vertical-offset="1305">
+          <caret line="56" column="22" selection-start-line="56" selection-start-column="22" selection-end-line="56" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/app/api/animds/BinaryTreeAnimationObject.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4949785" vertical-offset="1485" max-vertical-offset="4050">
-          <caret line="124" column="51" selection-start-line="124" selection-start-column="51" selection-end-line="124" selection-end-column="51" />
+        <state vertical-scroll-proportion="-0.8177905" vertical-offset="855" max-vertical-offset="4050">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
             <element signature="e#0#41#0" expanded="false" />
           </folding>
