@@ -20,7 +20,11 @@ define(["animds/AnimationObject", "libs/kinetic", "core/Utils", "core/Logger", "
         this.rectFill = this.getConfigs()[Constants.RECT_FILL_COLOR];
         this.rectStroke = this.getConfigs()[Constants.RECT_STROKE_COLOR];
         this.rectStrokeWidth = this.getConfigs()[Constants.RECT_STROKE_WIDTH];
-        this.textString = this.data.toString();
+        if( null != this.data ) {
+            this.textString = this.data.toString();
+        }else {
+            this.textString = "";
+        }
         this.fontSize = this.getConfigs()[Constants.TEXT_FONT_SIZE];
         this.fontFamily = this.getConfigs()[Constants.TEXT_FONT_FAMILY];
         this.textFill = this.getConfigs()[Constants.TEXT_FILL_COLOR];
@@ -181,31 +185,28 @@ define(["animds/AnimationObject", "libs/kinetic", "core/Utils", "core/Logger", "
         this.draw();
     };
 
+    TextRectAnimationObject.prototype.setXY = function (x,y) {
+        this.x = x;
+        this.y = y;
+    };
+
     TextRectAnimationObject.prototype.setGroup = function (group) {
-        // move from old group to new group keeping the absolute position same
-//        var relRectX = this.x;
-//        var relRectY = this.y;
-//        var curGroupX = this.group.x();
-//        var curGroupY = this.group.y();
-//        var absRectX = relRectX + curGroupX ;
-//        var absRectY = relRectY + curGroupY ;
-//        var newGroupX = group.x();
-//        var newGroupY = group.y();
+        if(this.group != group){
+            this.x = this.x + this.group.x() - group.x() ; // note x and y of rect and text are same.
+            this.y = this.y + this.group.y() - group.y() ;
 
-        this.x = this.x + this.group.x() - group.x() ; // note x and y of rect and text are same.
-        this.y = this.y + this.group.y() - group.y() ;
+            this.rect.moveTo(group);
+            this.text.moveTo(group);
 
-        this.rect.moveTo(group);
-        this.text.moveTo(group);
+            if( !Utils.isNullOrUndefined(this.originalGroup) ){
+                this.originalGroup.destroy();
+                this.originalGroup = null;
+            }
 
-        if( !Utils.isNullOrUndefined(this.originalGroup) ){
-            this.originalGroup.destroy();
-            this.originalGroup = null;
+            this.group = group ; // set new group
+
+            this.draw();
         }
-
-        this.group = group ; // set new group
-
-        this.draw();
     };
 
 //    TextRectAnimationObject.prototype.setData = function (data) {

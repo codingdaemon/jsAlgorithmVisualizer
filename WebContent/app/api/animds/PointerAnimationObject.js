@@ -98,25 +98,27 @@ define(["animds/AnimationObject", "libs/kinetic", "core/Constants", "core/Point"
     };
 
     PointerAnimationObject.prototype.setGroup = function (group) {
-        // move to the new group and set X,Y
-        this.x1 = this.x1 + this.group.x() - group.x();
-        this.y1 = this.y1 + this.group.y() - group.y();
-        this.x2 = this.x2 + this.group.x() - group.x();
-        this.y2 = this.y2 + this.group.y() - group.y();
+        if( this.group != group){
+            // move to the new group and set X,Y
+            this.x1 = this.x1 + this.group.x() - group.x();
+            this.y1 = this.y1 + this.group.y() - group.y();
+            this.x2 = this.x2 + this.group.x() - group.x();
+            this.y2 = this.y2 + this.group.y() - group.y();
 
-        this.headLine.moveTo(group);
-        this.tailLine.moveTo(group);
-        this.headText.moveTo(group);
-        this.tailText.moveTo(group);
+            this.headLine.moveTo(group);
+            this.tailLine.moveTo(group);
+            this.headText.moveTo(group);
+            this.tailText.moveTo(group);
 
-        if( !Utils.isNullOrUndefined(this.originalGroup )){
-            this.originalGroup.destroy();
-            this.originalGroup = null;
+            if( !Utils.isNullOrUndefined(this.originalGroup )){
+                this.originalGroup.destroy();
+                this.originalGroup = null;
+            }
+
+            this.group = group;
+
+            this.draw();
         }
-
-        this.group = group;
-
-        this.draw();
     };
 
     PointerAnimationObject.prototype.moveXY = function (xdiff,ydiff) {

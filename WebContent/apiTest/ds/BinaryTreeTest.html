@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Test BinaryTree</title>
+    <script data-main="../../app/api/app.js" type="text/javascript" src="../../app/api/libs/require.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    require(["core/jsav","ds/BinaryTree", "core/Logger", "core/Utils"], function(jsav,BinaryTree,Logger,Utils){
+        var rl = new BinaryTree(null,null,4);
+        var lr = new BinaryTree(null,null,3);
+//        var rr = new BinaryTree(null,null,2);
+//        var ll = new BinaryTree(null,null,1);
+        var ll, rr;
+
+        var l = new BinaryTree(ll,lr,6);
+        var r = new BinaryTree(rl,rr,5);
+
+        var root = new BinaryTree(l,r,7);
+
+        Logger.info("\n\n\n\n Preorder");
+        Utils.preorder(root,function(tree){
+            Logger.info(tree.getData()+",");
+        });
+
+        Logger.info("\n\n\n\n Postorder");
+        Utils.postorder(root,function(tree){
+            Logger.info(tree.getData()+",");
+        });
+
+        Logger.info("\n\n\n\n Inorder");
+        Utils.inorder(root,function(tree){
+            Logger.info(tree.getData()+",");
+        });
+    });
+</script>
+</body>
+</html>

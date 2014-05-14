@@ -1,7 +1,8 @@
 /**
  * Created by nitiraj on 20/4/14.
  */
-define([ "core/Utils", "animds/TextRectAnimationObject", "core/Logger", "animds/AnimationObject","animds/PointerAnimationObject", "libs/kinetic", "animds/LinkedNodeExtension"], function (Utils, TextRectAnimationObject, Logger, AnimationObject, PointerAnimationObject, Kinetic, LinkedNodeExtension) {
+define([ "core/Utils", "animds/TextRectAnimationObject", "core/Logger", "animds/AnimationObject","animds/PointerAnimationObject", "libs/kinetic", "animds/LinkedNodeExtension"],
+    function (Utils, TextRectAnimationObject, Logger, AnimationObject, PointerAnimationObject, Kinetic, LinkedNodeExtension) {
 
     function LinkedNodeAnimationObject(configs, hasNextPointer, hasPrevPointer, layer, group) {
         AnimationObject.call(this, "LinkedNodeAnimationObject", configs, layer);

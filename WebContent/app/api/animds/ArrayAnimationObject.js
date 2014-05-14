@@ -24,7 +24,7 @@ define(["core/Logger", "core/Utils", "animds/AnimUtils", "animds/TextRectAnimati
         var nodeConfigs = Utils.clone(this.getConfigs());
         var x = this.getLayoutManager().getCenter().getX();
         var y = this.getLayoutManager().getCenter().getY();
-        nodeConfigs["data"] = "null";
+        nodeConfigs["data"] = null;
         for (var i = 0; i < this.size; i++) {
             nodeConfigs = Utils.clone(nodeConfigs); // make a copy of current configs
             nodeConfigs["x"] = x;

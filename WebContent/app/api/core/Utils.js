@@ -147,7 +147,7 @@ define(["core/Point","core/Logger"], function (Point,Logger) {
         getHeaderCode: function( animationId ){
             var HEADER_CODE = "(function(){" +
             "animationId = " + animationId + ";\n" +
-            "require([\"ds/Stack\", \"ds/LinkedList\",  \"ds/ArrayDS\", \"core/Logger\"],function(Stack,LinkedList, ArrayDS,Logger){ \n";
+            "require([\"ds/Stack\", \"ds/LinkedList\",  \"ds/ArrayDS\",  \"ds/BinaryTree\", \"core/Logger\"],function(Stack,LinkedList, ArrayDS, BinaryTree, Logger){ \n";
 
             return HEADER_CODE;
         },
@@ -205,6 +205,36 @@ define(["core/Point","core/Logger"], function (Point,Logger) {
             }
 
             return false;
+        },
+
+        inorder : function(binaryTree, visit){
+            if( this.isNullOrUndefined(binaryTree) ){
+                return;
+            }
+
+            this.inorder(binaryTree.getLeft(),visit);
+            visit(binaryTree);
+            this.inorder(binaryTree.getRight(),visit);
+        },
+
+        postorder : function(binaryTree, visit){
+            if( this.isNullOrUndefined(binaryTree) ){
+                return;
+            }
+
+            this.postorder(binaryTree.getLeft(),visit);
+            this.postorder(binaryTree.getRight(),visit);
+            visit(binaryTree);
+        },
+
+        preorder : function(binaryTree, visit){
+            if( this.isNullOrUndefined(binaryTree) ){
+                return;
+            }
+
+            visit(binaryTree);
+            this.preorder(binaryTree.getLeft(),visit);
+            this.preorder(binaryTree.getRight(),visit);
         }
     };
 

@@ -66,6 +66,10 @@ define(["core/Constants"], function (Constants) {
     DEFAULT_OPTIONS[Constants.ARRAY_BOX_WIDTH] = 30;
     DEFAULT_OPTIONS[Constants.ARRAY_BOX_HEIGHT] = 30;
 
+
+    DEFAULT_OPTIONS[Constants.BINARY_TREE_BOX_WIDTH] = 50;
+    DEFAULT_OPTIONS[Constants.BINARY_TREE_BOX_HEIGHT] = 30;
+
     DEFAULT_OPTIONS[Constants.ANIMATION_UNIT_TIME] = 100; // miliseconds
 
     return DEFAULT_OPTIONS;

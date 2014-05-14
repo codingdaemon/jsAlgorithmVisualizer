@@ -63,6 +63,9 @@ define([],function(){
         ARRAY_BOX_WIDTH : "array.box.width",
         ARRAY_BOX_HEIGHT : "array.box.height",
 
+        BINARY_TREE_BOX_HEIGHT : "binaryTree.box.height",
+        BINARY_TREE_BOX_WIDTH : "binaryTree.box.width",
+
         ANIMATION_UNIT_TIME : "animation.unit.time"
     };
 
