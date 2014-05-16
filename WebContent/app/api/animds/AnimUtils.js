@@ -18,6 +18,20 @@ define(["core/Utils", "core/Point", "libs/connect"], function (Utils,Point,Conne
                 layer.draw();
             },unitTime,numberOfPoints,callback);
         },
+        
+        animateObjectArrayMove : function (array, diffx, diffy, unitTime, layer,callback) {
+            var numberOfPoints = 10;
+            var stepX = diffx/numberOfPoints;
+            var stepY = diffy/numberOfPoints;
+            
+            this.repeater(function () {
+            	for( var i = 0 ; i < array.length ; i++){
+            		array[i].moveXY(stepX,stepY);
+            	}
+                layer.draw();
+            },unitTime,numberOfPoints,callback);
+        },
+
         animatePointerTailShift : function (pointer, tox, toy, unitTime, layer,callback) {
             var numberOfPoints = 9;
             var x1 = pointer.x1;
@@ -106,6 +120,15 @@ define(["core/Utils", "core/Point", "libs/connect"], function (Utils,Point,Conne
                 callback();
             });
         }
+    };
+    
+    getAllChildrenOfTree = function(binaryTree){
+    	var children = [];
+    	Utils.inorder(binaryTree,function(){
+    			children = children.concat(binaryTree.getChildren());
+    	});
+    	
+    	return children;
     };
 
     return AnimUtils;

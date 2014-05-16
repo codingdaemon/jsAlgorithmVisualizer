@@ -16,39 +16,70 @@ define([ "animgen/BinaryTreeAnimationGenerator", "core/Logger","core/Utils"],fun
        this.setLeft(left);
        this.data = data;
        this.parent = null;
+       this.id = utils.generateId();
 
        if( typeof animationId !== 'undefined' && null != animationId ){
            this.animationGenerator = new BinaryTreeAnimationGenerator(animationId,"BinaryTree",this,left,right,data);
        }
    }
+   
+   BinaryTree.prototype.getId = function(){
+	   return this.id;
+   };
 
    BinaryTree.prototype.setRight = function(right){
        if( right != null && !(right instanceof BinaryTree) ){
            throw "Not instance of BinaryTree";
        }
 
-       this.right = right;
-       if(!Utils.isNullOrUndefined(this.right)){
-           this.right.parent = this;
-       }
+       if( !Utils.isNullOrUndefined(this.right) ){
+		   this.right.parent = null;
+	   }
+       
+	   this.right = right;
 
+	   if( !Utils.isNullOrUndefined(right) ){
+		   if( !Utils.isNullOrUndefined(right.parent) ){
+			   if( right.parent.getLeft() == right ){
+				   right.parent.setLeft(null);
+			   }else{
+				   right.parent.setRight(null);
+			   }
+		   }
+		   
+	       right.parent = this;
+	   }
+       
        if(!Utils.isNullOrUndefined(this.animationGenerator)){
-           this.animationGenerator.setRight(this.right);
+           this.animationGenerator.setRight(right);
        }
    };
 
    BinaryTree.prototype.setLeft = function(left){
-       if( left != null && !(left instanceof BinaryTree) ){
+	   if( left != null && !(left instanceof BinaryTree) ){
            throw "Not instance of BinaryTree";
        }
-       this.left = left;
-       if( !Utils.isNullOrUndefined( this.left )){
-           this.left.parent = this;
-       }
 
+       if( !Utils.isNullOrUndefined(this.left) ){
+		   this.left.parent = null;
+	   }
+       
+	   this.left = left;
 
+	   if( !Utils.isNullOrUndefined(left) ){
+		   if( !Utils.isNullOrUndefined(left.parent) ){
+			   if( left.parent.getLeft() == left ){
+				   left.parent.setLeft(null);
+			   }else{
+				   left.parent.setRight(null);
+			   }
+		   }
+		   
+	       left.parent = this;
+	   }
+       
        if(!Utils.isNullOrUndefined(this.animationGenerator)){
-           this.animationGenerator.setLeft(this.left);
+           this.animationGenerator.setLeft(left);
        }
    };
 
@@ -81,24 +112,6 @@ define([ "animgen/BinaryTreeAnimationGenerator", "core/Logger","core/Utils"],fun
 
     BinaryTree.prototype.getParent = function() {
         return  this.parent;
-    };
-
-    /**
-     * private Method
-     * these method had to be added in BinaryTree.js because BinaryTreeExtension was not working as expected
-     * @param internalBinaryTree
-     */
-    BinaryTree.prototype.setInternalTree = function (internalBinaryTree) {
-        this.internalBinaryTree = internalBinaryTree;
-    };
-
-    /**
-     * private Method
-     * these method had to be added in BinaryTree.js because BinaryTreeExtension was not working as expected
-     * @returns {*|BinaryTree.internalBinaryTree}
-     */
-    BinaryTree.prototype.getInternalTree = function () {
-        return this.internalBinaryTree;
     };
 
     return BinaryTree;

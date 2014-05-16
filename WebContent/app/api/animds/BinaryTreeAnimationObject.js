@@ -5,7 +5,23 @@ define(["core/Constants", "animds/InternalBinaryTree", "animds/TextRectAnimation
         "animds/AnimationObject", "core/Utils", "core/Logger", "core/Point", "core/AnimationEngine", "core/AnimationInput", "animds/AnimUtils"],
     function(Constants, InternalBinaryTree, TextRectAnimationObject, PointerAnimationObject, AnimationObject, Utils, Logger,
              Point, AnimationEngine, AnimationInput, AnimUtils){
+	
+	var binaryTreeVsInternalBinaryTreeMap = {};
 
+	var internalBinaryTreeMap = {};
+	
+	function getInternalBinaryTreeFor(binaryTreeId){
+		var internalBinaryTreeId = binaryTreeVsInternalBinaryTreeMap[binaryTreeId];
+		if( null == internalBinaryTreeId )
+			return null;
+		
+		return internalBinaryTreeMap[internalBinaryTreeId];
+	}
+	
+	function putInternalBinaryTreeIntoMap(internalBinaryTree){
+		internalBinaryTreeMap[internalBinaryTree.id] = internalBinaryTree;
+	}
+	
     function BinaryTreeAnimationObject(configs, layer, animationEngine, layoutManager, group){
         AnimationObject.call(this, "BinaryTreeAnimationObject", configs, layer, animationEngine, layoutManager );
         if( Utils.isNullOrUndefined(group)){
@@ -32,6 +48,8 @@ define(["core/Constants", "animds/InternalBinaryTree", "animds/TextRectAnimation
 
     BinaryTreeAnimationObject.prototype.setGroup = function( group ){
         if( this.group != group ){
+        	this.x = this.x + this.group.x() - group.x() ; 
+            this.y = this.y + this.group.y() - group.y() ;
             this.group = group;
             this.rect.setGroup(group);
             this.rightPointer.setGroup(group);
@@ -221,23 +239,151 @@ define(["core/Constants", "animds/InternalBinaryTree", "animds/TextRectAnimation
         this.leftPointer = new PointerAnimationObject(leftNodeConfigs, this.getLayer(), this.getGroup());
 
         if( right != null ){
-            iRight = right.getInternalTree();
+            iRight = getInternalBinaryTreeFor(right.id);
         }
 
         if( left != null ){
-            iLeft = left.getInternalTree();
+            iLeft = getInternalBinaryTreeFor(left.id);
         }
 
         var internalBinaryTree = new InternalBinaryTree(iLeft,iRight,data);
         internalBinaryTree.setAnimNode(this);
 
-        binaryTree.setInternalTree(internalBinaryTree);
-
+//        binaryTree.setInternalTree(internalBinaryTree);
+        putInternalBinaryTreeIntoMap(internalBinaryTree);
+        
         this.internalBinaryTree = internalBinaryTree;
-        this.drawTree();
+
+        // TODO: animate
+        // craete new node for internalBinaryTree,
+        this.getLayer().draw(); // this will print the current node
+        var tempAnimationEngine = new AnimationEngine(this.getAnimationEngine().getUnitTime());
+        // shift iLeft to left of this node
+        if( !Utils.isNullOrUndefined( iLeft ) ){
+        	iLeft.getAnimNode().setGroup(this.getGroup());
+        	var animationInput = new AnimationInput(null,
+        		function(left,parentTree){
+        			var leftChildren = AnimUtils.getAllChildrenOfTree(left);
+        			var leftX = left.getAnimNode().getX();
+        			var leftY = left.getAnimNode().getY();
+        			var toX = parentTree.getAnimNode().getX() ;
+        			var toY = parentTree.getAnimNode().getY() + 2 * parentTree.height;
+        			var diffx = toX - leftX;
+        			var diffy = toY - leftY;
+        			
+        			AnimUtils.animateObjectArrayMove(leftChildren, diffx, diffy, parentTree.getAnimationEngine().getUnitTime(), parentTree.getLayer(),function(){
+        				tempAnimationEngine.next();
+        			});
+        		},[iLeft.getInternalTree(),this]	
+        	);
+        	tempAnimationEngine.push(animationInput);
+        }
+        
+        if( !Utils.isNullOrUndefined(iRight) ){
+        	iRight.getAnimNode().setGroup(this.getGroup());
+        	var animationInput = new AnimationInput(null,
+            		function(right,parentTree){
+            			var rightChildren = AnimUtils.getAllChildrenOfTree(right);
+            			var rightX = left.getAnimNode().getX();
+            			var rightY = left.getAnimNode().getY();
+            			var toX = parentTree.getAnimNode().getX() + parentTree.width;
+            			var toY = parentTree.getAnimNode().getY() + 2 * parentTree.height;
+            			var diffx = toX - rightX;
+            			var diffy = toY - rightY;
+            			
+            			AnimUtils.animateObjectArrayMove(rightChildren, diffx, diffy, parentTree.getAnimationEngine().getUnitTime(), parentTree.getLayer(),function(){
+            				tempAnimationEngine.next();
+            			});
+            		},[iRight.getInternalTree(),this]	
+            	);
+            	tempAnimationEngine.push(animationInput);
+        }
+        
+        ConnectJs.connect( tempAnimationEngine, "animationCompleted", ConnectJs.hitch(this, function(){
+        	this.drawTree();
+        	this.getAnimationEngine().next();
+        }));
+
+        // shift iRight to right of this node
+    };
+    
+    /**
+     * Draws the whole tree not just this node.
+     */
+    BinaryTreeAnimationObject.prototype.reAdustTree = function(){
+        // get the root
+        var root = this.binaryTree;
+        var heightUp = 0 ;
+        while( root.getParent() != null ){
+            heightUp++;
+            root = root.getParent();
+        }
+
+        var heightDown = this.binaryTree.getHeight();
+        var height = heightDown + heightUp ;
+
+        var numberOfLeafNodes = Math.pow(2, height - 1); // assuming full binary tree
+        var widthOfTree = (2 * numberOfLeafNodes -1 ) * this.width;
+
+        var x = root.getAnimNode().getX();
+        var y = root.getAnimNode().getY();
+
+        var nodes = [];
+        nodes.push(root);
+        // create new group and so that each tree has its own group
+        var group = new Kinetic.Group({
+        	draggable:true
+        });
+//        root.getAnimNode().getGroup();
+        nodes.push("D"); // the delimiter for level
+        var currNode = null;
+        while(nodes.length != 0){
+            currNode = nodes.shift();
+
+            if( currNode === "D"){ // delimiter
+                height--;
+                numberOfLeafNodes = Math.pow(2, height - 1); // assuming full binary tree
+                widthOfTree = (2 * numberOfLeafNodes -1 ) * this.width;
+                if( nodes.length != 0 ){ // this was not last D
+                    nodes.push("D"); // push delemiter for ending this level
+                }
+            }
+            else{
+                var currAnimNode = currNode.getAnimNode();
+                currAnimNode.setGroup(group);
+                if( currNode.getLeft() ){
+                    nodes.push(currNode.getLeft());
+                    var leftAnimNode = currNode.getLeft().getAnimNode();
+                    var rx = currAnimNode.getX() - widthOfTree/4 ;
+                    var ry = currAnimNode.getY() + 2 * this.height;
+                    leftAnimNode.setXY(rx,ry);
+                    currAnimNode.leftPointer.pointHeadTo(leftAnimNode);
+                }else{
+                    currAnimNode.leftPointer.setHeadPoint(new Point(currAnimNode.getX(),currAnimNode.getY() + 2 * currAnimNode.height));
+                }
+
+                if( currNode.getRight() ){
+                    nodes.push(currNode.getRight());
+                    var rightAnimNode = currNode.getRight().getAnimNode();
+                    var lx = widthOfTree/4 + currNode.getAnimNode().getX();
+                    var ly = currNode.getAnimNode().getY() + 2 * this.height;
+                    rightAnimNode.setXY(lx,ly);
+                    currAnimNode.rightPointer.pointHeadTo(rightAnimNode);
+                }else{
+                    currAnimNode.rightPointer.setHeadPoint(new Point(currAnimNode.getX() + currAnimNode.width,currAnimNode.getY() + 2 * currAnimNode.height));
+                }
+            }
+        }
+
+        this.getLayer().draw();
+        Logger.debug("Binary Tree draw completed");
     };
 
 
+    BinaryTreeAnimationObject.prototype.getChildren = function(){
+    	return [this.leftPointer, this.rightPointer,this.rect];
+    };
+    
         BinaryTreeAnimationObject.prototype.setRight = function(right){
 //            if( right != null && !(right instanceof BinaryTree) ){
 //                throw "Not instance of BinaryTree";

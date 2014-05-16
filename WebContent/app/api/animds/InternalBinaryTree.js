@@ -13,6 +13,7 @@ define(["core/Utils"], function(Utils){
         this.setRight(right) ;
         this.setLeft(left);
         this.setData(data);
+        this.id = Utils.generateId();
         this.parent = null;
     }
 
@@ -39,20 +40,54 @@ define(["core/Utils"], function(Utils){
             throw "Not instance of BinaryTree";
         }
 
-        this.right = right;
-        if( !Utils.isNullOrUndefined(this.right)){
-            right.parent = this;
+        if( !Utils.isNullOrUndefined(this.right) ){
+ 		   this.right.parent = null;
+ 	   }
+        
+ 	   this.right = right;
+
+ 	   if( !Utils.isNullOrUndefined(right) ){
+ 		   if( !Utils.isNullOrUndefined(right.parent) ){
+ 			   if( right.parent.getLeft() == right ){
+ 				   right.parent.setLeft(null);
+ 			   }else{
+ 				   right.parent.setRight(null);
+ 			   }
+ 		   }
+ 		   
+ 	       right.parent = this;
+ 	   }
+        
+        if(!Utils.isNullOrUndefined(this.animationGenerator)){
+            this.animationGenerator.setRight(right);
         }
     };
 
     InternalBinaryTree.prototype.setLeft = function(left){
-        if( left != null && !(left instanceof InternalBinaryTree) ){
+    	if( left != null && !(left instanceof InternalBinaryTree) ){
             throw "Not instance of BinaryTree";
         }
 
-        this.left = left;
-        if( !Utils.isNullOrUndefined(this.left)){
-            left.parent = this;
+        if( !Utils.isNullOrUndefined(this.left) ){
+ 		   this.left.parent = null;
+ 	   }
+        
+ 	   this.left = left;
+
+ 	   if( !Utils.isNullOrUndefined(left) ){
+ 		   if( !Utils.isNullOrUndefined(left.parent) ){
+ 			   if( left.parent.getLeft() == left ){
+ 				   left.parent.setLeft(null);
+ 			   }else{
+ 				   left.parent.setRight(null);
+ 			   }
+ 		   }
+ 		   
+ 	       left.parent = this;
+ 	   }
+        
+        if(!Utils.isNullOrUndefined(this.animationGenerator)){
+            this.animationGenerator.setLeft(left);
         }
     };
 
