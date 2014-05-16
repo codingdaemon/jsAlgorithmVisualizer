@@ -21,19 +21,19 @@ define(["core/Utils"], function(Utils){
      * O(n) in time and space
      * @returns {number}
      */
-    InternalBinaryTree.prototype.getHeight = function(){
-
-        var leftHeight = 0 ;
-        var rightHeight = 0 ;
-        if( this.getLeft() ){
-            leftHeight = this.getLeft().getHeight();
-        }
-        if( this.getRight() ){
-            rightHeight = this.getRight().getHeight();
-        }
-
-        return (leftHeight > rightHeight ? leftHeight : rightHeight) + 1;
-    };
+//    InternalBinaryTree.prototype.getHeight = function(){
+//
+//        var leftHeight = 0 ;
+//        var rightHeight = 0 ;
+//        if( this.getLeft() ){
+//            leftHeight = this.getLeft().getHeight();
+//        }
+//        if( this.getRight() ){
+//            rightHeight = this.getRight().getHeight();
+//        }
+//
+//        return (leftHeight > rightHeight ? leftHeight : rightHeight) + 1;
+//    };
 
     InternalBinaryTree.prototype.setRight = function(right){
         if( right != null && !(right instanceof InternalBinaryTree) ){

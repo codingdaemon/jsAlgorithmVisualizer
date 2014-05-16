@@ -4,6 +4,19 @@
 define(["core/Utils", "core/Point", "libs/connect"], function (Utils,Point,ConnectJs) {
 
     var AnimUtils = {
+    	getBinaryTreeHeight : function(tree){
+
+            var leftHeight = 0 ;
+            var rightHeight = 0 ;
+            if( tree.getLeft() ){
+                leftHeight = this.getBinaryTreeHeight(tree.getLeft());
+            }
+            if( tree.getRight() ){
+                rightHeight = this.getBinaryTreeHeight(tree.getRight());
+            }
+
+            return (leftHeight > rightHeight ? leftHeight : rightHeight) + 1;
+    	},
         animateObjectShift : function (object, tox, toy, unitTime, layer,callback) {
             var numberOfPoints = 9;
             var x1 = object.getX();

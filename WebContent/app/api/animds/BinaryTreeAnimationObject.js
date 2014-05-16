@@ -312,14 +312,14 @@ define(["core/Constants", "animds/InternalBinaryTree", "animds/TextRectAnimation
      */
     BinaryTreeAnimationObject.prototype.reAdustTree = function(){
         // get the root
-        var root = this.binaryTree;
+        var root = this.internalBinaryTree;
         var heightUp = 0 ;
         while( root.getParent() != null ){
             heightUp++;
             root = root.getParent();
         }
 
-        var heightDown = this.binaryTree.getHeight();
+        var heightDown = AnimUtils.getBinaryTreeHeight(this.internalBinaryTree);
         var height = heightDown + heightUp ;
 
         var numberOfLeafNodes = Math.pow(2, height - 1); // assuming full binary tree
