@@ -16,7 +16,7 @@ define([ "animgen/BinaryTreeAnimationGenerator", "core/Logger","core/Utils"],fun
        this.setLeft(left);
        this.data = data;
        this.parent = null;
-       this.id = utils.generateId();
+       this.id = Utils.generateId();
 
        if( typeof animationId !== 'undefined' && null != animationId ){
            this.animationGenerator = new BinaryTreeAnimationGenerator(animationId,"BinaryTree",this,left,right,data);
@@ -112,6 +112,10 @@ define([ "animgen/BinaryTreeAnimationGenerator", "core/Logger","core/Utils"],fun
 
     BinaryTree.prototype.getParent = function() {
         return  this.parent;
+    };
+
+    BinaryTree.prototype.toString = function() {
+        return  "BinaryTree [ id=" + this.id + ", data=" + this.data + "]";
     };
 
     return BinaryTree;

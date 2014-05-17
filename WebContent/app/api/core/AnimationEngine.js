@@ -36,6 +36,7 @@ define(["core/Logger"], function (Logger) {
             animObj.func.apply(animObj.object, animObj.params);
         } else {
             Logger.info("no animationInput or not the start of animation.");
+            this.animationCompleted();
         }
     };
 
@@ -63,6 +64,8 @@ define(["core/Logger"], function (Logger) {
      * queue is finished.
      */
     AnimationEngine.prototype.animationCompleted = function(){
+        this.isStarted = false;
+        this.currentIndex = -1;
         Logger.info("Animation completed.");
     };
 

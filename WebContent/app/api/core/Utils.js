@@ -103,30 +103,91 @@ define(["core/Point","core/Logger"], function (Point,Logger) {
 
             if( null == point ) return null;
             
-            if (( s2x1 >= s2x2 && point.getX() <= s2x1 && point.getX() >= s2x2)
-                || (s2x2 >= s2x1 && point.getX() <= s2x2 && point.getX() >= s2x1 )
-                ) {
-                if (( s1x1 >= s1x2 && point.getX() <= s1x1 && point.getX() >= s1x2)
-                    || (s1x2 >= s1x1 && point.getX() <= s1x2 && point.getX() >= s1x1 )){
-
-                    Logger.info("findIntersectionPointOfSegments returning point of intersection : " + point);
-                    return point;
-                }
-            }
+           if( this.checkIfPointOnSegmentsWithDelta(s1x1, s1y1, s1x2, s1y2, s2x1, s2y1, s2x2, s2y2,point.getX(),point.getY(),1)){
+               return point;
+           }
 
             return null;
         },
 
+        /**
+         * supposing the point px,py is point of intersection of lines l1 and l2.
+         * Checking if the point on the segment of lines defined by following points with in a region of +- errorDelta on the segment edges
+         * @param s1x1
+         * @param s1y1
+         * @param s1x2
+         * @param s1y2
+         * @param s2x1
+         * @param s2y1
+         * @param s2x2
+         * @param s2y2
+         * @param px
+         * @param py
+         * @param errorDelta
+         */
+        checkIfPointOnSegmentsWithDelta : function(s1x1,s1y1,s1x2,s1y2,s2x1,s2y1,s2x2,s2y2,px,py,errorDelta){
+            // extending the line segments by delta on the x axis
+            var s1x1d,  s1x2d, s2x1d, s2x2d;
+            if( s1x1 < s1x2 ){
+                s1x1d = s1x1 - errorDelta;
+                s1x2d = s1x2 + errorDelta;
+            }else{
+                s1x1d = s1x1 + errorDelta;
+                s1x2d = s1x2 - errorDelta
+            }
+
+            if( s2x1 < s2x2 ){
+                s2x1d = s2x1 - errorDelta;
+                s2x2d = s2x2 + errorDelta;
+            }else{
+                s2x1d = s2x1 + errorDelta;
+                s2x2d = s2x2 - errorDelta
+            }
+
+            return this.checkIfPointOnSegments(s1x1d,s1y1,s1x2d,s1y2,s2x1d,s2y1,s2x2d,s2y2,px,py);
+        },
+
+        /**
+         * supposing the point px,py is point of intersection of lines l1 and l2.
+         * Checking if the point lies on the segment of lines defined by following points
+         * @param s1x1
+         * @param s1y1
+         * @param s1x2
+         * @param s1y2
+         * @param s2x1
+         * @param s2y1
+         * @param s2x2
+         * @param s2y2
+         * @param px
+         * @param py
+         * @returns {boolean}
+         */
+        checkIfPointOnSegments : function(s1x1,s1y1,s1x2,s1y2,s2x1,s2y1,s2x2,s2y2,px,py){
+            if (( s2x1 >= s2x2 && px <= s2x1 && px >= s2x2)
+                || (s2x2 >= s2x1 && px <= s2x2 && px >= s2x1 )
+                ) {
+                if (( s1x1 >= s1x2 && px <= s1x1 && px >= s1x2)
+                    || (s1x2 >= s1x1 && px <= s1x2 && px >= s1x1 )){
+
+                    return true;
+                }
+            }
+
+            return false;
+        },
+
         getPointsPositionWrtLine : function(lx1,ly1,lx2,ly2,px,py){
           var p;
-          if( ly1 - ly2 == 0 ){
-              p = py - ly1;
-          }
-          else if( py - ly1 == 0 ){
-              p = px - lx1;
-          } else {
-              p = (px - lx1) / (py - ly1) - (lx1 - lx2 ) / (ly1 - ly2 );
-          }
+//          if( ly1 - ly2 == 0 ){
+//              p = py - ly1;
+//          }
+//          else if( py - ly1 == 0 ){
+//              p = px - lx1;
+//          } else {
+//              p = (px - lx1) / (py - ly1) - (lx1 - lx2 ) / (ly1 - ly2 );
+//          }
+
+            p = px * (ly1 - ly2) - lx1 * (ly1 - ly2) - py * (lx1 - lx2) + ly1 * ( lx1 - lx2);
           Logger.debug("getPointsPositionWrtLine : (lx1,ly1,lx2,ly2,px,py) = ("+ this.argumentsToString( arguments ) + ") : p = " + p);
 
           if( p > 0 ){

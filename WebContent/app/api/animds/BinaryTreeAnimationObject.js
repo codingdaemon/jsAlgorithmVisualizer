@@ -21,6 +21,10 @@ define(["core/Constants", "animds/InternalBinaryTree", "animds/TextRectAnimation
 	function putInternalBinaryTreeIntoMap(internalBinaryTree){
 		internalBinaryTreeMap[internalBinaryTree.id] = internalBinaryTree;
 	}
+
+    function putBinaryVsInteralBinaryTreeMap(binaryTree, internalBinaryTree){
+        binaryTreeVsInternalBinaryTreeMap[binaryTree.id] = internalBinaryTree.id;
+    }
 	
     function BinaryTreeAnimationObject(configs, layer, animationEngine, layoutManager, group){
         AnimationObject.call(this, "BinaryTreeAnimationObject", configs, layer, animationEngine, layoutManager );
@@ -76,15 +80,16 @@ define(["core/Constants", "animds/InternalBinaryTree", "animds/TextRectAnimation
         return this.y;
     };
 
-        /**
-         * draws just this node
-         */
+    /**
+     * draws just this node
+     */
     BinaryTreeAnimationObject.prototype.draw = function(){
         this.rect.setXY(this.x,this.y);
 
         this.rightPointer.setPoints(this.x + this.width, this.y + this.height, this.x + this.width, this.y + 2 * this.height);
         this.leftPointer.setPoints(this.x, this.y + this.height, this.x, this.y + 2 * this.height);
     };
+
     /**
      * Draws the whole tree not just this node.
      */
@@ -103,13 +108,18 @@ define(["core/Constants", "animds/InternalBinaryTree", "animds/TextRectAnimation
         var numberOfLeafNodes = Math.pow(2, height - 1); // assuming full binary tree
         var widthOfTree = (2 * numberOfLeafNodes -1 ) * this.width;
 
-        var x = root.getAnimNode().getX();
-        var y = root.getAnimNode().getY();
-
+//        var x = root.getAnimNode().getX();
+//        var y = root.getAnimNode().getY();
+//
         var tempAnimationEngine = new AnimationEngine(this.getAnimationEngine().getUnitTime());
         var nodes = [];
         nodes.push(root);
         var group = root.getAnimNode().getGroup();
+
+        Utils.inorder(root,function(binaryTree){
+            binaryTree.getAnimNode().setGroup(group);
+        });
+
         nodes.push("D"); // the delimiter for level
         var currNode = null;
         while(nodes.length != 0){
@@ -125,7 +135,7 @@ define(["core/Constants", "animds/InternalBinaryTree", "animds/TextRectAnimation
             }
             else{
                 var currAnimNode = currNode.getAnimNode();
-                currAnimNode.setGroup(group);
+//                currAnimNode.setGroup(group);
                 if( currNode.getLeft() ){
                     nodes.push(currNode.getLeft());
                     var animInput = new AnimationInput(null,
@@ -251,66 +261,76 @@ define(["core/Constants", "animds/InternalBinaryTree", "animds/TextRectAnimation
 
 //        binaryTree.setInternalTree(internalBinaryTree);
         putInternalBinaryTreeIntoMap(internalBinaryTree);
-        
-        this.internalBinaryTree = internalBinaryTree;
+        putBinaryVsInteralBinaryTreeMap(binaryTree,internalBinaryTree);
 
-        // TODO: animate
+         this.internalBinaryTree = internalBinaryTree;
+
         // craete new node for internalBinaryTree,
         this.getLayer().draw(); // this will print the current node
         var tempAnimationEngine = new AnimationEngine(this.getAnimationEngine().getUnitTime());
         // shift iLeft to left of this node
         if( !Utils.isNullOrUndefined( iLeft ) ){
-        	iLeft.getAnimNode().setGroup(this.getGroup());
+            var ref = this;
+            Utils.inorder(iLeft,function(binaryTree){
+                binaryTree.getAnimNode().setGroup(ref.getGroup());
+            });
+
         	var animationInput = new AnimationInput(null,
         		function(left,parentTree){
-        			var leftChildren = AnimUtils.getAllChildrenOfTree(left);
+        			var leftChildren = AnimUtils.getAllChildrenAnimNodesOfTree(left);
         			var leftX = left.getAnimNode().getX();
         			var leftY = left.getAnimNode().getY();
-        			var toX = parentTree.getAnimNode().getX() ;
-        			var toY = parentTree.getAnimNode().getY() + 2 * parentTree.height;
+        			var toX = parentTree.getAnimNode().getX() - 3 / 4 * parentTree.getAnimNode().width;
+        			var toY = parentTree.getAnimNode().getY() + 2 * parentTree.getAnimNode().height;
         			var diffx = toX - leftX;
         			var diffy = toY - leftY;
         			
-        			AnimUtils.animateObjectArrayMove(leftChildren, diffx, diffy, parentTree.getAnimationEngine().getUnitTime(), parentTree.getLayer(),function(){
+        			AnimUtils.animateObjectArrayMove(leftChildren, diffx, diffy, parentTree.getAnimNode().getAnimationEngine().getUnitTime(), parentTree.getAnimNode().getLayer(),function(){
         				tempAnimationEngine.next();
         			});
-        		},[iLeft.getInternalTree(),this]	
+        		},[iLeft,internalBinaryTree]
         	);
         	tempAnimationEngine.push(animationInput);
         }
-        
+
+            // shift iRight to right of this node
         if( !Utils.isNullOrUndefined(iRight) ){
-        	iRight.getAnimNode().setGroup(this.getGroup());
+            var ref = this;
+            Utils.inorder(iRight,function(binaryTree){
+                binaryTree.getAnimNode().setGroup(ref.getGroup());
+            });
+
         	var animationInput = new AnimationInput(null,
             		function(right,parentTree){
-            			var rightChildren = AnimUtils.getAllChildrenOfTree(right);
-            			var rightX = left.getAnimNode().getX();
-            			var rightY = left.getAnimNode().getY();
-            			var toX = parentTree.getAnimNode().getX() + parentTree.width;
-            			var toY = parentTree.getAnimNode().getY() + 2 * parentTree.height;
+            			var rightChildren = AnimUtils.getAllChildrenAnimNodesOfTree(right);
+            			var rightX = right.getAnimNode().getX();
+            			var rightY = right.getAnimNode().getY();
+            			var toX = parentTree.getAnimNode().getX() + 3/4 * parentTree.getAnimNode().width;
+            			var toY = parentTree.getAnimNode().getY() + 2 * parentTree.getAnimNode().height;
             			var diffx = toX - rightX;
             			var diffy = toY - rightY;
             			
-            			AnimUtils.animateObjectArrayMove(rightChildren, diffx, diffy, parentTree.getAnimationEngine().getUnitTime(), parentTree.getLayer(),function(){
+            			AnimUtils.animateObjectArrayMove(rightChildren, diffx, diffy, parentTree.getAnimNode().getAnimationEngine().getUnitTime(), parentTree.getAnimNode().getLayer(),function(){
             				tempAnimationEngine.next();
             			});
-            		},[iRight.getInternalTree(),this]	
+            		},[iRight,internalBinaryTree]
             	);
             	tempAnimationEngine.push(animationInput);
         }
         
-        ConnectJs.connect( tempAnimationEngine, "animationCompleted", ConnectJs.hitch(this, function(){
-        	this.drawTree();
+        var connectHandler = ConnectJs.connect( tempAnimationEngine, "animationCompleted", ConnectJs.hitch(this, function(){
+            ConnectJs.disconnect(connectHandler);
+        	this.reAdjustTree();
         	this.getAnimationEngine().next();
         }));
 
-        // shift iRight to right of this node
+        tempAnimationEngine.start();
     };
     
     /**
      * Draws the whole tree not just this node.
      */
-    BinaryTreeAnimationObject.prototype.reAdustTree = function(){
+    BinaryTreeAnimationObject.prototype.reAdjustTree = function(){
         // get the root
         var root = this.internalBinaryTree;
         var heightUp = 0 ;
@@ -323,16 +343,21 @@ define(["core/Constants", "animds/InternalBinaryTree", "animds/TextRectAnimation
         var height = heightDown + heightUp ;
 
         var numberOfLeafNodes = Math.pow(2, height - 1); // assuming full binary tree
-        var widthOfTree = (2 * numberOfLeafNodes -1 ) * this.width;
+        var widthOfTree = (2 * numberOfLeafNodes - 2 );
 
-        var x = root.getAnimNode().getX();
-        var y = root.getAnimNode().getY();
+//        var x = root.getAnimNode().getX();
+//        var y = root.getAnimNode().getY();
 
         var nodes = [];
         nodes.push(root);
         // create new group and so that each tree has its own group
         var group = new Kinetic.Group({
         	draggable:true
+        });
+
+
+        Utils.inorder(root,function(binaryTree){
+            binaryTree.getAnimNode().setGroup(group);
         });
 //        root.getAnimNode().getGroup();
         nodes.push("D"); // the delimiter for level
@@ -343,20 +368,20 @@ define(["core/Constants", "animds/InternalBinaryTree", "animds/TextRectAnimation
             if( currNode === "D"){ // delimiter
                 height--;
                 numberOfLeafNodes = Math.pow(2, height - 1); // assuming full binary tree
-                widthOfTree = (2 * numberOfLeafNodes -1 ) * this.width;
+                widthOfTree = (2 * numberOfLeafNodes - 2 );
                 if( nodes.length != 0 ){ // this was not last D
                     nodes.push("D"); // push delemiter for ending this level
                 }
             }
             else{
                 var currAnimNode = currNode.getAnimNode();
-                currAnimNode.setGroup(group);
+//                currAnimNode.setGroup(group);
                 if( currNode.getLeft() ){
                     nodes.push(currNode.getLeft());
                     var leftAnimNode = currNode.getLeft().getAnimNode();
-                    var rx = currAnimNode.getX() - widthOfTree/4 ;
-                    var ry = currAnimNode.getY() + 2 * this.height;
-                    leftAnimNode.setXY(rx,ry);
+                    var lx = currAnimNode.getX() - Math.ceil(widthOfTree/4) * currAnimNode.width ;
+                    var ly = currAnimNode.getY() + 2 * this.height;
+                    leftAnimNode.setXY(lx,ly);
                     currAnimNode.leftPointer.pointHeadTo(leftAnimNode);
                 }else{
                     currAnimNode.leftPointer.setHeadPoint(new Point(currAnimNode.getX(),currAnimNode.getY() + 2 * currAnimNode.height));
@@ -365,9 +390,9 @@ define(["core/Constants", "animds/InternalBinaryTree", "animds/TextRectAnimation
                 if( currNode.getRight() ){
                     nodes.push(currNode.getRight());
                     var rightAnimNode = currNode.getRight().getAnimNode();
-                    var lx = widthOfTree/4 + currNode.getAnimNode().getX();
-                    var ly = currNode.getAnimNode().getY() + 2 * this.height;
-                    rightAnimNode.setXY(lx,ly);
+                    var rx = currNode.getAnimNode().getX() + Math.floor(widthOfTree/4) * currAnimNode.width + currAnimNode.width ;
+                    var ry = currNode.getAnimNode().getY() + 2 * this.height;
+                    rightAnimNode.setXY(rx,ry);
                     currAnimNode.rightPointer.pointHeadTo(rightAnimNode);
                 }else{
                     currAnimNode.rightPointer.setHeadPoint(new Point(currAnimNode.getX() + currAnimNode.width,currAnimNode.getY() + 2 * currAnimNode.height));
@@ -375,11 +400,24 @@ define(["core/Constants", "animds/InternalBinaryTree", "animds/TextRectAnimation
             }
         }
 
-        this.getLayer().draw();
+        root.getAnimNode().getLayer().add(group);
+        root.getAnimNode().getLayer().draw();
         Logger.debug("Binary Tree draw completed");
     };
 
+        BinaryTreeAnimationObject.prototype.toString = function (xdiff,ydiff) {
+            return "BinaryTreeAnimationObject[ data=" + this.data + "]";
+        };
 
+        BinaryTreeAnimationObject.prototype.moveXY = function (xdiff,ydiff) {
+            this.x += xdiff;
+            this.y += ydiff;
+
+            this.rect.moveXY(xdiff,ydiff);
+            this.leftPointer.moveXY(xdiff,ydiff);
+            this.rightPointer.moveXY(xdiff,ydiff);
+
+        };
     BinaryTreeAnimationObject.prototype.getChildren = function(){
     	return [this.leftPointer, this.rightPointer,this.rect];
     };

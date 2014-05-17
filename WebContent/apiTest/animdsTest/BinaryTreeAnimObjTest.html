@@ -42,21 +42,27 @@
 <div id="jsavContainer"></div>
 <textarea hidden="true" rows="25" cols="50" id="codeAreaId">
     (function(){
-    /*
-    var ll, rr, rl, lr, r ,l ;
-    rl = new BinaryTree(null,null,4);
-    lr = new BinaryTree(null,null,3);
-    rr = new BinaryTree(null,null,2);
-    ll = new BinaryTree(null,null,1);
+    var ll, rr, rl, lr, r ,l , lll,llr,lrl,lrr,rll,rlr,rrl,rrr;
+    lll = new BinaryTree(null,null,20);
+    llr = new BinaryTree(null,null,21);
+    lrr = new BinaryTree(null,null,22);
+    lrl = new BinaryTree(null,null,23);
+
+    rll = new BinaryTree(null,null,24);
+    rlr = new BinaryTree(null,null,25);
+    rrl = new BinaryTree(null,null,26);
+    rrr = new BinaryTree(null,null,27);
+
+    rl = new BinaryTree(rll,rlr,4);
+    lr = new BinaryTree(lrl,lrr,3);
+    rr = new BinaryTree(rrl,rrr,2);
+    ll = new BinaryTree(lll,llr,1);
      l = new BinaryTree(ll,lr,6);
      r = new BinaryTree(rl,rr,5);
 
-    rx = new BinaryTree(null,null,10);
     var root = new BinaryTree(l,r,7);
 
-    root.setRight(rx);
-    */
-
+/*
     var ll, rr, rl, lr, r ,l ;
     rl = new BinaryTree(null,null,4);
     lr = new BinaryTree(null,null,3);
@@ -65,18 +71,13 @@
     l = new BinaryTree(ll,lr,6);
     r = new BinaryTree(rl,rr,5);
 
-    rx = new BinaryTree(null,null,10);
     var root = new BinaryTree(l,r,7);
-
-    root.setRight(rx);
-
-    superroot = new BinaryTree(null,null,11);
-    superroot.setLeft(root);
+    */
 
     }());
 </textarea>
-<textarea rows="25" cols="50" id="codeAreaId2"></textarea>
-<input type="button" onclick="animate2()" value="Test Animate"/>
+<!--<textarea rows="25" cols="50" id="codeAreaId2"></textarea>-->
+<input type="button" onclick="animate()" value="Test Animate"/>
 <!--<input type="button" onclick="reset()" value="Reset Animation"/>-->
 </body>
 </html>

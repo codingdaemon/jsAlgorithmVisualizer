@@ -12,4 +12,4 @@ LinkedNodeAnimationObject
 
 2. Change the StackAnimationObject to do the animation using unitTime. Also take advantage of AnimUtils
 
-3.
+3. in parsing code, ignore the definition statements in for loop declaration and include the statements inside the inner functions
