@@ -43,15 +43,15 @@
 <textarea hidden="true" rows="25" cols="50" id="codeAreaId">
     (function(){
     var ll, rr, rl, lr, r ,l , lll,llr,lrl,lrr,rll,rlr,rrl,rrr;
-    lll = new BinaryTree(null,null,20);
-    llr = new BinaryTree(null,null,21);
-    lrr = new BinaryTree(null,null,22);
-    lrl = new BinaryTree(null,null,23);
-
-    rll = new BinaryTree(null,null,24);
-    rlr = new BinaryTree(null,null,25);
-    rrl = new BinaryTree(null,null,26);
-    rrr = new BinaryTree(null,null,27);
+//    lll = new BinaryTree(null,null,20);
+//    llr = new BinaryTree(null,null,21);
+//    lrr = new BinaryTree(null,null,22);
+//    lrl = new BinaryTree(null,null,23);
+//
+//    rll = new BinaryTree(null,null,24);
+//    rlr = new BinaryTree(null,null,25);
+//    rrl = new BinaryTree(null,null,26);
+//    rrr = new BinaryTree(null,null,27);
 
     rl = new BinaryTree(rll,rlr,4);
     lr = new BinaryTree(lrl,lrr,3);
@@ -61,6 +61,12 @@
      r = new BinaryTree(rl,rr,5);
 
     var root = new BinaryTree(l,r,7);
+
+    var right = new BinaryTree(null,null,10);
+    var left = new BinaryTree(null,null,11);
+
+    root.setRight(right);
+    root.setLeft(left);
 
 /*
     var ll, rr, rl, lr, r ,l ;

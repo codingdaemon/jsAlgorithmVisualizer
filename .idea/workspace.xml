@@ -7,8 +7,6 @@
   <component name="ChangeListManager">
     <list default="true" id="108c393e-3b01-404f-b9d4-f4079cbfabdd" name="Default" comment="binary tree slow animation for subtree movement with tree adjustment for createObject method">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/apiTest/animdsTest/BinaryTreeAnimObjTest.html" afterPath="$PROJECT_DIR$/WebContent/apiTest/animdsTest/BinaryTreeAnimObjTest.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/app/api/animds/BinaryTreeAnimationObject.js" afterPath="$PROJECT_DIR$/WebContent/app/api/animds/BinaryTreeAnimationObject.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TODO.txt" afterPath="$PROJECT_DIR$/TODO.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="jsAlgorithmVisualizer.iws" />
@@ -645,7 +643,11 @@
       <created>1400324418773</created>
       <updated>1400324418773</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="working binary tree implementation.">
+      <created>1400391384663</created>
+      <updated>1400391384663</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -727,7 +729,8 @@
     <MESSAGE value="adding BinaryTree and its createObject animation ... not correct completely" />
     <MESSAGE value="fail example" />
     <MESSAGE value="binary tree slow animation for subtree movement with tree adjustment for createObject method" />
-    <option name="LAST_COMMIT_MESSAGE" value="binary tree slow animation for subtree movement with tree adjustment for createObject method" />
+    <MESSAGE value="working binary tree implementation." />
+    <option name="LAST_COMMIT_MESSAGE" value="working binary tree implementation." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
