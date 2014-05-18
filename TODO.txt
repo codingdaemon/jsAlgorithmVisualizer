@@ -13,3 +13,9 @@ LinkedNodeAnimationObject
 2. Change the StackAnimationObject to do the animation using unitTime. Also take advantage of AnimUtils
 
 3. in parsing code, ignore the definition statements in for loop declaration and include the statements inside the inner functions
+
+4. BinaryTreeAnimationObject the right sub trees are never draggable.
+
+5. Stack and List Animation object don't use the timeUnit from AnimationEngine
+
+6. for editor in your blogsite explore the editor used in http://www.html5canvastutorials.com/

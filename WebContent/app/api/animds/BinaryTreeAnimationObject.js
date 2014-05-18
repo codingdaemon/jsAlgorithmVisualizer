@@ -8,22 +8,22 @@ define(["core/Constants", "animds/InternalBinaryTree", "animds/TextRectAnimation
 	
 	var binaryTreeVsInternalBinaryTreeMap = {};
 
-	var internalBinaryTreeMap = {};
-	
-	function getInternalBinaryTreeFor(binaryTreeId){
-		var internalBinaryTreeId = binaryTreeVsInternalBinaryTreeMap[binaryTreeId];
-		if( null == internalBinaryTreeId )
-			return null;
-		
-		return internalBinaryTreeMap[internalBinaryTreeId];
+	function getInternalBinaryTreeFor(binaryTree){
+        if( Utils.isNullOrUndefined(binaryTree)){
+            return null;
+        }
+
+	    var internalBinaryTree = binaryTreeVsInternalBinaryTreeMap[binaryTree.id];
+
+        return internalBinaryTree;
 	}
 	
-	function putInternalBinaryTreeIntoMap(internalBinaryTree){
-		internalBinaryTreeMap[internalBinaryTree.id] = internalBinaryTree;
-	}
+//	function putInternalBinaryTreeIntoMap(internalBinaryTree){
+//		internalBinaryTreeMap[internalBinaryTree.id] = internalBinaryTree;
+//	}
 
     function putBinaryVsInteralBinaryTreeMap(binaryTree, internalBinaryTree){
-        binaryTreeVsInternalBinaryTreeMap[binaryTree.id] = internalBinaryTree.id;
+        binaryTreeVsInternalBinaryTreeMap[binaryTree.id] = internalBinaryTree;
     }
 	
     function BinaryTreeAnimationObject(configs, layer, animationEngine, layoutManager, group){
@@ -249,18 +249,18 @@ define(["core/Constants", "animds/InternalBinaryTree", "animds/TextRectAnimation
         this.leftPointer = new PointerAnimationObject(leftNodeConfigs, this.getLayer(), this.getGroup());
 
         if( right != null ){
-            iRight = getInternalBinaryTreeFor(right.id);
+            iRight = getInternalBinaryTreeFor(right);
         }
 
         if( left != null ){
-            iLeft = getInternalBinaryTreeFor(left.id);
+            iLeft = getInternalBinaryTreeFor(left);
         }
 
         var internalBinaryTree = new InternalBinaryTree(iLeft,iRight,data);
         internalBinaryTree.setAnimNode(this);
 
 //        binaryTree.setInternalTree(internalBinaryTree);
-        putInternalBinaryTreeIntoMap(internalBinaryTree);
+//        putInternalBinaryTreeIntoMap(internalBinaryTree);
         putBinaryVsInteralBinaryTreeMap(binaryTree,internalBinaryTree);
 
          this.internalBinaryTree = internalBinaryTree;
@@ -270,52 +270,12 @@ define(["core/Constants", "animds/InternalBinaryTree", "animds/TextRectAnimation
         var tempAnimationEngine = new AnimationEngine(this.getAnimationEngine().getUnitTime());
         // shift iLeft to left of this node
         if( !Utils.isNullOrUndefined( iLeft ) ){
-            var ref = this;
-            Utils.inorder(iLeft,function(binaryTree){
-                binaryTree.getAnimNode().setGroup(ref.getGroup());
-            });
-
-        	var animationInput = new AnimationInput(null,
-        		function(left,parentTree){
-        			var leftChildren = AnimUtils.getAllChildrenAnimNodesOfTree(left);
-        			var leftX = left.getAnimNode().getX();
-        			var leftY = left.getAnimNode().getY();
-        			var toX = parentTree.getAnimNode().getX() - 3 / 4 * parentTree.getAnimNode().width;
-        			var toY = parentTree.getAnimNode().getY() + 2 * parentTree.getAnimNode().height;
-        			var diffx = toX - leftX;
-        			var diffy = toY - leftY;
-        			
-        			AnimUtils.animateObjectArrayMove(leftChildren, diffx, diffy, parentTree.getAnimNode().getAnimationEngine().getUnitTime(), parentTree.getAnimNode().getLayer(),function(){
-        				tempAnimationEngine.next();
-        			});
-        		},[iLeft,internalBinaryTree]
-        	);
-        	tempAnimationEngine.push(animationInput);
+            generateAnimationForLeftChild(this.internalBinaryTree,iLeft,tempAnimationEngine);
         }
 
             // shift iRight to right of this node
         if( !Utils.isNullOrUndefined(iRight) ){
-            var ref = this;
-            Utils.inorder(iRight,function(binaryTree){
-                binaryTree.getAnimNode().setGroup(ref.getGroup());
-            });
-
-        	var animationInput = new AnimationInput(null,
-            		function(right,parentTree){
-            			var rightChildren = AnimUtils.getAllChildrenAnimNodesOfTree(right);
-            			var rightX = right.getAnimNode().getX();
-            			var rightY = right.getAnimNode().getY();
-            			var toX = parentTree.getAnimNode().getX() + 3/4 * parentTree.getAnimNode().width;
-            			var toY = parentTree.getAnimNode().getY() + 2 * parentTree.getAnimNode().height;
-            			var diffx = toX - rightX;
-            			var diffy = toY - rightY;
-            			
-            			AnimUtils.animateObjectArrayMove(rightChildren, diffx, diffy, parentTree.getAnimNode().getAnimationEngine().getUnitTime(), parentTree.getAnimNode().getLayer(),function(){
-            				tempAnimationEngine.next();
-            			});
-            		},[iRight,internalBinaryTree]
-            	);
-            	tempAnimationEngine.push(animationInput);
+            generateAnimationForRightChild(this.internalBinaryTree,iRight,tempAnimationEngine);
         }
         
         var connectHandler = ConnectJs.connect( tempAnimationEngine, "animationCompleted", ConnectJs.hitch(this, function(){
@@ -326,7 +286,52 @@ define(["core/Constants", "animds/InternalBinaryTree", "animds/TextRectAnimation
 
         tempAnimationEngine.start();
     };
-    
+
+    function generateAnimationForLeftChild(parentTree,leftTree,animationEngine){
+        Utils.inorder(leftTree,function(binaryTree){
+            binaryTree.getAnimNode().setGroup(parentTree.getAnimNode().getGroup());
+        });
+
+        var animationInput = new AnimationInput(null,
+            function(left,parentTree){
+                var leftChildren = AnimUtils.getAllChildrenAnimNodesOfTree(left);
+                var leftX = left.getAnimNode().getX();
+                var leftY = left.getAnimNode().getY();
+                var toX = parentTree.getAnimNode().getX() - 3 / 4 * parentTree.getAnimNode().width;
+                var toY = parentTree.getAnimNode().getY() + 2 * parentTree.getAnimNode().height;
+                var diffx = toX - leftX;
+                var diffy = toY - leftY;
+
+                AnimUtils.animateObjectArrayMove(leftChildren, diffx, diffy, parentTree.getAnimNode().getAnimationEngine().getUnitTime(), parentTree.getAnimNode().getLayer(),function(){
+                    animationEngine.next();
+                });
+            },[leftTree,parentTree]
+        );
+        animationEngine.push(animationInput);
+    }
+
+    function generateAnimationForRightChild(parentTree,rightTree,animationEngine){
+        Utils.inorder(rightTree,function(binaryTree){
+            binaryTree.getAnimNode().setGroup(parentTree.getAnimNode().getGroup());
+        });
+
+        var animationInput = new AnimationInput(null,
+            function(right,parentTree){
+                var rightChildren = AnimUtils.getAllChildrenAnimNodesOfTree(right);
+                var rightX = right.getAnimNode().getX();
+                var rightY = right.getAnimNode().getY();
+                var toX = parentTree.getAnimNode().getX() + 3/4 * parentTree.getAnimNode().width;
+                var toY = parentTree.getAnimNode().getY() + 2 * parentTree.getAnimNode().height;
+                var diffx = toX - rightX;
+                var diffy = toY - rightY;
+
+                AnimUtils.animateObjectArrayMove(rightChildren, diffx, diffy, parentTree.getAnimNode().getAnimationEngine().getUnitTime(), parentTree.getAnimNode().getLayer(),function(){
+                    animationEngine.next();
+                });
+            },[rightTree,parentTree]
+        );
+        animationEngine.push(animationInput);
+    }
     /**
      * Draws the whole tree not just this node.
      */
@@ -421,23 +426,85 @@ define(["core/Constants", "animds/InternalBinaryTree", "animds/TextRectAnimation
     BinaryTreeAnimationObject.prototype.getChildren = function(){
     	return [this.leftPointer, this.rightPointer,this.rect];
     };
-    
-        BinaryTreeAnimationObject.prototype.setRight = function(right){
-//            if( right != null && !(right instanceof BinaryTree) ){
-//                throw "Not instance of BinaryTree";
-//            }
 
-            this.internalBinaryTree.setRight( right.getInternalTree() );
-            this.drawTree();
+        /**
+         * @param binaryTree
+         * @param point
+         */
+        function reGroupAndRelocateTree(binaryTree,point,animationEngine){
+            // make a different group.
+            var group = new Kinetic.Group({
+                draggable:true
+            });
+
+            var animNode = binaryTree.getAnimNode();
+            animNode.getLayer().add(group);
+
+            Utils.inorder(binaryTree,function(tree){
+               tree.getAnimNode().setGroup(group);
+            });
+
+            // move to tree to given point
+            var animationInput = new AnimationInput(null, function(binaryTree,point){
+                var animNode = binaryTree.getAnimNode();
+                var diffx = point.getX() - animNode.getX() ;
+                var diffy = point.getY() - animNode.getY() ;
+                var children = AnimUtils.getAllChildrenAnimNodesOfTree(binaryTree);
+
+                AnimUtils.animateObjectArrayMove(children,diffx, diffy,animNode.getAnimationEngine().getUnitTime(), animNode.getLayer(), function(){
+                    animationEngine.next();
+                });
+            },[binaryTree,point]);
+
+            animationEngine.push(animationInput);
+        }
+
+        BinaryTreeAnimationObject.prototype.setRight = function(right){
+            var iRight = getInternalBinaryTreeFor(right);
+            var oldRight = this.internalBinaryTree.setRight( iRight );
+
+            var animationEngine = new AnimationEngine(this.getAnimationEngine().getUnitTime());
+            // generate animation for breaking of trees
+            if(!Utils.isNullOrUndefined(oldRight)){
+               reGroupAndRelocateTree(oldRight,this.getLayoutManager().getCenter(),animationEngine);
+            }
+
+            if( !Utils.isNullOrUndefined(iRight) ){
+                // generate animation for joining of trees
+                generateAnimationForRightChild(this.internalBinaryTree,iRight,animationEngine);
+            }
+
+            var handle = ConnectJs.connect(animationEngine,"animationCompleted",ConnectJs.hitch(this,function(){
+                ConnectJs.disconnect(handle);
+                this.reAdjustTree();
+                this.getAnimationEngine().next();
+            }));
+
+            animationEngine.start();
         };
 
         BinaryTreeAnimationObject.prototype.setLeft = function(left){
-//            if( left != null && !(left instanceof BinaryTree) ){
-//                throw "Not instance of BinaryTree";
-//            }
+            var iLeft = getInternalBinaryTreeFor(left);
+            var oldLeft = this.internalBinaryTree.setLeft( iLeft );
 
-            this.internalBinaryTree.setLeft(left.getInternalTree());
-            this.drawTree();
+            var animationEngine = new AnimationEngine(this.getAnimationEngine().getUnitTime());
+            // generate animation for breaking of trees
+            if(!Utils.isNullOrUndefined(oldLeft)){
+                reGroupAndRelocateTree(oldLeft,this.getLayoutManager().getCenter(),animationEngine);
+            }
+
+            if( !Utils.isNullOrUndefined(iLeft) ){
+                // generate animation for joining of trees
+                generateAnimationForLeftChild(this.internalBinaryTree,iLeft,animationEngine);
+            }
+
+            var handle = ConnectJs.connect(animationEngine,"animationCompleted",ConnectJs.hitch(this,function(){
+                ConnectJs.disconnect(handle);
+                this.reAdjustTree();
+                this.getAnimationEngine().next();
+            }));
+
+            animationEngine.start();
         };
 
         BinaryTreeAnimationObject.prototype.setData = function(data){
