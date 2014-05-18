@@ -214,7 +214,7 @@ define(["core/Point","core/Logger"], function (Point,Logger) {
         },
 
         getFooterCode: function(){
-	        var FOOTER_CODE = "\njsav.playCodeAnimation(animationId);\n" +
+	        var FOOTER_CODE =  // "\njsav.playCodeAnimation(animationId);\n" +
 	        "});" +
 	        "})();";
 	        return FOOTER_CODE;

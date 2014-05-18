@@ -284,7 +284,7 @@ define(["core/Constants", "animds/InternalBinaryTree", "animds/TextRectAnimation
         	this.getAnimationEngine().next();
         }));
 
-        tempAnimationEngine.start();
+        tempAnimationEngine.play();
     };
 
     function generateAnimationForLeftChild(parentTree,leftTree,animationEngine){
@@ -480,7 +480,7 @@ define(["core/Constants", "animds/InternalBinaryTree", "animds/TextRectAnimation
                 this.getAnimationEngine().next();
             }));
 
-            animationEngine.start();
+            animationEngine.play();
         };
 
         BinaryTreeAnimationObject.prototype.setLeft = function(left){
@@ -504,7 +504,7 @@ define(["core/Constants", "animds/InternalBinaryTree", "animds/TextRectAnimation
                 this.getAnimationEngine().next();
             }));
 
-            animationEngine.start();
+            animationEngine.play();
         };
 
         BinaryTreeAnimationObject.prototype.setData = function(data){

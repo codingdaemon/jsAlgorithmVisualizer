@@ -1,10 +1,10 @@
-define(["core/Constants", "core/AnimationEngine", "libs/kinetic","core/LayoutManager", "animgen/CodeAnimationGenerator"], function(Constants,AnimationEngine,Kinetic,LayoutManager, CodeAnimationGenerator) {
+define(["core/Constants", "core/AnimationEngine", "libs/kinetic","core/LayoutManager", "animgen/CodeAnimationGenerator", "anim/AnimationControls"], function(Constants,AnimationEngine,Kinetic,LayoutManager, CodeAnimationGenerator, AnimationControls) {
 
 
     function Animator(animationId, /*codeStatementLines,*/ configs) {
         this.animationId = animationId;
-//        this.codeStatementLines = codeStatementLines;
         this.configs = configs;
+        this.animationType = configs[Constants.ANIMATION_TYPE];
         this.animationEngine = new AnimationEngine(/*animationId,*/this.configs[Constants.ANIMATION_UNIT_TIME]);
         this.stage = null;
         this.layoutManager = null;
@@ -21,6 +21,16 @@ define(["core/Constants", "core/AnimationEngine", "libs/kinetic","core/LayoutMan
         });
 
         this.layoutManager = new LayoutManager(this.stage);
+        if( this.animationType == Constants.ANIMATION_TYPE_CODE_ANIMATION){
+            var controlConfigs = {};
+            controlConfigs[Constants.ANIMATION_CONTROL_Y] = this.configs[Constants.ANIMATION_CONTROL_Y] ;
+            controlConfigs[Constants.ANIMATION_CONTROL_X] = this.configs[Constants.ANIMATION_CONTROL_X] ;
+            controlConfigs[Constants.ANIMATION_CONTROL_BUTTON_WIDTH] = this.configs[Constants.ANIMATION_CONTROL_BUTTON_WIDTH] ;
+            controlConfigs[Constants.ANIMATION_CONTROL_BUTTON_HEIGHT] = this.configs[Constants.ANIMATION_CONTROL_BUTTON_HEIGHT];
+
+            this.animationControl = new AnimationControls(this.configs,this.layoutManager.getLayer(),this,this.layoutManager);
+        }
+
 //        this.layoutManager.getLayer().red(animatorRef.configs[jsav.STAGE_COLOR_RED]);
 //        this.layoutManager.getLayer().blue(animatorRef.configs[jsav.STAGE_COLOR_BLUE]);
 //        this.layoutManager.getLayer().green(animatorRef.configs[jsav.STAGE_COLOR_GREEN]);
@@ -31,25 +41,29 @@ define(["core/Constants", "core/AnimationEngine", "libs/kinetic","core/LayoutMan
     };
 
     Animator.prototype.playCodeAnimation = function () {
-        this.animationEngine.start();
+        this.animationEngine.play();
     };
 
     Animator.prototype.pauseCodeAnimation = function () {
         this.animationEngine.pause();
     };
 
-    Animator.prototype.resumeCodeAnimation = function () {
-        this.animationEngine.resume();
+    Animator.prototype.forwardCodeAnimation = function () {
+        this.animationEngine.forward();
     };
 
-    Animator.prototype.resetCodeAnimation = function () {
-        this.animationEngine.reset();
+//    Animator.prototype.resumeCodeAnimation = function () {
+//        this.animationEngine.resume();
+//    };
 
-        var layer = this.layoutManager.getLayer();
-        layer.removeChildren();
-        layer.clear();
-        layer.draw();
-    };
+//    Animator.prototype.resetCodeAnimation = function () {
+//        this.animationEngine.reset();
+//
+//        var layer = this.layoutManager.getLayer();
+//        layer.removeChildren();
+//        layer.clear();
+//        layer.draw();
+//    };
     
     Animator.prototype.createCodeAnimationGenerator = function(codeStatementLines){
         this.codeAnimationGenerator = new CodeAnimationGenerator(this.animationId, codeStatementLines);

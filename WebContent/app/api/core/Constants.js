@@ -66,7 +66,17 @@ define([],function(){
         BINARY_TREE_BOX_HEIGHT : "binaryTree.box.height",
         BINARY_TREE_BOX_WIDTH : "binaryTree.box.width",
 
-        ANIMATION_UNIT_TIME : "animation.unit.time"
+        ANIMATION_UNIT_TIME : "animation.unit.time",
+
+        ANIMATION_CONTROL_BUTTON_WIDTH : "animationControl.button.width",
+        ANIMATION_CONTROL_BUTTON_HEIGHT : "animationControl.button.height",
+
+        ANIMATION_TYPE: "animation.type",
+
+        ANIMATION_TYPE_CODE_ANIMATION : "code.animation",
+        ANIMATION_TYPE_STEP_BY_STEP_ANIMATION : "step.by.step.animation",
+        ANIMATION_CONTROL_Y : "animation.control.y",
+        ANIMATION_CONTROL_X : "animation.control.x"
     };
 
     return Constants;

@@ -3,6 +3,7 @@ define(["core/Logger"], function (Logger) {
     function AnimationEngine(/*animationId,*/ unitTime) {
 //        this.animationId = animationId;
         this.unitTime = unitTime;
+        this.originalUnitTime = this.unitTime;
         /**
          *  Type AnimationInput Array
          */
@@ -11,9 +12,9 @@ define(["core/Logger"], function (Logger) {
         /**
          *  Type Integer for currentIndex of execution
          */
-        this.currentIndex = -1;
+        this.currentIndex = 0;
 
-        this.isStarted = false;
+        this.isPlaying = false;
     }
 
     /**
@@ -26,28 +27,28 @@ define(["core/Logger"], function (Logger) {
     /**
      * Starts the animation if not already started and animationInputArray is not empty.
      */
-    AnimationEngine.prototype.start = function () {
-        if (this.animationInputArray.length != 0 && this.currentIndex == -1) {
-            this.currentIndex = 0;
-            this.isStarted = true;
-            Logger.info("AnimationEngine : start : Complete List of Executions : " + this.animationInputArray);
-
-            var animObj = this.animationInputArray[this.currentIndex];
-            animObj.func.apply(animObj.object, animObj.params);
-        } else {
-            Logger.info("no animationInput or not the start of animation.");
-            this.animationCompleted();
-        }
-    };
+//    AnimationEngine.prototype.start = function () {
+//        if (this.animationInputArray.length != 0 && this.currentIndex < this.animationInputArray.length) {
+////            this.currentIndex = 0;
+//            this.isPlaying = true;
+////            Logger.info("AnimationEngine : start : Complete List of Executions : " + this.animationInputArray);
+//
+//            var animObj = this.animationInputArray[this.currentIndex];
+//            animObj.func.apply(animObj.object, animObj.params);
+//        } else {
+//            Logger.info("no animationInput or not the start of animation.");
+//            this.animationCompleted();
+//        }
+//    };
 
     /**
      * Executes the next animation
      */
     AnimationEngine.prototype.next = function () {
-        if (this.isStarted) {
-            if (this.currentIndex < this.animationInputArray.length - 1) {
-                this.currentIndex++;
+        if (this.isPlaying) {
+            if (this.currentIndex < this.animationInputArray.length) {
                 var animObj = this.animationInputArray[this.currentIndex];
+                this.currentIndex++;
                 Logger.info("AnimationEngine.next : executing : " + animObj);
 
                 animObj.func.apply(animObj.object, animObj.params);
@@ -64,14 +65,28 @@ define(["core/Logger"], function (Logger) {
      * queue is finished.
      */
     AnimationEngine.prototype.animationCompleted = function(){
-        this.isStarted = false;
-        this.currentIndex = -1;
+        this.isPlaying = false;
+        this.currentIndex = 0;
         Logger.info("Animation completed.");
     };
 
     AnimationEngine.prototype.reset = function () {
-        this.currentIndex = -1;
-        this.isStarted = false; // stops any old animation
+        this.currentIndex = 0;
+        this.isPlaying = false; // stops any old animation
+    };
+
+    AnimationEngine.prototype.pause = function () {
+        this.isPlaying = false;
+        this.unitTime = this.originalUnitTime;
+    };
+
+    AnimationEngine.prototype.play = function () {
+        this.isPlaying = true;
+        this.next();
+    };
+
+    AnimationEngine.prototype.forward = function () {
+        this.unitTime /= 2;
     };
 
     /**

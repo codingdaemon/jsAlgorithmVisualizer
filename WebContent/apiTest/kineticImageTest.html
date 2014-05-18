@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script src="http://d3lp1msu2r81bx.cloudfront.net/kjs/js/lib/kinetic-v5.0.2.min.js"></script>
+<script defer="defer">
+    var stage = new Kinetic.Stage({
+        container: 'container',
+        width: 578,
+        height: 200
+    });
+    var layer = new Kinetic.Layer();
+
+    var imageObj = new Image();
+    imageObj.onload = function() {
+        var play = new Kinetic.Image({
+            x: 200,
+            y: 50,
+            image: imageObj,
+            width: 50,
+            height: 50,
+            crop : {
+                x  : 75,
+                y  : 0,
+                width : 70,
+                height : 65
+            }
+        });
+
+        // add the shape to the layer
+        layer.add(play);
+
+        var pause = new Kinetic.Image({
+            x: 250,
+            y: 50,
+            image: imageObj,
+            width: 50,
+            height: 50,
+            crop : {
+                x  : 75,
+                y  : 80,
+                width : 70,
+                height : 65
+            }
+        });
+
+        // add the shape to the layer
+        layer.add(pause);
+
+        var forward = new Kinetic.Image({
+            x: 300,
+            y: 50,
+            image: imageObj,
+            width: 50,
+            height: 50,
+            crop : {
+                x  : 150,
+                y  : 0,
+                width : 70,
+                height : 65
+            }
+        });
+
+        // add the shape to the layer
+        layer.add(forward);
+
+        // add the layer to the stage
+        stage.add(layer);
+    };
+    imageObj.src = '../images/pause_play_forward1.jpg';
+
+</script>
+</body>
+</html>
