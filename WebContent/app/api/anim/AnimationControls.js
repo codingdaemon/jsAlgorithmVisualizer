@@ -1,7 +1,7 @@
 /**
  * Created by nitiraj on 18/5/14.
  */
-define(["../core/Constants", "core/Utils", "animds/AnimationObject", "libs/kinetic"],function(Constants,Utils,AnimationObject,Kinetic){
+define(["core/Constants", "core/Utils", "animds/AnimationObject", "libs/kinetic"],function(Constants,Utils,AnimationObject,Kinetic){
 
     function AnimationControls(configs,layer,animator,layoutManager){
         this.configs = configs;
