@@ -3,9 +3,10 @@
  */
 
 requirejs.config({
-//    paths:{
-//      libs : "../libs"
-//    },
+    paths:{
+      imagePlugin : "libs/requirejs_plugins/image",
+      imagesPath: "../images"
+    },
     shim: {
         'libs/kinetic': {
             exports: 'Kinetic'

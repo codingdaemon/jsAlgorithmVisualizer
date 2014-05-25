@@ -41,7 +41,7 @@ define(["core/Utils", "core/Animator", "core/CodeParser", "core/Defaults","core/
             return this.animatorMap[animationId];
         },
 
-        runCodeAndAnimate: function (animationId, modifiedCode) {
+        runCodeAndAnimate: function (animationId, modifiedCode, callback) {
             Logger.info("Executing the code : " + modifiedCode);
             var animator = this.getAnimatorById(animationId);
 
@@ -52,6 +52,7 @@ define(["core/Utils", "core/Animator", "core/CodeParser", "core/Defaults","core/
             jsCodeScript.innerHTML = modifiedCode;
 
             head.appendChild(jsCodeScript);
+            jsCodeScript.onload = callback;
         },
 
         playCodeAnimation: function (animationId) {

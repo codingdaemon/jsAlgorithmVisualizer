@@ -8,11 +8,10 @@ define([ "animgen/BinaryTreeAnimationGenerator", "core/Logger","core/Utils"],fun
      * @param right
      * @param left
      * @param data
-     * @param parent : optional
      * @constructor
      */
    function BinaryTree(left,right,data){
-       this.setRight(right) ;
+       this.setRight(right);
        this.setLeft(left);
        this.data = data;
        this.parent = null;

@@ -32,7 +32,9 @@
                 code = Utils.getHeaderCode(animationId) + code + Utils.getFooterCode();
                 console.log("code = " + code.toString());
 
-                jsav.runCodeAndAnimate(animationId, code);
+                jsav.runCodeAndAnimate(animationId, code, function(){
+                    jsav.playCodeAnimation(animationId);
+                });
             });
         }
     </script>
@@ -82,8 +84,11 @@
 
     }());
 </textarea>
-<textarea rows="25" cols="50" id="codeAreaId2"></textarea>
-<input type="button" onclick="animate2()" value="Test Animate"/>
+<!--<textarea rows="25" cols="50" id="codeAreaId2"></textarea>-->
+<!--<input type="button" onclick="animate()" value="Test Animate"/>-->
 <!--<input type="button" onclick="reset()" value="Reset Animation"/>-->
+<script type="text/javascript">
+    animate();
+</script>
 </body>
 </html>

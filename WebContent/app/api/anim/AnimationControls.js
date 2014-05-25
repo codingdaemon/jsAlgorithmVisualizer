@@ -1,7 +1,7 @@
 /**
  * Created by nitiraj on 18/5/14.
  */
-define(["core/Constants", "core/Utils", "animds/AnimationObject", "libs/kinetic"],function(Constants,Utils,AnimationObject,Kinetic){
+define(["core/Constants", "core/Utils", "animds/AnimationObject", "libs/kinetic","imagePlugin!imagesPath/pause_play_forward1.jpg!rel", "libs/connect"],function(Constants,Utils,AnimationObject,Kinetic,pausePlayImage,ConnectJs){
 
     function AnimationControls(configs,layer,animator,layoutManager){
         this.configs = configs;
@@ -25,10 +25,10 @@ define(["core/Constants", "core/Utils", "animds/AnimationObject", "libs/kinetic"
 
         this.layer.add(this.group);
 
-        this.imageObj = new Image();
+//        this.imageObj = new Image();
         var ref = this;
-
-        this.imageObj.onload = function() {
+        this.imageObj = pausePlayImage;
+//        this.imageObj.onload = function() {
             ref.pauseButton = new Kinetic.Image({
                 x: 0,
                 y: 0,
@@ -97,26 +97,31 @@ define(["core/Constants", "core/Utils", "animds/AnimationObject", "libs/kinetic"
                 ref.animator.playCodeAnimation();
                 ref.playButton.hide();
                 ref.pauseButton.show();
+                ref.layer.draw();
             });
 
             ref.pauseButton.on('click tap', function() {
                 ref.animator.pauseCodeAnimation();
                 ref.pauseButton.hide();
                 ref.playButton.show();
+                ref.layer.draw();
             });
 
             ref.forwardButton.on('click tap', function() {
                 ref.animator.forwardCodeAnimation();
             });
 
+            ConnectJs.connect(ref.animator.getAnimationEngine(),"animationCompleted",function(){
+               ref.pauseButton.hide();
+               ref.playButton.show();
+               ref.layer.draw();
+            });
 //            ref.resetButton.on('click tap', function() {
 //                ref.animator.resetCodeAnimation();
 //            });
 
             ref.layer.draw();
-        };
-
-        this.imageObj.src = '../../images/pause_play_forward1.jpg';
+//        };
     }
 
     return AnimationControls;
