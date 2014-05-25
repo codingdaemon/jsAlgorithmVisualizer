@@ -3,7 +3,7 @@
  */
 
 requirejs.config({
-    baseUrl:"http://codingdaemon.github.io/jsAlgorithmVisualizer/WebContent/app/api",
+    baseUrl:".",
     paths:{
       imagePlugin : "libs/requirejs_plugins/image",
       imagesPath: "../images"
