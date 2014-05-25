@@ -2,7 +2,7 @@
  just an init file for require.js data-main parameter
  */
 
-requirejs.config({
+require.config({
     baseUrl:".",
     paths:{
       imagePlugin : "libs/requirejs_plugins/image",
