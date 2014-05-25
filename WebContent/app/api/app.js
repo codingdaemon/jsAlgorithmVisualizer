@@ -20,3 +20,7 @@ require.config({
         }
     }
 });
+
+if( console && console.log){
+    console.log("app.js loaded...");
+}
