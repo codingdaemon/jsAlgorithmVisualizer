@@ -19,3 +19,7 @@ LinkedNodeAnimationObject
 5. Stack and List Animation object don't use the timeUnit from AnimationEngine
 
 6. for editor in your blogsite explore the editor used in http://www.html5canvastutorials.com/
+
+7. When hosting the js from github.
+        i. compress / combine all js files and minimize for faster loading.
+        ii. see if image loading can be done faster.

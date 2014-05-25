@@ -4,8 +4,27 @@
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Insert title here</title>
     <script type="text/javascript"
-            data-main="http://codingdaemon.github.io/jsAlgorithmVisualizer/WebContent/app/api/app.js"
             src="http://codingdaemon.github.io/jsAlgorithmVisualizer/WebContent/app/api/libs/require.js"></script>
+    <script type="text/javascript">
+        requirejs.config({
+            baseUrl:"http://codingdaemon.github.io/jsAlgorithmVisualizer/WebContent/app/api/",
+            paths:{
+                imagePlugin : "libs/requirejs_plugins/image",
+                imagesPath: "../images"
+            },
+            shim: {
+                'libs/kinetic': {
+                    exports: 'Kinetic'
+                },
+                'libs/uglifyjs': {
+                    exports: 'UglifyJS'
+                },
+                'libs/connect': {
+                    exports: 'ConnectJs'
+                }
+            }
+        });
+    </script>
     <script type="text/javascript">
         function animate2() {
             require(["core/jsav", "core/Defaults", "core/Constants", "core/Utils"], function (jsav, Defaults, Constants, Utils) {

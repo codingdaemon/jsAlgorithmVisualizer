@@ -3,6 +3,7 @@
  */
 
 requirejs.config({
+    baseUrl:".",
     paths:{
       imagePlugin : "libs/requirejs_plugins/image",
       imagesPath: "../images"
