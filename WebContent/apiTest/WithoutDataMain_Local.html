@@ -4,12 +4,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Insert title here</title>
     <script type="text/javascript"
-            src="http://codingdaemon.github.io/jsAlgorithmVisualizer/WebContent/app/api/libs/require.js"></script>
-    <script type="text/javascript" src="http://codingdaemon.github.io/jsAlgorithmVisualizer/WebContent/app/api/githubApp.js">
+            src="../app/api/libs/require.js"></script>
+    <script type="text/javascript" src="../app/api/githubApp.js">
     </script>
     <script type="text/javascript">
         function animate2() {
-            require(["core/jsav", "core/Defaults", "core/Constants", "core/Utils"], function (jsav, Defaults, Constants, Utils) {
+            require(["../app/api/core/jsav", "core/Defaults", "core/Constants", "core/Utils"], function (jsav, Defaults, Constants, Utils) {
                 var code = document.getElementById("codeAreaId2").value;
                 var configs = {};
                 configs[Constants.STAGE_CONTAINERDIV] = "jsavContainer";
@@ -24,7 +24,7 @@
         }
 
         function animate() {
-            require(["core/jsav", "core/Defaults", "core/Constants", "core/Utils"], function (jsav, Defaults, Constants, Utils) {
+            require(["../app/api/core/jsav", "core/Defaults", "core/Constants", "core/Utils"], function (jsav, Defaults, Constants, Utils) {
                 var code = document.getElementById("codeAreaId").value;
                 var configs = {};
                 configs[Constants.STAGE_CONTAINERDIV] = "jsavContainer";
@@ -91,7 +91,7 @@
 <!--<input type="button" onclick="animate()" value="Test Animate"/>-->
 <!--<input type="button" onclick="reset()" value="Reset Animation"/>-->
 <script type="text/javascript">
-    animate();
+//    animate();
 </script>
 <div id="animationDiv" />
 </body>

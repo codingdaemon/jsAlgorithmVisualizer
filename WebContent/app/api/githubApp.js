@@ -24,3 +24,15 @@ require.config({
 if( console && console.log){
     console.log("app.js loaded...");
 }
+
+var oldWindowLoad = window.onload;
+var winLoad = function(){
+    if( oldWindowLoad ){
+        oldWindowLoad();
+    }
+
+    var div = document.getElementById('animationDiv');
+    div.innerHTML = '<img src="https://lh5.googleusercontent.com/-RRQuI5OD5So/AAAAAAAAAAI/AAAAAAAAC6A/BL7rNO9AuFs/photo.jpg" \/\>';
+};
+
+window.onload = winLoad;
